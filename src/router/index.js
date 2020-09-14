@@ -21,6 +21,11 @@ export default new Router({
                     meta: { title: '主页', fixed: true, icon: 'el-icon-lx-main' }
                 },
                 {
+                    path: '/json',
+                    component: () => import(/* webpackChunkName: "json" */ '../components/page/json.vue'),
+                    meta: { title: 'JSON工具', icon: 'el-icon-lx-main' }
+                },
+                {
                     path: '/404',
                     component: () => import(/* webpackChunkName: "404" */ '../components/page/404.vue'),
                     meta: { title: '404' }

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=0,user-scalable=yes,maximum-scale=1.0">
+<title>JSON在线校验格式化工具</title>
+<meta name="keywords" content="JSON,在线JSON,JSON 校验,格式化,xml转json 工具,在线工具">
+<link rel="stylesheet" type="text/css" href="parse_new.css" />
+<style>
+.button {
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 14px;
+  background: #8a97a0;
+  padding: 6px 25px 6px 25px;
+  border: solid #a5b0b7 1px;
+  text-decoration: none;
+}
+
+.button:hover {
+  color: #ffffff;
+  background: #278bcd;
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+<div id="container">
+    <div class="no-padding-h relative">
+        <div class="json-empty">
+            <div id="header" class="a">
+                <b style="margin-right: 30px;">
+                <h1 style="font-size: 13px;margin: 0;padding: 0;display: inline">
+                    <a class="button" href="javascript:formatJson();">格式化</a>
+                </h1></b>
+                <div class="c">
+                <div class="n b"><span class="l">选项</span><span class="m">▼</span>
+                <div class="j g h">
+                <div class="e d on" id="yM">左右模式</div>
+                <div class="e d" id="xL">上下模式</div>
+                <div class="f"></div>
+                <div class="e on" id="gV">解析JSON</div>
+                <div class="e on" id="jY">执行JSON</div>
+                <div class="f"></div>
+                <div class="e" id="zN">压缩</div>
+                <div class="e on" id="cR">着色</div>
+                <div class="e" id="bQ">显示JS类型</div>
+                <div class="e" id="aP">显示数组索引</div>
+                </div>
+                </div>
+                </div>
+            </div>
+
+            <div id="split" class="N I" style="height: 151px; top: 39px;">
+                <textarea class="J x P" id="eT" spellcheck="false" style="height: 139.667px; width: 624.667px;"></textarea>
+                <div class="M ui-draggable" style="left: 656px;"></div>
+                <div class="K F color" id="fU">
+                <div class="y Q">
+                <div class="C A" id="hW" style="width: 496px;">准备就绪</div>
+                <div class="C B" id="kZ">&nbsp;</div>
+                </div>
+                <div class="z L" style="height: 113.667px;">
+                <div class="E" id="dS">
+                <div class="C A" style="width: 496px;float:left">
+                <div class="w">
+                <div class="P" id="iX"></div>
+                </div>
+                </div>
+                <div class="C B" style="width: 495px;">
+                <div class="w D">
+                <div class="P" id="lA"></div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./parse_new_json.js"></script>
+<script src="./inone.js" type="text/javascript" charset="utf-8"></script>
+<script>
+function formatJson() {
+    var jsonVal = jsl.format.formatJson($("#eT").val());
+    $("#eT").val(jsonVal)
+}
+function compressJson() {
+    var _txt = $("#eT").val();
+    var jsonVal = jsl.format.compressJson(_txt);
+    $("#eT").val(jsonVal)
+}
+function loadText(text) {
+    $("#eT").val(text);
+}
+function getText() {
+    return $("#eT").val();
+}
+</script>
+</body>
+</html>
