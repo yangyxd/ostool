@@ -170,7 +170,7 @@
 
     .tags-li-title {
         float: left;
-        max-width: 100px;
+        max-width: 180px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;

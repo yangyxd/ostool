@@ -62,6 +62,16 @@ export default {
                     title: '主页'
                 },
                 {
+                    icon: 'el-icon-lx-text',
+                    index: 'jsonformat',
+                    title: 'JSON 格式化'
+                },
+                {
+                    icon: 'el-icon-lx-text',
+                    index: 'json',
+                    title: 'JSON 在线解析'
+                },
+                {
                     icon: 'el-icon-lx-emoji',
                     index: 'icon',
                     title: '自定义图标'

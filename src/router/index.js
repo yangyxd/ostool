@@ -23,7 +23,12 @@ export default new Router({
                 {
                     path: '/json',
                     component: () => import(/* webpackChunkName: "json" */ '../components/page/json.vue'),
-                    meta: { title: 'JSON工具', icon: 'el-icon-lx-main' }
+                    meta: { title: 'JSON在线解析' }
+                },
+                {
+                    path: '/jsonformat',
+                    component: () => import(/* webpackChunkName: "jsonFormat" */ '../components/page/jsonFormat.vue'),
+                    meta: { title: 'JSON格式化校验' }
                 },
                 {
                     path: '/404',

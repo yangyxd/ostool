@@ -6,18 +6,16 @@
 
 <script>
     export default {
-        name: 'jsonPage',
+        name: 'jsonFormatPage',
         components: { },
         data() {
             return {
                 text: "{}",
-                url: "/json/json.html"
+                url: "/json/jsonformat.html"
             }
         },
-        mounted() {
-        },
         beforeRouteLeave(to, form, next) {
-            this.text = window.frames['jsonToolFrame'].getText();
+            //this.text = window.frames['jsonToolFrame'].getText();
             next();
         },
         methods: {
@@ -60,7 +58,7 @@ h3 {
 }
 .container {
     height: calc(100vh - 120px);
-    padding: 6px 1px 6px 1px!important;
+    padding: 2px 8px 6px 8px!important;
 }
 </style>
 
