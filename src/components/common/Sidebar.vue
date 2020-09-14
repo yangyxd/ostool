@@ -63,13 +63,25 @@ export default {
                 },
                 {
                     icon: 'el-icon-lx-text',
-                    index: 'jsonformat',
-                    title: 'JSON 格式化'
+                    index: '',
+                    title: 'JSON 工具',
+                    subs: [
+                        {
+                            icon: 'el-icon-lx-text',
+                            index: 'jsonformat',
+                            title: 'JSON 格式化'
+                        },
+                        {
+                            icon: 'el-icon-lx-text',
+                            index: 'json',
+                            title: 'JSON 在线解析'
+                        }
+                    ]
                 },
                 {
-                    icon: 'el-icon-lx-text',
-                    index: 'json',
-                    title: 'JSON 在线解析'
+                    icon: 'el-icon-lx-edit',
+                    index: 'regexp',
+                    title: '正则表达式测试'
                 },
                 {
                     icon: 'el-icon-lx-emoji',

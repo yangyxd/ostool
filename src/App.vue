@@ -12,7 +12,12 @@ export default {
         }
     },
     created() {
-        this.loadSysConfig();
+        let _this = this;
+        _this.loadSysConfig();
+        window.addEventListener('message', function(e){
+            if (e.data.type == "alert")
+                _this.$message(e.data.data);
+        });
     },
     methods: {
         loadSysConfig() {

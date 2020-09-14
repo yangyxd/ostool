@@ -31,6 +31,11 @@ export default new Router({
                     meta: { title: 'JSON格式化校验' }
                 },
                 {
+                    path: '/regexp',
+                    component: () => import(/* webpackChunkName: "regexp" */ '../components/page/regexp.vue'),
+                    meta: { title: '正则表达式测试' }
+                },
+                {
                     path: '/404',
                     component: () => import(/* webpackChunkName: "404" */ '../components/page/404.vue'),
                     meta: { title: '404' }

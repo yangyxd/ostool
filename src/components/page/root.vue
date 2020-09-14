@@ -30,6 +30,7 @@
                 items: [
                     {"name": "JSON 格式化校验", "icon": "Json", "txt": "#fff", "bg": "#3280fc", "desc": "JSON 格式化校验工具", "path": "/jsonformat"},
                     {"name": "JSON 在线解析", "icon": "Json", "txt": "#ff0", "bg": "#009688", "desc": "JSON 在线解析工具", "path": "/json"},
+                    {"name": "正则表达式测试", "icon": "RegExp", "txt": "#fff", "bg": "#ff6000", "desc": "在线正则表达式测试工具", "path": "/regexp"},
                 ]
             }
         },
@@ -102,7 +103,7 @@ h3 {
     margin-bottom: 12px;
 }
 .container {
-    min-height: calc(100vh - 168px);
+    min-height: calc(100vh - 118px);
 }
 </style>
 

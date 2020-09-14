@@ -59,7 +59,7 @@ h3 {
     margin-bottom: 1em;
 }
 .container {
-    height: calc(100vh - 120px);
+    height: calc(100vh - 70px);
     padding: 6px 1px 6px 1px!important;
 }
 </style>

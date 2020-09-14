@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <iframe :src="url" scrolling="no" frameborder="0" class="iframeContain" name="jsonToolFrame" ref="jsonToolFrame" @load="setText()"></iframe>
+        <iframe :src="url" scrolling="no" frameborder="0" class="iframeContain" name="jsonFormatToolFrame" ref="jsonFormatToolFrame" @load="setText()"></iframe>
     </div>
 </template>
 
@@ -15,12 +15,12 @@
             }
         },
         beforeRouteLeave(to, form, next) {
-            //this.text = window.frames['jsonToolFrame'].getText();
+            //this.text = window.frames['jsonFormatToolFrame'].getText();
             next();
         },
         methods: {
             setText() {
-                var _f = window.frames['jsonToolFrame'];
+                var _f = window.frames['jsonFormatToolFrame'];
                 if (_f) _f.loadText(this.text);
             }
         }
@@ -57,7 +57,7 @@ h3 {
     margin-bottom: 1em;
 }
 .container {
-    height: calc(100vh - 120px);
+    height: calc(100vh - 70px);
     padding: 2px 8px 6px 8px!important;
 }
 </style>

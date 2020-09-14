@@ -34,7 +34,7 @@ Vue.prototype._ = _;
 
 Vue.use(plugin);
 
-new Vue({
+var vm = new Vue({
     router,
     i18n,
     render: h => h(App)
