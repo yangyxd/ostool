@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=0,user-scalable=yes,maximum-scale=1.0">
+<title>JSON格式化校验工具</title>
+<meta name="keywords" content="JSON,在线JSON,JSON 校验,格式化,xml转json 工具,在线工具">
+<link rel="stylesheet" type="text/css" href="./global.min.css?20200630" />
+<link rel="stylesheet" type="text/css" href="./indexCodeMirror.min.css" />
+<link rel="stylesheet" type="text/css" href="./swiper.min.css" />
+
+</head>
+<body>
+<div id="container" class="container">
+    <form name="main" onsubmit="return false" style="width: 100%">
+        <div class="editor-box1">
+            <div class="float-left relative" style="width: 100%">
+
+                <div id="editor">
+                    <textarea id="code" name="code"></textarea>
+                    <div id="resize">
+                        <i class="icon-bars"></i>
+                    </div>
+                </div>
+
+                <div class="t-huge-margin">
+                    <div class="btn-group">
+                        <button class="copy hide display-none"></button>
+                        <input type="button" class="btn btn-primary" name="validates" data-ga="validates" id="validates"
+                            value="格式化校验">
+                        <button type="button" class="btn" id="compressZipJson" data-html="index">压缩</button>
+                        <button type="button" class="btn" id="escapeJson" data-html="index">转义</button>
+                        <button type="button" class="btn" id="restoreJson" data-html="index">去除转义</button>
+                        <button type="button" class="btn" id="unicode2ch" data-html="index">Unicode转中文</button>
+                        <button type="button" class="btn" id="ch2unicode" data-html="index">中文转Unicode</button>
+                        <button type="button" class="btn" id="json2get" data-html="index">转GET参数</button>
+                        <button type="button" class="btn" id="copyJson" data-html="index">复制 </button>
+                    </div>
+                    <button type="button" class="btn absolute btn-sm" style="bottom: 70px;right: 8px;z-index: 9"
+                        id="clearCode" data-html="index">清空</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <div class="with-icon display-none" id="jsonlintBox">
+        <i class="icon-info-sign" id="jsonlintIcon"></i>
+        <pre class="content" id="jsonlintResult">请贴入要格式化的JSON代码</pre>
+    </div>
+
+</div>
+
+<script src="./global.min.js?v=20200630" type="text/javascript" charset="utf-8"></script>
+<script src="./indexCodeMirror.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="./jsonlint.js" type="text/javascript" charset="utf-8"></script>
+<script src="./swiper.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="./lz-string-1.4.4.js" type="text/javascript" charset="utf-8"></script>
+<script src="./lz-string-1.4.4.js" type="text/javascript" charset="utf-8"></script>
+<script src="./lzma.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+function loadText(text) {
+    //editor.setValue(text);
+}
+function getText() {
+    return $("#code").val();
+}
+</script>
+<script type="text/javascript">
+    //根据DOM元素的id构造出一个编辑器================================================================================================================================================================================================
+    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: 'application/json', //设置json模式
+        lineNumbers: true, //是否显示左边换行术字
+        lineWrapping: false, //是否折叠
+        foldGutter: true,
+        indentUnit: 4,
+        gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter']
+    });
+</script>
+
+<script type="text/javascript">
+//初始化保存的数据
+var initData = $.zui.store.get('saved_json');
+    if (initData && initData.length) {
+        $('#daveDataList').removeClass('empty-list');
+        var fragment = document.createDocumentFragment();
+        $(initData).each(function (index, item) {
+            var li = document.createElement('li');
+            li.className = 'border-bottom-d-color';
+            li.innerHTML = '<p class="">\n' +
+                '<span class="save-title">' + item.name + '</span>\n' +
+                '<span class="save-timer">' + item.time + '</span>\n' +
+                '<span class="display-none data">' + item.data + '</span>\n' +
+                '</p>';
+            fragment.appendChild(li);
+        });
+        $('#daveDataList').html('');
+        document.getElementById('daveDataList').appendChild(fragment);
+    }
+
+    //监听codemirror输入，买按一下键盘，存储一次编辑器内容
+    document.onkeyup = function () {
+        $.zui.store.set('lastJsonData', editor.getValue());
+    };
+
+    //初始化loadChecked
+    var lastChecked = $.zui.store.get('lastLoadChecked');
+    if (lastChecked && lastChecked === 'no') {
+        $('#loadChecked').attr('checked', false);
+    } else {
+        $('#loadChecked').attr('checked', 'checked');
+    }
+
+    //初始化上一次json数据
+    var lastJson = $.zui.store.get('lastJsonData');
+    if (lastJson && (!lastChecked || lastChecked === 'yes')) {
+        if (typeof lastJson == 'object') {
+            editor.setValue(JSON.stringify(lastJson));
+        } else {
+            editor.setValue(lastJson.toString());
+        }
+    }
+
+    //滚动
+    var swiper = new Swiper('.swiper-container', {
+        loop: true,
+        speed: 600,
+        slidesPerView: 5,
+        spaceBetween: 5,
+        centeredSlides : true,
+        watchSlidesProgress : true,
+        direction : 'vertical',
+        autoplay: {
+            delay: 300
+        },
+        on: {
+            setTranslate: function(){
+                var slides = this.slides
+                for(var i=0; i< slides.length; i++){
+                    var slide = slides.eq(i)
+                    progress = slides[i].progress
+                    //slide.html(progress.toFixed(2)); 看清楚progress是怎么变化的
+                    slide.css({'opacity': '','background': ''});slide.transform('');//清除样式
+                    slide.css('color','rgb('+ (Math.abs(progress)*64 + 50) +','+ (Math.abs(progress)*64 + 50) +',' + (Math.abs(progress)*64 + 50) + ')');
+                    // slide.transform('scale('+(1 - Math.abs(progress)/32)+')');
+
+                }
+            },
+            setTransition: function(transition) {
+                for (var i = 0; i < this.slides.length; i++) {
+                    var slide = this.slides.eq(i)
+                    slide.transition(transition);
+                }
+            },
+        }
+    });
+
+    // //鼠标覆盖停止自动切换
+    // swiper.el.onmouseover = function(){
+    //     swiper.autoplay.stop();
+    // };
+
+    // //鼠标离开开始自动切换
+    // swiper.el.onmouseout = function(){
+    //     swiper.autoplay.start();
+    // };
+</script>
+
+</body>
+</html>
