@@ -11,7 +11,7 @@
         data() {
             return {
                 text: "{}",
-                url: "/json/jsonformat.html"
+                url: "http://yangyxd.gitee.io/ostool/json/jsonformat.html"
             }
         },
         beforeRouteLeave(to, form, next) {

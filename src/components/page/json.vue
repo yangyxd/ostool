@@ -11,7 +11,7 @@
         data() {
             return {
                 text: "{}",
-                url: "/json/json.html"
+                url: "http://yangyxd.gitee.io/ostool/json/json.html"
             }
         },
         mounted() {
