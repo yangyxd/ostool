@@ -16,8 +16,8 @@
                         <el-input placeholder="在此输入正则表达式" clearable v-model="regKey">
                             <template slot="prepend"><span class="subtitle">正则表达式</span></template>
                             <div slot="append">
-                                <el-checkbox v-model="matchAll">全局搜索</el-checkbox>
-                                <el-checkbox v-model="ingoreCase">忽略大小写</el-checkbox>
+                                <el-checkbox v-model="matchAll" title="/g">全局搜索</el-checkbox>
+                                <el-checkbox v-model="ingoreCase" title="/i">忽略大小写</el-checkbox>
                             </div>
                         </el-input>
                     </div>
@@ -46,7 +46,7 @@
                     </div>
                 </el-row>
                 <div class="desc mt16">替换结果：</div>
-                <div>
+                <div class="pb8">
                     <el-input
                     type="textarea"
                     :rows="15"
@@ -56,9 +56,11 @@
                     </el-input>
                 </div>
             </el-col>
-            <el-col :span="6" style="padding-left: 16px;">
-                <div class="title"><i class="el-icon-lx-emojifill"></i> 常用正则表达式</div>
-                <div v-for="(item, index) in templates" :key="index" :title="item[1]" class="titem" @click="regKey=item[1]">{{item[0]}}</div>
+            <el-col :span="6">
+                <div class="rightpl">
+                    <div class="title"><i class="el-icon-lx-emojifill"></i> 常用正则表达式</div>
+                    <div v-for="(item, index) in templates" :key="index" :title="item[1]" class="titem" @click="regKey=item[1]"><span>{{item[0]}}</span></div>
+                </div>
             </el-col>
         </el-row>
     </div>
@@ -81,6 +83,8 @@
                     ["匹配中文字符", "[\\u4e00-\\u9fa5]"],
                     ["匹配双字节字符(包括汉字在内)", "[^\\x00-\\xff]"],
                     ["匹配空白行", "\\n\\s*\\r"],
+                    ["匹配首尾空格", "(^\\s*)|(\\s*$)"],
+                    ["匹配HTML标签", "<(.*)>(.*)<\\/(.*)>|<(.*)\\/>"],
                     ["匹配Email地址", "[\\w!#$%&'*+\/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+\/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?"],
                     ["匹配网址URL", "[a-zA-z]+:\/\/[^\\s]*"],
                     ["匹配国内电话号码", "\\d{3}-\\d{8}|\\d{4}-\\{7,8}"],
@@ -95,7 +99,12 @@
                     ["匹配非正整数（负整数 + 0）", "^-[1-9]\\d*|0$"],
                     ["匹配正浮点数", "^[1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*$"],
                     ["匹配负浮点数", "^-[1-9]\\d*\\.\\d*|-0\\.\\d*[1-9]\\d*$"],
-                    // ["匹配负整数", ""],
+                    ["匹配英文字母", "^[A-Za-z]+$"],
+                    ["匹配数字和英文字母", "^[A-Za-z0-9]+$"],
+                    ["匹配数字、英文字母和下划线", "^\w+$"],
+                    ["匹配以a开头以d结尾中间任意数量的字母或数字", "^a[a-z0-9]*d$"],
+                    ["匹配以open开头以over结尾字符串", "\open.*?\over"],
+                    ["截取字符串CN_和.mtl之间的内容", "(?<=CN_).*?(?=.mtl)"],
                 ]
             }
         },
@@ -103,10 +112,56 @@
         },
         methods: {
             execMatch() {
-                this.$message("aaa");
+                try {
+                    if (!this.isValidFields())
+                        return false;
+                    this.result = undefined;
+                    let regex = this.buildRegex();
+                    let result = this.textarea.match(regex);
+                    if (result == null || result == undefined || result.length == 0) {
+                        this.result = "(没有匹配)";
+                        return false;
+                    }
+                    if (this.matchAll) {
+                        let strResult = "共找到 " + result.length + " 处匹配: \r\n";
+                        for (let i=0; i<result.length; i++)
+                            strResult += result[i] + "\r\n";
+                        this.result = strResult;
+                    } else {
+                        this.result = "匹配位置: " + regex.lastIndex + "\r\n匹配结果: " + result[0];
+                    }
+                    return true;
+                } catch (e) {
+                    this.$message(e.message);
+                    this.result = "错误：\r\n" + e.message;
+                    return false;
+                }
             },
             execMatchReplace() {
-
+                try {
+                    let regex = this.buildRegex();
+                    this.resultReplace = this.textarea.replace(regex, this.regReplace);
+                } catch (e) {
+                    this.$message(e.message);
+                    this.resultReplace = "错误：\r\n" + e.message;
+                }
+            },
+            isValidFields() {
+                if (!this.textarea || this.textarea.length < 1) {
+                    this.$message("请输入待匹配文本");
+                    return false;
+                }
+                if (!this.regKey || this.regKey.length < 1) {
+                    this.$message("请输入正则表达式");
+                    return false;
+                }
+                return true;
+            },
+            buildRegex() {
+                let op = "";
+                if (this.matchAll) op = "g";
+                if (this.ingoreCase) op = op + "i";
+                return new RegExp(this.regKey, op);
             }
         }
     };
@@ -153,6 +208,9 @@ h3 {
     padding: 10px!important;
     overflow: hidden;
 }
+.pb8 {
+    padding-bottom: 20px;
+}
 .mt8 {
     margin-top: 8px;
 }
@@ -161,10 +219,18 @@ h3 {
 }
 .titem {
     cursor: pointer;
-    color: #409eff;
+    color: #0058a8;
     padding-top: 6px;
     padding-bottom: 6px;
     font-size: 16px;
+}
+.titem span:hover{
+    color: #409eff;
+}
+.rightpl {
+    margin-left: 12px;
+    padding: 16px;
+    background: #f1f2f3;
 }
 </style>
 
@@ -177,6 +243,6 @@ h3 {
 .regexp .el-input__inner {
     font-size: 15px;
     font-family: 'Courier New', Courier, monospace;
-    color: #111;
+    color: #010203;
 }
 </style>

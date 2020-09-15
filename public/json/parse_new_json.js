@@ -6717,7 +6717,7 @@ $(function() {
               , B = w - v - k
               , A = j - q - b;
             h.css("top", q).css("width", "");
-            l.outerWidth(D - 20);
+            l.outerWidth(D - 8);
             if (B === 0) {
                 if (!y) {
                     p.hide();
@@ -6728,7 +6728,7 @@ $(function() {
                     p.show();
                     y = false
                 }
-                p.outerWidth(B - 20)
+                p.outerWidth(B - 8)
             }
             var z = p.hasClass("R") || p.hasClass("S") ? 1 : 2
               , C = Math.floor(a.outerWidth() / z);
