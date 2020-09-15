@@ -31,6 +31,7 @@
                     {"name": "JSON 格式化校验", "icon": "Json", "txt": "#fff", "bg": "#3280fc", "desc": "JSON 格式化校验工具", "path": "/jsonformat"},
                     {"name": "JSON 在线解析", "icon": "Json", "txt": "#ff0", "bg": "#009688", "desc": "JSON 在线解析工具", "path": "/json"},
                     {"name": "正则表达式测试", "icon": "RegExp", "txt": "#fff", "bg": "#ff6000", "desc": "在线正则表达式测试工具", "path": "/regexp"},
+                    {"name": "Base64 编码转换", "icon": "Base64", "txt": "#fff", "bg": "#08998c", "desc": "Base64编码将任意字节数据编码成ASCII字符串", "path": "/base64"},
                 ]
             }
         },

@@ -84,6 +84,11 @@ export default {
                     title: '正则表达式测试'
                 },
                 {
+                    icon: 'el-icon-lx-cascades',
+                    index: 'base64',
+                    title: 'Base64编码转换'
+                },
+                {
                     icon: 'el-icon-lx-emoji',
                     index: 'icon',
                     title: '自定义图标'
