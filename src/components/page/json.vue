@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <iframe :src="url" scrolling="no" frameborder="0" class="iframeContain" name="jsonToolFrame" ref="jsonToolFrame" @load="setText()"></iframe>
+        <iframe :src="url" scrolling="no" frameborder="0" class="iframeContain" name="jsonToolFrame" ref="jsonToolFrame"></iframe>
     </div>
 </template>
 
@@ -16,15 +16,7 @@
         },
         mounted() {
         },
-        beforeRouteLeave(to, form, next) {
-            this.text = window.frames['jsonToolFrame'].getText();
-            next();
-        },
         methods: {
-            setText() {
-                var _f = window.frames['jsonToolFrame'];
-                if (_f) _f.loadText(this.text);
-            }
         }
     };
 </script>

@@ -56,7 +56,6 @@
 <script src="./jsonlint.js" type="text/javascript" charset="utf-8"></script>
 <script src="./swiper.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="./lz-string-1.4.4.js" type="text/javascript" charset="utf-8"></script>
-<script src="./lz-string-1.4.4.js" type="text/javascript" charset="utf-8"></script>
 <script src="./lzma.js" type="text/javascript" charset="utf-8"></script>
 
 <script>
@@ -80,8 +79,8 @@ function getText() {
 </script>
 
 <script type="text/javascript">
-//初始化保存的数据
-var initData = $.zui.store.get('saved_json');
+    //初始化保存的数据
+    var initData = $.zui.store.get('saved_json');
     if (initData && initData.length) {
         $('#daveDataList').removeClass('empty-list');
         var fragment = document.createDocumentFragment();

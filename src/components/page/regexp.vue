@@ -245,4 +245,7 @@ h3 {
     font-family: 'Courier New', Courier, monospace;
     color: #010203;
 }
+.xpath .el-textarea__inner {
+    color: #010203;
+}
 </style>

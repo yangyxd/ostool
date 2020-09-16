@@ -14,7 +14,10 @@ import moment from "miment";
 // import eCharts from 'echarts';
 import _ from 'lodash';
 import plugin from './api/plugin';
+import base64 from './api/base64';
+import md5 from 'js-md5';
 import _const from './utils/consts';
+// import Highlight from './components/common/highlight';
 
 Vue.config.productionTip = false;
 Vue.use(VueI18n);
@@ -28,13 +31,18 @@ const i18n = new VueI18n({
 
 Vue.prototype.$const = _const;
 Vue.prototype.$http = request;
+Vue.prototype.$md5 = md5;
 // Vue.prototype.$echarts = eCharts;
 Vue.prototype.$moment = moment;  // 其实是 miment
 Vue.prototype._ = _;
 
 Vue.use(plugin);
+Vue.use(base64);
 
-var vm = new Vue({
+// highlight.js代码高亮插件
+// Vue.use(Highlight);
+
+new Vue({
     router,
     i18n,
     render: h => h(App)

@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <iframe :src="url" scrolling="no" frameborder="0" class="iframeContain" name="jsonFormatToolFrame" ref="jsonFormatToolFrame" @load="setText()"></iframe>
+        <iframe :src="url" scrolling="no" frameborder="0" class="iframeContain" name="jsonFormatToolFrame" ref="jsonFormatToolFrame"></iframe>
     </div>
 </template>
 
@@ -14,15 +14,7 @@
                 url: "http://yangyxd.gitee.io/ostool/json/jsonformat.html"
             }
         },
-        beforeRouteLeave(to, form, next) {
-            //this.text = window.frames['jsonFormatToolFrame'].getText();
-            next();
-        },
         methods: {
-            setText() {
-                var _f = window.frames['jsonFormatToolFrame'];
-                if (_f) _f.loadText(this.text);
-            }
         }
     };
 </script>

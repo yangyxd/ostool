@@ -81,23 +81,24 @@
     </div>
 </div>
 <script src="./parse_new_json.js"></script>
+<script src="./lz-string-1.4.4.js" type="text/javascript" charset="utf-8"></script>
 <script src="./inone.js" type="text/javascript" charset="utf-8"></script>
 <script>
-function formatJson() {
-    var jsonVal = jsl.format.formatJson($("#eT").val());
-    $("#eT").val(jsonVal)
-}
-function compressJson() {
-    var _txt = $("#eT").val();
-    var jsonVal = jsl.format.compressJson(_txt);
-    $("#eT").val(jsonVal)
-}
-function loadText(text) {
-    $("#eT").val(text);
-}
-function getText() {
-    return $("#eT").val();
-}
+    function formatJson() {
+        localStorage.setItem('lastJsonData_a', $("#eT").val());
+        var jsonVal = jsl.format.formatJson($("#eT").val());
+        $("#eT").val(jsonVal)
+    }
+
+    //初始化上一次json数据
+    var lastJson = localStorage.getItem('lastJsonData_a');
+    if (lastJson) {
+        if (typeof lastJson == 'object') {
+            $("#eT").val(JSON.stringify(lastJson));
+        } else {
+            $("#eT").val(lastJson.toString());
+        }
+    }
 </script>
 </body>
 </html>

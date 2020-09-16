@@ -41,6 +41,16 @@ export default new Router({
                     meta: { title: 'Base64编码转换', multiple: true }
                 },
                 {
+                    path: '/md5',
+                    component: () => import(/* webpackChunkName: "md5" */ '../components/page/md5.vue'),
+                    meta: { title: 'MD5加密', multiple: true }
+                },
+                {
+                    path: '/xpath',
+                    component: () => import(/* webpackChunkName: "xpath" */ '../components/page/xpath.vue'),
+                    meta: { title: 'XPath在线测试', multiple: true }
+                },
+                {
                     path: '/404',
                     component: () => import(/* webpackChunkName: "404" */ '../components/page/404.vue'),
                     meta: { title: '404' }

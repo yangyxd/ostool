@@ -84,9 +84,19 @@ export default {
                     title: '正则表达式测试'
                 },
                 {
+                    icon: 'el-icon-lx-comment',
+                    index: 'xpath',
+                    title: 'XPath测试'
+                },
+                {
                     icon: 'el-icon-lx-cascades',
                     index: 'base64',
                     title: 'Base64编码转换'
+                },
+                {
+                    icon: 'el-icon-lx-roundcheck',
+                    index: 'md5',
+                    title: 'MD5加密'
                 },
                 {
                     icon: 'el-icon-lx-emoji',
