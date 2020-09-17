@@ -1,11 +1,11 @@
 <template>
-    <div class="container base64">
+    <div class="container md5">
         <el-row>
-            <el-col>
+            <el-col style="width: calc(100% - 452px); min-width: 500px; padding-right: 16px">
                 <div class="mt8">
                     <el-input
                     type="textarea"
-                    :autosize="{ minRows: 20, maxRows: 40}"
+                    :autosize="{ minRows: 30, maxRows: 40}"
                     clearable
                     placeholder="在此输入待加密内容"
                     v-model="srcText">
@@ -16,7 +16,7 @@
                     <el-button @click="clear()" size="medium">清空</el-button>
                 </el-row>
             </el-col>
-            <el-col :span="16" class="mt8">
+            <el-col class="mt8" style="width: 450px;">
                 <div class="subtitle">加密结果：</div>
                 <el-input v-model="ret32u" readonly class="mt8">
                     <template slot="prepend"><span class="subtitle">32位大写</span></template>
@@ -153,12 +153,12 @@ h3 {
     width: 100%;
     height: 100%;
 }
-.base64 .el-input__inner {
+.md5 .el-input__inner {
     font-size: 15px;
     font-family: 'Courier New', Courier, monospace;
     color: #010203;
 }
-.xpath .el-textarea__inner {
+.md5 .el-textarea__inner {
     color: #010203;
 }
 </style>

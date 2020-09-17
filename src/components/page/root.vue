@@ -28,12 +28,12 @@
         data() {
             return {
                 items: [
-                    {"name": "JSON 格式化校验", "icon": "Json", "txt": "#fff", "bg": "#3280fc", "desc": "JSON 格式化校验工具", "path": "/jsonformat"},
-                    {"name": "JSON 在线解析", "icon": "Json", "txt": "#ff0", "bg": "#009688", "desc": "JSON 在线解析工具", "path": "/json"},
-                    {"name": "正则表达式测试", "icon": "RegExp", "txt": "#fff", "bg": "#ff6000", "desc": "在线正则表达式测试工具", "path": "/regexp"},
-                    {"name": "XPath在线测试", "icon": "XPath", "txt": "#fff", "bg": "#c06b26", "desc": "XPath在线测试工具", "path": "/xpath"},
-                    {"name": "Base64 编码转换", "icon": "Base64", "txt": "#fff", "bg": "#08998c", "desc": "Base64编码将任意字节数据编码成ASCII字符串", "path": "/base64"},
-                    {"name": "MD5 加密", "icon": "MD5", "txt": "#135201", "bg": "#a9ffe0", "desc": "MD5加密工具", "path": "/md5"},
+                    {name: "JSON 格式化校验", icon: "Json", txt: "#fff", bg: "#3280fc", desc: "JSON 格式化校验工具", path: "/jsonformat", multiple: false},
+                    {name: "JSON 在线解析", icon: "Json", txt: "#ff0", bg: "#009688", desc: "JSON 在线解析工具", path: "/json", multiple: false},
+                    {name: "正则表达式测试", icon: "RegExp", txt: "#fff", bg: "#ff6000", desc: "在线正则表达式测试工具", path: "/regexp"},
+                    {name: "XPath在线测试", icon: "XPath", txt: "#fff", bg: "#c06b26", desc: "XPath在线测试工具", path: "/xpath"},
+                    {name: "Base64 编码转换", icon: "Base64", txt: "#fff", bg: "#08998c", desc: "Base64编码将任意字节数据编码成ASCII字符串", path: "/base64"},
+                    {name: "MD5 加密", icon: "MD5", txt: "#135201", bg: "#a9ffe0", desc: "MD5加密工具", path: "/md5"},
                 ]
             }
         },
@@ -41,7 +41,8 @@
         },
         methods: {
             gotoTool(o) {
-                this.$router.push({path: o.path, query: o});
+                this.$router.push({path: o.path +
+                    ((o.multiple == undefined || o.multiple == true) ? '?' + new Date().getTime() : '')});
             }
         }
     };

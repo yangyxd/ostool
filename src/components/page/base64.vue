@@ -223,7 +223,7 @@ h3 {
     width: 100%;
     height: 100%;
 }
-.xpath .el-textarea__inner {
+.base64 .el-textarea__inner {
     color: #010203;
 }
 </style>

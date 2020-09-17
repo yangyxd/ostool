@@ -72,11 +72,15 @@
                         this.tagsList.shift();
                     }
                     // console.log(route);
+                    let path = route.fullPath;
+                    // if (route.meta.multiple == true && path.indexOf("?") < 0) {
+                    //     path = path + "?" + new Date().getTime();
+                    // }
                     this.tagsList.push({
                         title: route.params.title ? route.params.title : route.meta.title,  // 此处默认优先读params中的title, 如果不存在, 则读meta中的title
                         fixed: route.meta.fixed,
                         icon: route.meta.icon,
-                        path: route.fullPath,
+                        path: path,
                         params: route.params,
                         name: route.matched[1].components.default.name
                     })

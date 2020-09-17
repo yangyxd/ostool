@@ -1,7 +1,8 @@
 <template>
     <div class="container regexp">
-        <el-row>
-            <el-col :span="18">
+        <div><a href="https://mp.weixin.qq.com/s/wkCHL_QzAJwWEg9JZaZnCQ" target="_blank">掌握开发利器：正则表达式</a></div>
+        <el-row class="mt8">
+            <el-col style="width: calc(100% - 450px); min-width: 520px;">
                 <div>
                     <el-input
                     type="textarea"
@@ -56,7 +57,7 @@
                     </el-input>
                 </div>
             </el-col>
-            <el-col :span="6">
+            <el-col style="width: 450px">
                 <div class="rightpl">
                     <div class="title"><i class="el-icon-lx-emojifill"></i> 常用正则表达式</div>
                     <div v-for="(item, index) in templates" :key="index" :title="item[1]" class="titem" @click="regKey=item[1]"><span>{{item[0]}}</span></div>

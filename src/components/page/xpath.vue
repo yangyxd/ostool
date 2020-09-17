@@ -204,6 +204,7 @@ h3 {
 <style>
 .CodeMirror {
     min-height: calc(50vh - 100px);
+    font-size: 13px;
 }
 .CodeMirror-scroll {
     min-height: calc(50vh - 100px);

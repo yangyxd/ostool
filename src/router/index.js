@@ -23,32 +23,32 @@ export default new Router({
                 {
                     path: '/json',
                     component: () => import(/* webpackChunkName: "json" */ '../components/page/json.vue'),
-                    meta: { title: 'JSON在线解析', multiple: true }
+                    meta: { title: 'JSON在线解析', iframe: true }
                 },
                 {
                     path: '/jsonformat',
                     component: () => import(/* webpackChunkName: "jsonFormat" */ '../components/page/jsonFormat.vue'),
-                    meta: { title: 'JSON格式化校验', multiple: true }
+                    meta: { title: 'JSON格式化校验', iframe: true }
                 },
                 {
                     path: '/regexp',
                     component: () => import(/* webpackChunkName: "regexp" */ '../components/page/regexp.vue'),
-                    meta: { title: '正则表达式测试', multiple: true }
+                    meta: { title: '正则表达式测试' }
                 },
                 {
                     path: '/base64',
                     component: () => import(/* webpackChunkName: "base64" */ '../components/page/base64.vue'),
-                    meta: { title: 'Base64编码转换', multiple: true }
+                    meta: { title: 'Base64编码转换' }
                 },
                 {
                     path: '/md5',
                     component: () => import(/* webpackChunkName: "md5" */ '../components/page/md5.vue'),
-                    meta: { title: 'MD5加密', multiple: true }
+                    meta: { title: 'MD5加密' }
                 },
                 {
                     path: '/xpath',
                     component: () => import(/* webpackChunkName: "xpath" */ '../components/page/xpath.vue'),
-                    meta: { title: 'XPath在线测试', multiple: true }
+                    meta: { title: 'XPath在线测试' }
                 },
                 {
                     path: '/404',
