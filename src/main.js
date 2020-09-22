@@ -17,6 +17,7 @@ import plugin from './api/plugin';
 import base64 from './api/base64';
 import md5 from 'js-md5';
 import _const from './utils/consts';
+import VueClipboard from 'vue-clipboard2'
 // import Highlight from './components/common/highlight';
 
 Vue.config.productionTip = false;
@@ -38,6 +39,9 @@ Vue.prototype._ = _;
 
 Vue.use(plugin);
 Vue.use(base64);
+
+VueClipboard.config.autoSetContainer = true
+Vue.use(VueClipboard)
 
 // highlight.js代码高亮插件
 // Vue.use(Highlight);

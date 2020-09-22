@@ -51,6 +51,11 @@ export default new Router({
                     meta: { title: 'XPath在线测试' }
                 },
                 {
+                    path: '/js',
+                    component: () => import(/* webpackChunkName: "js" */ '../components/page/js.vue'),
+                    meta: { title: 'Js/Html压缩格式化' }
+                },
+                {
                     path: '/404',
                     component: () => import(/* webpackChunkName: "404" */ '../components/page/404.vue'),
                     meta: { title: '404' }

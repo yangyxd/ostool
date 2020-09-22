@@ -99,6 +99,11 @@ export default {
                     title: 'MD5加密'
                 },
                 {
+                    icon: 'el-icon-lx-lock',
+                    index: 'js',
+                    title: 'Js/Html压缩格式化'
+                },
+                {
                     icon: 'el-icon-lx-emoji',
                     index: 'icon',
                     title: '自定义图标'

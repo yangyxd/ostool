@@ -34,6 +34,7 @@
                     {name: "XPath在线测试", icon: "XPath", txt: "#fff", bg: "#c06b26", desc: "XPath在线测试工具", path: "/xpath"},
                     {name: "Base64 编码转换", icon: "Base64", txt: "#fff", bg: "#08998c", desc: "Base64编码将任意字节数据编码成ASCII字符串", path: "/base64"},
                     {name: "MD5 加密", icon: "MD5", txt: "#135201", bg: "#a9ffe0", desc: "MD5加密工具", path: "/md5"},
+                    {name: "JS/Html 压缩格式化", icon: "Js", txt: "#4d6d09", bg: "#f1f1f1", desc: "JS/Html压缩格式化", path: "/js"},
                 ]
             }
         },
