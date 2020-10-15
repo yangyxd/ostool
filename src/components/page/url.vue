@@ -143,6 +143,7 @@
                     this.result = this.gbkStrToUtf16Str(decodeURIComponent(this.srcText));
                 } else {
                     let s = this.gb2312ToUtf8(this.srcText);
+                    console.log(s);
                     s = iconv.decode(s, "gb2312");
                     this.result = s;
                 }
@@ -156,14 +157,8 @@
                 for (var i = 1; i < sa.length; i++) {
                     if (sa[i].substring(0, 1) == "u") {
                         retV += this.Hex2Utf8(this.Str2Hex(sa[i].substring(1, 5)));
-                        if (sa[i].length) {
-                            retV += sa[i].substring(5);
-                        }
                     } else {
                         retV += unescape("%" + sa[i]);
-                        if (sa[i].length) {
-                            retV += sa[i].substring(5);
-                        }
                     }
                 }
                 return retV;
