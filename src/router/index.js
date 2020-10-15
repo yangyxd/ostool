@@ -56,6 +56,11 @@ export default new Router({
                     meta: { title: 'Js/Html压缩格式化' }
                 },
                 {
+                    path: '/url',
+                    component: () => import(/* webpackChunkName: "url" */ '../components/page/url.vue'),
+                    meta: { title: 'URL编码解码' }
+                },
+                {
                     path: '/404',
                     component: () => import(/* webpackChunkName: "404" */ '../components/page/404.vue'),
                     meta: { title: '404' }

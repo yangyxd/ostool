@@ -12,20 +12,20 @@
                     </el-input>
                 </div>
                 <el-row class="mt8">
-                    <el-button @click="srcText='';result=''">清空</el-button>
+                    <el-button type="primary" @click="_encode()" size="medium">加密</el-button>
+                    <el-button type="success" @click="_decode()" size="medium">解密</el-button>
+                    <el-button @click="change()" size="medium">交换内容</el-button>
+                    <el-select v-model="mode" placeholder="请选择" size="medium" style="width: 120px; margin-left: 12px; margin-top: -2px;">
+                        <el-option
+                        v-for="item in options"
+                        :key="item"
+                        :label="item"
+                        :value="item">
+                        </el-option>
+                    </el-select>
                     <el-checkbox v-model="hex" style="margin-left: 16px">解密结果以16进制显示</el-checkbox>
                     <div style="text-align: right; float: right">
-                        <el-select v-model="mode" placeholder="请选择" size="medium" style="width: 120px; margin-right: 12px; margin-top: -2px;">
-                            <el-option
-                            v-for="item in options"
-                            :key="item"
-                            :label="item"
-                            :value="item">
-                            </el-option>
-                        </el-select>
-                        <el-button @click="change()" size="medium">交换内容</el-button>
-                        <el-button type="primary" @click="_encode()" size="medium">加密</el-button>
-                        <el-button type="success" @click="_decode()" size="medium">解密</el-button>
+                        <el-button @click="srcText='';result=''">清空</el-button>
                     </div>
                 </el-row>
                 <div class="mt8">

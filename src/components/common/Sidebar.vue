@@ -104,6 +104,11 @@ export default {
                     title: 'Js/Html压缩格式化'
                 },
                 {
+                    icon: 'el-icon-lx-link',
+                    index: 'url',
+                    title: 'URL编码解码'
+                },
+                {
                     icon: 'el-icon-lx-emoji',
                     index: 'icon',
                     title: '自定义图标'
