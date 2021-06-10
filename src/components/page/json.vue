@@ -11,8 +11,8 @@
         data() {
             return {
                 text: "{}",
-                // url: "http://yangyxd.gitee.io/ostool/json/json.html",
-                url: "http://127.0.0.1:8080/json/json.html",
+                url: "http://yangyxd.gitee.io/ostool/json/json.html",
+                // url: "http://127.0.0.1:8080/json/json.html",
             }
         },
         mounted() {
