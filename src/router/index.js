@@ -61,6 +61,11 @@ export default new Router({
                     meta: { title: 'URL编码解码' }
                 },
                 {
+                    path: '/markdown',
+                    component: () => import(/* webpackChunkName: "url" */ '../components/page/markdown.vue'),
+                    meta: { title: 'Markdown' }
+                },
+                {
                     path: '/404',
                     component: () => import(/* webpackChunkName: "404" */ '../components/page/404.vue'),
                     meta: { title: '404' }

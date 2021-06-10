@@ -9,9 +9,9 @@
 <style>
 .button {
   font-family: Arial;
-  color: #ffffff;
+  color: #101010;
   font-size: 14px;
-  background: #8a97a0;
+  background: #fefefe;
   padding: 6px 25px 6px 25px;
   border: solid #a5b0b7 1px;
   text-decoration: none;
@@ -29,9 +29,11 @@
     <div class="no-padding-h relative">
         <div class="json-empty">
             <div id="header" class="a">
-                <b style="margin-right: 30px;">
                 <h1 style="font-size: 13px;margin: 0;padding: 0;display: inline">
                     <a class="button" href="javascript:formatJson();">格式化</a>
+                    <a class="button" href="javascript:compressZipJson();">压缩</a>
+                    <a class="button" href="javascript:escapeJson();">转义</a>
+                    <a class="button" href="javascript:restoreJson();">去除转义</a>
                 </h1></b>
                 <div class="c">
                 <div class="n b"><span class="l">选项</span><span class="m">▼</span>
@@ -88,6 +90,30 @@
         localStorage.setItem('lastJsonData_a', $("#eT").val());
         var jsonVal = jsl.format.formatJson($("#eT").val());
         $("#eT").val(jsonVal)
+    }
+
+    function restoreJson() {
+        var t = $("#eT").val();
+        t = t.replace(/\\\\/g, "\\").replace(/\\\"/g, '"')
+        $("#eT").val(t)
+    }
+
+    function escapeJson() {
+        var t = $("#eT").val();
+        t = t.replace(/\\/g, "\\\\").replace(/\"/g, '\\"');
+        $("#eT").val(t)
+    }
+
+    function compressZipJson() {
+        var t = $("#eT").val();
+        t = t.split("\n").join(" ");
+        for (var n = [], i = !1, o = 0, r = t.length; r > o; o++) {
+            var a = t.charAt(o);
+            i && a === i ? "\\" !== t.charAt(o - 1) && (i = !1) : i || '"' !== a && "'" !== a ? i || " " !== a && "	" !== a || (a = "") : i = a,
+            n.push(a)
+        }
+        t = n.join("")
+        $("#eT").val(t)
     }
 
     //初始化上一次json数据

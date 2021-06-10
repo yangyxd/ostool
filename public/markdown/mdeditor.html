@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+
+<html class="theme" manifest="zybuluo.mdeditor.appcache">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="description" content="Cmd Markdown 编辑阅读器，支持实时同步预览，区分写作和阅读模式，支持在线存储，分享文稿网址。">
+    <meta name="author" content="Jiawei Zhang">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Cmd Markdown 编辑阅读器 - 作业部落出品</title>
+
+    <link href="./css/1bc053c8.base.lib.min.css" rel="stylesheet" media="screen">
+
+
+    <link id="prettify-style" href="./css/prettify-cmd.css" type="text/css" rel="stylesheet">
+    <link href="./css/45c7d56d.layout.min.css" rel="stylesheet" media="screen">
+
+
+
+    <link href="./css/2e85637e.mdeditor.lib.min.css" rel="stylesheet" media="screen">
+    <style type="text/css" id="customized-font-css"></style>
+    <style type="text/css" id="customized-style-css"></style>
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','./js/analytics.js','ga');
+
+      ga('create', 'UA-44461741-1', 'zybuluo.com');
+      ga('send', 'pageview');
+    </script>
+</head>
+
+<body class="theme">
+
+    <div id="global-prompt-alert" class="hide alert alert-warning">
+        <span id="global-prompt-message"></span>
+        <a id="close-global-prompt-alert" href="">[关闭]</a>
+    </div>
+
+    <!-- zybuluo's body -->
+
+
+
+
+
+
+
+
+<!-- mdeditor's body -->
+
+
+
+
+
+
+
+
+<div id="container">
+    <div id="editor-column" class="pull-left">
+        <div id="wmd-button-bar" class="wmd-button-bar"></div>
+        <!--in page editor buttons. -->
+        <div class="in-page-editor-buttons editor-reader-hidden">
+            <ul>
+                <li class="in-page-button" id="wmd-search-replace-button" title="查找 Ctrl+F 替换 Ctrl+Shift+F">
+                    <span class="icon-search"></span>
+                </li>
+                <li class="in-page-button" id="wmd-hidden-menu-button" title="隐藏工具栏 Ctrl+Alt+U">
+                    <span class="icon-chevron-sign-up"></span>
+                </li>
+                <li class="in-page-button" id="wmd-editor-full-button" title="编辑模式 Ctrl+M">
+                    <span class="icon-desktop"></span>
+                </li>
+                <li class="in-page-button" id="wmd-editor-small-button" title="预览模式 Ctrl+M">
+                    <span class="icon-columns"></span>
+                </li>
+                <li class="in-page-button" id="wmd-help-button" title="Markdown 语法帮助 Ctrl+Alt+H">
+                    <span class="icon-question-sign"></span>
+                </li>
+            </ul>
+        </div>
+        <div id="wmd-panel-editor" class="wmd-panel-editor">
+            <!--autocomplete="off" below to make sure the content is changed after refreshing page, otherwise, firefox will remember the old content.-->
+            <!-- textarea or div based on simple or advanced editor
+            <textarea class="wmd-input theme" id="wmd-input" spellcheck="false" autocomplete="off"></textarea>
+            or
+            <div style="display:none" class="wmd-input theme" id="wmd-input"></div>
+            -->
+            <textarea class="wmd-input theme" id="wmd-input" spellcheck="false" autocomplete="off"># 欢迎使用 Cmd Markdown 编辑阅读器
+
+------
+
+## 什么是 Markdown
+
+Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：譬如您正在阅读的这份文档。它使用简单的符号标记不同的标题，分割不同的段落，**粗体** 或者 *斜体* 某些文字，更棒的是，它还可以
+
+### 1. 制作一份待办事宜 [Todo 列表](https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#13-待办事宜-todo-列表)
+
+- [ ] 支持以 PDF 格式导出文稿
+- [ ] 改进 Cmd 渲染算法，使用局部渲染技术提高渲染效率
+- [x] 新增 Todo 列表功能
+- [x] 修复 LaTex 公式渲染问题
+- [x] 新增 LaTex 公式编号功能
+
+### 2. 书写一个质能守恒公式[^LaTeX]
+
+$$E=mc^2$$
+
+### 3. 高亮一段代码[^code]
+
+```python
+@requires_authorization
+class SomeClass:
+    pass
+
+if __name__ == &#39;__main__&#39;:
+    # A comment
+    print &#39;hello world&#39;
+```
+
+### 4. 高效绘制 [流程图](https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#7-流程图)
+
+```flow
+st=&gt;start: Start
+op=&gt;operation: Your Operation
+cond=&gt;condition: Yes or No?
+e=&gt;end
+
+st-&gt;op-&gt;cond
+cond(yes)-&gt;e
+cond(no)-&gt;op
+```
+
+### 5. 高效绘制 [序列图](https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#8-序列图)
+
+```seq
+Alice-&gt;Bob: Hello Bob, how are you?
+Note right of Bob: Bob thinks
+Bob--&gt;Alice: I am good thanks!
+```
+
+### 6. 高效绘制 [甘特图](https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#9-甘特图)
+
+```gantt
+    title 项目开发流程
+    section 项目确定
+        需求分析       :a1, 2016-06-22, 3d
+        可行性报告     :after a1, 5d
+        概念验证       : 5d
+    section 项目实施
+        概要设计      :2016-07-05  , 5d
+        详细设计      :2016-07-08, 10d
+        编码          :2016-07-15, 10d
+        测试          :2016-07-22, 5d
+    section 发布验收
+        发布: 2d
+        验收: 3d
+```
+
+### 7. 绘制表格
+
+| 项目        | 价格   |  数量  |
+| --------   | -----:  | :----:  |
+| 计算机     | \$1600 |   5     |
+| 手机        |   \$12   |   12   |
+| 管线        |    \$1    |  234  |
+
+### 8. 更详细语法说明
+
+想要查看更详细的语法说明，可以参考我们准备的 [Cmd Markdown 简明语法手册][1]，进阶用户可以参考 [Cmd Markdown 高阶语法手册][2] 了解更多高级功能。
+
+总而言之，不同于其它 *所见即所得* 的编辑器：你只需使用键盘专注于书写文本内容，就可以生成印刷级的排版格式，省却在键盘和工具栏之间来回切换，调整内容和格式的麻烦。**Markdown 在流畅的书写和印刷级的阅读体验之间找到了平衡。** 目前它已经成为世界上最大的技术分享网站 GitHub 和 技术问答网站 StackOverFlow 的御用书写格式。
+
+</textarea>
+        </div>
+    </div>
+    <div id="preview-column" class="pull-right">
+        <div id="preview-button-bar" class="preview-button-bar">
+            <ul id="preview-button-row" class="preview-button-row pull-right">
+                <li class="preview-button dropdown editor-only editor-reader-hidden" id="preview-info-button" title="文稿信息 Ctrl+Alt+I">
+                    <span class="dropdown-toggle icon-th-large" data-toggle="dropdown"></span>
+                    <ul id="info-menu" class="dropdown-menu theme-black pull-right" role="menu">
+                        <li>
+                            <table>
+                                <tbody>
+                                    <tr title="文稿的字数">
+                                        <td class="menu-label">文稿字数</td>
+                                        <td class="menu-field article-characters"></td>
+                                    </tr>
+                                    <tr title="最后修改文稿的日期">
+                                        <td class="menu-label">修改日期</td>
+                                        <td class="menu-field article-updated-date"></td><!--render by render.js-->
+                                    </tr>
+                                    <tr title="创建文稿的日期">
+                                        <td class="menu-label">创建日期</td>
+                                        <td class="menu-field article-created-date"></td><!--render by render.js-->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li title="当前文稿的历史版本"><span id="info-revision-label">历史版本：</span></li>
+                    </ul>
+                    <ul id="revision-list" class="dropdown-menu theme-black pull-right editor-reader-hidden" role="menu">
+                        <!--insert 'ul.revision-item-template.editor-reader-hidden li.revision-item' below into here by editorReader.js-->
+                    </ul>
+                </li>
+                <li class="preview-button dropdown editor-only editor-reader-hidden" id="preview-settings-button" title="功能设置 Ctrl+Alt+R">
+                    <span class="dropdown-toggle icon-gear" data-toggle="dropdown"></span>
+                    <ul id="settings-menu" class="dropdown-menu theme-black pull-right" role="menu">
+                        <li title="自定义样式"><a id="customized-style-submenu" tabindex="-1" href="#"><i class="icon-wrench"></i>自定义样式</a></li>
+                        <li class="divider"></li>
+                        <li title="普通模式"><a id="mode-normal-submenu" tabindex="-1" href="#"><span><i class="icon-pencil"></i>普通模式</span></a></li>
+                        <li title="确认清楚该选项含义后选择，同时禁用浏览器的Vim插件"><a id="mode-vim-submenu" tabindex="-1" href="#"><span><i class="icon-edit-sign"></i>Vim 模式</span></a></li>
+                        <li title="确认清楚该选项含义后选择"><a id="mode-emacs-submenu" tabindex="-1" href="#"><span><i class="icon-edit"></i>Emacs 模式</span></a></li>
+                        <li title="在编辑区显示或关闭行号"><a id="show-line-number-submenu" tabindex="-1" href="#"><span><i class="icon-sort-by-order"></i>显示行号</span></a></li>
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+
+
+                <!-- There is at least one item of 'wmd-spacer' must be in the ul list, otherwise, the hover on the button leads to page issue. -->
+                <li class="wmd-spacer"></li>
+            </ul>
+        </div>
+        <!--in page preview buttons. -->
+        <div class="in-page-preview-buttons editor-reader-hidden">
+            <ul>
+                <li class="in-page-button dropdown" id="preview-toc-button" title="内容目录 Ctrl+Alt+O">
+                    <span class="dropdown-toggle icon-list" data-toggle="dropdown"></span>
+                    <div id="toc-list" class="dropdown-menu theme pull-right"> <!-- Add theme means this element will be changed when apply theme color. -->
+                        <h3>内容目录</h3>
+                        <hr>
+                        <div class="table-of-contents"></div>
+                    </div>
+                </li>
+                <li class="in-page-button editor-only" id="editor-reader-exchange-button" title="交换左右视图 Ctrl+Alt+X">
+                    <span class="icon-chevron-sign-left"></span>
+                </li>
+                <li class="in-page-button" id="preview-theme-button" title="主题切换 Ctrl+Alt+Y">
+                    <span class="icon-adjust"></span>
+                </li>
+                <li class="in-page-button" id="preview-reader-full-button" title="阅读模式 Ctrl+Alt+M">
+                    <span class="icon-desktop"></span>
+                </li>
+                <li class="in-page-button" id="preview-reader-small-button" title="预览模式 Ctrl+Alt+M">
+                    <span class="icon-columns"></span>
+                </li>
+                <li class="in-page-button" id="preview-fullscreen-button" title="全屏模式 F11">
+                    <span class="icon-fullscreen"></span>
+                </li>
+            </ul>
+        </div>
+        <div id="wmd-panel-preview" class="wmd-panel-preview preview-container">
+            <div id="wmd-preview" class="wmd-preview" style="height: 100%"></div>
+            <!-- jiawzhang NOTICE: the position in '.remark-icons' is 'absolute' so that '.wmd-panel-preview' above should be 'relative', so that they works on scrollbar. -->
+            <div class="remark-icons">
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+
+<!-- Hidden md-section-helper is used to calculate the height of md sections. -->
+
+<!-- full editor reader, hidden when loading. -->
+<div id="editor-reader-full" class="editor-reader-full-hidden">
+</div>
+
+<!-- reader full toolbar, hidden when loading. -->
+<div id="reader-full-toolbar" class="reader-full-toolbar-hidden">
+</div>
+<ul id="reader-full-toolbar-tail" class="reader-full-toolbar-tail-hidden">
+    <li class="preview-button-full-reader" id="preview-hidden-button" title="隐藏工具栏 Ctrl+Alt+I">
+        <span class="icon-chevron-sign-right"></span>
+    </li>
+</ul>
+
+<!-- reader full topInfo, hidden when loading. -->
+<div id="reader-full-topInfo" class="reader-full-topInfo-hidden">
+    <span>
+        <code class="article-author"></code><!--render by render.js-->
+    </span>
+    <code><span class="article-updated-date"></span></code><!--render by render.js-->
+    <code><span>字数 </span><span class="article-characters"></span></code>
+    <code><span>阅读 </span><span class="article-read"></span></code><!--render by render.js-->
+</div>
+
+<!-- Template for 'tag-list', this will be inserted into #file-list in render.js -->
+<ul class="tag-list editor-reader-hidden">
+    <li class="tag-item item" tag-name="">
+        <span class="pull-left"><i class="icon-tag"></i><span class="tag-name"></span></span>
+        <span class="tag-count pull-right"></span>
+        <div class="clearfix"></div>
+    </li>
+    <!-- insert .file-item.item here -->
+</ul>
+<ul class="file-item-template editor-reader-hidden">
+    <li class="file-item item" file-created-date="">
+        <a tabindex="-1" title="">
+            <i class=""></i>
+            <span id=""></span>
+        </a>
+    </li>
+</ul>
+<ul class="revision-item-template editor-reader-hidden">
+    <li class="revision-item" file-created-date="">
+        <a id="" tabindex="-1" title="">
+            <span class="revision-reason pull-left"></span>
+            <span class="revision-time-diff pull-right" created_time_diff=""></span>
+            <span class="clearfix"></span>
+        </a>
+    </li>
+</ul>
+
+<!-- Prompt on loading article, hidden when loading. -->
+<div id="article-loading-alert" class="alert alert-info editor-reader-hidden">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>正在加载文章图片，请稍等片刻... </strong>
+</div>
+
+<!-- UML diagram, hidden always -->
+<div id="uml-X-x-X-diagram" class="editor-reader-hidden-always"></div>
+
+<!-- not really will be actually used, just for the mocked Markdown.Editor.(ace|light).js -->
+<div id="wmd-preview-real" class="editor-reader-hidden-always"></div>
+
+
+
+
+
+
+<!-- side remark, hidden when loading. -->
+<div class="remark-list side-remark-hidden">
+    <div class="remark-items">
+    </div>
+    <div class="leave-remark unselectable"><span class='icon-plus-sign-alt'></span><span>添加新批注</span></div>
+    <div class="new-remark">
+        <!-- clone the template $('.new-remark-reply').html() to here.-->
+    </div>
+</div>
+
+<!-- template for new remark/reply -->
+<div class="new-remark-reply side-remark-hidden">
+    <div class="remark-head"><a><img src="./img/default-head.jpg"></a></div>
+    <div class="remark-author unselectable"></div>
+    <div class="remark-editor" contentEditable="true" spellcheck="false"></div>
+    <!-- this will be filled up by js.
+    <div class="inline-error">402/400</div> for new remark
+    <div class="inline-error">202/200</div> for new reply
+    -->
+    <div class="remark-footer unselectable">
+        <button class="remark-save btn-link">保存</button>
+        <button class="remark-cancel btn-link">取消</button>
+    </div>
+</div>
+
+<!-- template for .remark-item/.remark-reply -->
+<div class="remark-item-reply side-remark-hidden">
+    <div class="remark-head"><a><img src="./img/default-head.jpg"></a></div>
+    <div class="remark-author unselectable"></div>
+    <div class="remark-delete-link unselectable"><span class="icon-remove"></span></div> <!--This is mainly for deleting remark-reply, shown when author/remark hovering on remark-reply.-->
+    <div class="remark-editor" contentEditable="true" spellcheck="false"></div>
+    <!-- this will be filled up by js.
+    <div class="inline-error">402/400</div> for new remark
+    <div class="inline-error">202/200</div> for new reply
+    -->
+    <div class="remark-footer unselectable">
+        <button class="remark-edit btn-link">修改</button>
+        <button class="remark-save btn-link">保存</button>
+        <button class="remark-cancel btn-link">取消</button>
+        <button class="remark-delete btn-link">删除</button>
+    </div>
+</div>
+
+<!-- template for remark-item-->
+<div class="remark-item side-remark-hidden" data-rand-id="" data-version-id="">
+    <div class="remark-published-link unselectable"><span class="icon-link icon-rotate-90"></span></div>
+    <ul class="remark-options theme unselectable">
+        <li class="remark-private"><span class="icon-eye-close"></span><span>私有</span></li>
+        <li class="remark-public"><span class="icon-group"></span><span>公开</span></li>
+        <li class="remark-delete"><span class="icon-remove"></span><span>删除</span></li>
+    </ul>
+
+    <!-- clone the template $('.remark-item-reply').html() to here.-->
+
+    <button class="remark-reply-view-more btn-link">查看更早的 5 条回复</button>
+    <div class="remark-replies">
+        <!--
+        <div class="remark-reply">
+            clone the template $('.remark-item-reply').html() to here.
+        </div>
+        -->
+    </div>
+
+    <div class="leave-reply unselectable"><span>回复批注</span></div>
+    <div class="new-reply">
+        <!-- clone the template $('.new-remark-reply').html() to here.-->
+    </div>
+</div>
+
+<!-- jiawzhang NOTICE: .remark-icons will be put to mdeditor.mako and user_note.mako, where next to .wmd-preview -->
+<!-- <div class="remark-icons"></div> -->
+
+<!-- template for remark-icon -->
+<div class="remark-icon unselectable side-remark-hidden remark-icon-empty" style="display: none;">
+    <span class="icon-stack">
+        <i class="glyph-comment"></i>
+        <span class="remark-count"></span>
+    </span>
+</div>
+
+
+<!-- canvas, hidden always, this is used to convert svg to canvas and then convert canvas to png. -->
+<canvas id="svg-canvas-image" class="editor-reader-hidden-always"></canvas>
+
+<!-- This is the image panel to hold enlarged image/svg. -->
+<div id="large-image-panel">
+    <img id="large-image"/>
+</div>
+
+
+
+
+
+    <!-- Hidden Popup Modal -->
+    <div id="notification-popup-window" class="modal hide fade theme" tabindex="-1" role="dialog" aria-labelledby="notification-title" aria-hidden="true">
+        <div class="modal-header theme">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="notification-title">通知</h3>
+        </div>
+        <div class="modal-body theme">
+            <p></p>
+        </div>
+        <div class="modal-footer theme">
+            <button id="notification-cancel" class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+            <button id="notification-confirm" class="btn btn-primary">确认</button>
+        </div>
+    </div>
+
+    <!-- zybuluo's foot -->
+
+    <script src="./js/288313bb.base.lib.min.js"></script>
+
+    <script>
+        Namespace('com.zybuluo.base');
+        com.zybuluo.base.initData = {
+            globalPromptUrl: "",
+        };
+    </script>
+
+
+    <!--mathjax-->
+    <!--blacker: 1 below means font weight.-->
+    <!-- <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ["\\(","\\)"]], processEscapes: true }, TeX: { equationNumbers: { autoNumber: "AMS" } }, messageStyle: "none", SVG: { blacker: 1 }});
+    </script> -->
+    <!-- <script src="./js/mathJax.js"></script> -->
+    <!--mathjax source code is here: https://github.com/mathjax/MathJax.-->
+    <!-- <script src="./js/MathJaxX.js?config=TeX-AMS-MML_SVG"></script> -->
+
+    <script>
+        Namespace('com.zybuluo.mdeditor.layout');
+        com.zybuluo.mdeditor.layout.initData = {
+            // '' means not logged in, otherwise the logged in username, for mdeditor.mako, this value will be reset in render.js otherwise, for user_note.mako, it's rendered by server side.
+            loggedInUsername: '',
+            isPageOwner: 'True' === 'True' ? true : false,
+        };
+
+        // BEGIN: pace.js configuration
+        window.paceOptions = {
+            // disable others, enable for ajax call only,
+            ajax: true,
+            document: false,
+            elements: false,
+            eventLag: false,
+        };
+        // jiawzhang NOTICE: to make sure pace.js is working for any ajax call especially the jquery ajax, add 'Pace.restart()' into jquery ajax call like '$.post'
+        // Originally, pace 0.5.6 doesn't support jquery ajax, see details in: https://github.com/HubSpot/pace/issues/29
+        // END: pace.js configuration
+
+    </script>
+
+    <script src="./js/7a70106e.layout.lib.min.js"></script>
+
+    <script src="./js/dc648f35.layout.min.js"></script>
+
+
+
+
+
+    <script src="./js/mermaid.min.js"></script>
+    <script>
+        var mermaidConfig = {
+            flowchart:{
+                htmlLabels: false
+            }
+        };
+        mermaid.initialize(mermaidConfig); // this config is added to avoid 'foreignObject' issue casued in fileManger.js
+        mermaid.ganttConfig = {
+            axisFormatter: [
+            // Within a day
+            ['%I:%M', function (d) {
+                return d.getHours();
+            }],
+            // Monday a week
+            ['%m/%d', function (d) { // redefine date here as '%m/%d'instead of 'w. %U', search mermaid.js
+                return d.getDay() == 1;
+            }],
+            // Day within a week (not monday)
+            ['%a %d', function (d) {
+                return d.getDay() && d.getDate() != 1;
+            }],
+            // within a month
+            ['%b %d', function (d) {
+                return d.getDate() != 1;
+            }],
+            // Month
+            ['%m-%y', function (d) {
+                return d.getMonth();
+            }]]
+        };
+        _.noConflict();
+    </script>
+
+        <script src="./js/0832e823.mdeditor.lib.min.js"></script>
+
+    <script>
+        Namespace('com.zybuluo.mdeditor');
+        com.zybuluo.mdeditor.initData = {
+            markdownHelpUrl: "md-help.markdown",
+            staticAssetsUrl: "./css",
+            staticImgUrl: "./img",
+        };
+        // jiawzhang NOTICE: switch textarea and ace editor
+        window.lightMode = 'False' === 'True' ? true : false;
+        window.desktopGui = null; // whether it's desktop or not.
+        window.isMacDesktopApp = false;
+        if (process && process.mainModule) { // true if it's node-webkit version
+            var fs = require('fs'); // jiawzhang NOTICE: ace 1.1.7 will make this line break, upgrade ace to 1.1.9 resolve this, this line is for testing purpose for potential conflicts when upgrading node-webkit/ace in the future.
+            window.desktopGui = global.window.nwDispatcher.requireNwGui();
+            if (process.platform === "darwin") { // if it's OSX system and desktop version.
+                window.isMacDesktopApp = true;
+            }
+        }
+    </script>
+
+    <script src="./js/7daebaf5.mdeditor.min.js"></script>
+
+
+
+</body>
+</html>
+
