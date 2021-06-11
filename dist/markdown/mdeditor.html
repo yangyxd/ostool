@@ -1,27 +1,21 @@
 <!DOCTYPE html>
 
-<html class="theme" manifest="zybuluo.mdeditor.appcache">
+<html class="theme">
 
 <head>
     <meta charset="utf-8">
 
-    <meta name="description" content="Cmd Markdown 编辑阅读器，支持实时同步预览，区分写作和阅读模式，支持在线存储，分享文稿网址。">
-    <meta name="author" content="Jiawei Zhang">
-
+    <meta name="description" content="Markdown 编辑阅读器，支持实时同步预览，区分写作和阅读模式，支持在线存储，分享文稿网址。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-    <title>Cmd Markdown 编辑阅读器 - 作业部落出品</title>
-
-    <link href="./css/1bc053c8.base.lib.min.css" rel="stylesheet" media="screen">
-
-
-    <link id="prettify-style" href="./css/prettify-cmd.css" type="text/css" rel="stylesheet">
-    <link href="./css/45c7d56d.layout.min.css" rel="stylesheet" media="screen">
+    <title>Markdown 编辑阅读器</title>
+    <link href="./static/assets/1bc053c8.base.lib.min.css" rel="stylesheet" media="screen">
+    <link id="prettify-style" href="./static/editor/libs/google-code-prettify/prettify-cmd.css" type="text/css" rel="stylesheet">
+    <link href="./static/assets/mdeditor/45c7d56d.layout.min.css" rel="stylesheet" media="screen">
 
 
 
-    <link href="./css/2e85637e.mdeditor.lib.min.css" rel="stylesheet" media="screen">
+    <link href="./static/assets/2e85637e.mdeditor.lib.min.css" rel="stylesheet" media="screen">
     <style type="text/css" id="customized-font-css"></style>
     <style type="text/css" id="customized-style-css"></style>
 
@@ -30,7 +24,7 @@
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','./js/analytics.js','ga');
+      })(window,document,'script','./static/assets/analytics.js','ga');
 
       ga('create', 'UA-44461741-1', 'zybuluo.com');
       ga('send', 'pageview');
@@ -43,24 +37,6 @@
         <span id="global-prompt-message"></span>
         <a id="close-global-prompt-alert" href="">[关闭]</a>
     </div>
-
-    <!-- zybuluo's body -->
-
-
-
-
-
-
-
-
-<!-- mdeditor's body -->
-
-
-
-
-
-
-
 
 <div id="container">
     <div id="editor-column" class="pull-left">
@@ -86,13 +62,20 @@
             </ul>
         </div>
         <div id="wmd-panel-editor" class="wmd-panel-editor">
-            <!--autocomplete="off" below to make sure the content is changed after refreshing page, otherwise, firefox will remember the old content.-->
-            <!-- textarea or div based on simple or advanced editor
-            <textarea class="wmd-input theme" id="wmd-input" spellcheck="false" autocomplete="off"></textarea>
-            or
-            <div style="display:none" class="wmd-input theme" id="wmd-input"></div>
-            -->
-            <textarea class="wmd-input theme" id="wmd-input" spellcheck="false" autocomplete="off"># 欢迎使用 Cmd Markdown 编辑阅读器
+            <textarea class="wmd-input theme" id="wmd-input" spellcheck="false" autocomplete="off"># 欢迎使用 Markdown 编辑阅读器
+
+------
+
+我们理解您需要更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，**Markdown** 是我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。 您可以使用 Cmd Markdown：
+
+&gt; * 整理知识，学习笔记
+&gt; * 发布日记，杂文，所见所想
+&gt; * 撰写发布技术文稿（代码支持）
+&gt; * 撰写发布学术论文（LaTeX 公式支持）
+
+![cmd-markdown-logo](https://www.zybuluo.com/static/img/logo.png)
+
+&gt; 请保留此份 Cmd Markdown 的欢迎稿兼使用说明，如需撰写新稿件，点击顶部工具栏右侧的 &lt;i class=&#34;icon-file&#34;&gt;&lt;/i&gt; **新文稿** 或者使用快捷键 `Ctrl+Alt+N`。
 
 ------
 
@@ -173,9 +156,25 @@ Bob--&gt;Alice: I am good thanks!
 
 ### 8. 更详细语法说明
 
-想要查看更详细的语法说明，可以参考我们准备的 [Cmd Markdown 简明语法手册][1]，进阶用户可以参考 [Cmd Markdown 高阶语法手册][2] 了解更多高级功能。
+想要查看更详细的语法说明，可以参考我们准备的 [Markdown 简明语法手册][1]，进阶用户可以参考 [Markdown 高阶语法手册][2] 了解更多高级功能。
 
 总而言之，不同于其它 *所见即所得* 的编辑器：你只需使用键盘专注于书写文本内容，就可以生成印刷级的排版格式，省却在键盘和工具栏之间来回切换，调整内容和格式的麻烦。**Markdown 在流畅的书写和印刷级的阅读体验之间找到了平衡。** 目前它已经成为世界上最大的技术分享网站 GitHub 和 技术问答网站 StackOverFlow 的御用书写格式。
+
+---
+
+再一次感谢您花费时间阅读这份欢迎稿，点击 &lt;i class=&#34;icon-file&#34;&gt;&lt;/i&gt; (Ctrl+Alt+N) 开始撰写新的文稿吧！祝您在这里记录、阅读、分享愉快！
+
+作者 [@ghosert][3]
+2016 年 07月 07日
+
+[^LaTeX]: 支持 **LaTeX** 编辑显示支持，例如：$\sum_{i=1}^n a_i=0$， 访问 [MathJax][4] 参考更多使用方法。
+
+[^code]: 代码高亮功能支持包括 Java, Python, JavaScript 在内的，**四十一**种主流编程语言。
+
+[1]: https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown
+[2]: https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#cmd-markdown-高阶语法手册
+[3]: http://weibo.com/ghosert
+[4]: http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference
 
 </textarea>
         </div>
@@ -183,6 +182,8 @@ Bob--&gt;Alice: I am good thanks!
     <div id="preview-column" class="pull-right">
         <div id="preview-button-bar" class="preview-button-bar">
             <ul id="preview-button-row" class="preview-button-row pull-right">
+                <li class="wmd-spacer editor-only" id="preview-button-row-afterlogin"></li>
+
                 <li class="preview-button dropdown editor-only editor-reader-hidden" id="preview-info-button" title="文稿信息 Ctrl+Alt+I">
                     <span class="dropdown-toggle icon-th-large" data-toggle="dropdown"></span>
                     <ul id="info-menu" class="dropdown-menu theme-black pull-right" role="menu">
@@ -204,7 +205,6 @@ Bob--&gt;Alice: I am good thanks!
                                 </tbody>
                             </table>
                         </li>
-                        <li title="当前文稿的历史版本"><span id="info-revision-label">历史版本：</span></li>
                     </ul>
                     <ul id="revision-list" class="dropdown-menu theme-black pull-right editor-reader-hidden" role="menu">
                         <!--insert 'ul.revision-item-template.editor-reader-hidden li.revision-item' below into here by editorReader.js-->
@@ -215,17 +215,18 @@ Bob--&gt;Alice: I am good thanks!
                     <ul id="settings-menu" class="dropdown-menu theme-black pull-right" role="menu">
                         <li title="自定义样式"><a id="customized-style-submenu" tabindex="-1" href="#"><i class="icon-wrench"></i>自定义样式</a></li>
                         <li class="divider"></li>
-                        <li title="普通模式"><a id="mode-normal-submenu" tabindex="-1" href="#"><span><i class="icon-pencil"></i>普通模式</span></a></li>
-                        <li title="确认清楚该选项含义后选择，同时禁用浏览器的Vim插件"><a id="mode-vim-submenu" tabindex="-1" href="#"><span><i class="icon-edit-sign"></i>Vim 模式</span></a></li>
-                        <li title="确认清楚该选项含义后选择"><a id="mode-emacs-submenu" tabindex="-1" href="#"><span><i class="icon-edit"></i>Emacs 模式</span></a></li>
-                        <li title="在编辑区显示或关闭行号"><a id="show-line-number-submenu" tabindex="-1" href="#"><span><i class="icon-sort-by-order"></i>显示行号</span></a></li>
+                        <li title="导出 Markdown 文件"><a id="download-markdown-submenu" tabindex="-1" href="#"><i class="icon-cloud-download"></i>导出 Markdown</a></li>
+                        <li title="导出 Html 文件"><a id="download-html-submenu" tabindex="-1" href="#"><i class="icon-cloud-download"></i>导出 Html</a></li>
+                        <li title="导出带样式的 Html 文件"><a id="download-template-html-submenu" class="paid-user-color" tabindex="-1" href="#"><i class="icon-cloud-download"></i>导出带样式的 Html</a></li>
+                        <li title="导出 PDF 文件"><a id="download-pdf-submenu" class="paid-user-color" tabindex="-1" href="#"><i class="icon-cloud-download"></i>导出 PDF 文件</a></li>
                         <li class="divider"></li>
+                            <li title="普通模式"><a id="mode-normal-submenu" tabindex="-1" href="#"><span><i class="icon-pencil"></i>普通模式</span></a></li>
+                            <li title="确认清楚该选项含义后选择，同时禁用浏览器的Vim插件"><a id="mode-vim-submenu" tabindex="-1" href="#"><span><i class="icon-edit-sign"></i>Vim 模式</span></a></li>
+                            <li title="确认清楚该选项含义后选择"><a id="mode-emacs-submenu" tabindex="-1" href="#"><span><i class="icon-edit"></i>Emacs 模式</span></a></li>
+                            <li title="在编辑区显示或关闭行号"><a id="show-line-number-submenu" tabindex="-1" href="#"><span><i class="icon-sort-by-order"></i>显示行号</span></a></li>
                     </ul>
                 </li>
 
-
-                <!-- There is at least one item of 'wmd-spacer' must be in the ul list, otherwise, the hover on the button leads to page issue. -->
-                <li class="wmd-spacer"></li>
             </ul>
         </div>
         <!--in page preview buttons. -->
@@ -257,7 +258,7 @@ Bob--&gt;Alice: I am good thanks!
             </ul>
         </div>
         <div id="wmd-panel-preview" class="wmd-panel-preview preview-container">
-            <div id="wmd-preview" class="wmd-preview" style="height: 100%"></div>
+            <div id="wmd-preview" class="wmd-preview"></div>
             <!-- jiawzhang NOTICE: the position in '.remark-icons' is 'absolute' so that '.wmd-panel-preview' above should be 'relative', so that they works on scrollbar. -->
             <div class="remark-icons">
             </div>
@@ -319,12 +320,6 @@ Bob--&gt;Alice: I am good thanks!
     </li>
 </ul>
 
-<!-- Prompt on loading article, hidden when loading. -->
-<div id="article-loading-alert" class="alert alert-info editor-reader-hidden">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>正在加载文章图片，请稍等片刻... </strong>
-</div>
-
 <!-- UML diagram, hidden always -->
 <div id="uml-X-x-X-diagram" class="editor-reader-hidden-always"></div>
 
@@ -332,28 +327,19 @@ Bob--&gt;Alice: I am good thanks!
 <div id="wmd-preview-real" class="editor-reader-hidden-always"></div>
 
 
-
-
-
-
 <!-- side remark, hidden when loading. -->
 <div class="remark-list side-remark-hidden">
     <div class="remark-items">
     </div>
     <div class="leave-remark unselectable"><span class='icon-plus-sign-alt'></span><span>添加新批注</span></div>
-    <div class="new-remark">
-        <!-- clone the template $('.new-remark-reply').html() to here.-->
-    </div>
+    <div class="new-remark"> </div>
 </div>
 
 <!-- template for new remark/reply -->
 <div class="new-remark-reply side-remark-hidden">
+    <div class="remark-head"><a><img src="./static/img/default-head.jpg"></a></div>
     <div class="remark-author unselectable"></div>
     <div class="remark-editor" contentEditable="true" spellcheck="false"></div>
-    <!-- this will be filled up by js.
-    <div class="inline-error">402/400</div> for new remark
-    <div class="inline-error">202/200</div> for new reply
-    -->
     <div class="remark-footer unselectable">
         <button class="remark-save btn-link">保存</button>
         <button class="remark-cancel btn-link">取消</button>
@@ -362,13 +348,10 @@ Bob--&gt;Alice: I am good thanks!
 
 <!-- template for .remark-item/.remark-reply -->
 <div class="remark-item-reply side-remark-hidden">
+    <div class="remark-head"><a><img src="./static/img/default-head.jpg"></a></div>
     <div class="remark-author unselectable"></div>
-    <div class="remark-delete-link unselectable"><span class="icon-remove"></span></div> <!--This is mainly for deleting remark-reply, shown when author/remark hovering on remark-reply.-->
+    <div class="remark-delete-link unselectable"><span class="icon-remove"></span></div>
     <div class="remark-editor" contentEditable="true" spellcheck="false"></div>
-    <!-- this will be filled up by js.
-    <div class="inline-error">402/400</div> for new remark
-    <div class="inline-error">202/200</div> for new reply
-    -->
     <div class="remark-footer unselectable">
         <button class="remark-edit btn-link">修改</button>
         <button class="remark-save btn-link">保存</button>
@@ -385,16 +368,9 @@ Bob--&gt;Alice: I am good thanks!
         <li class="remark-public"><span class="icon-group"></span><span>公开</span></li>
         <li class="remark-delete"><span class="icon-remove"></span><span>删除</span></li>
     </ul>
-
     <!-- clone the template $('.remark-item-reply').html() to here.-->
-
     <button class="remark-reply-view-more btn-link">查看更早的 5 条回复</button>
-    <div class="remark-replies">
-        <!--
-        <div class="remark-reply">
-            clone the template $('.remark-item-reply').html() to here.
-        </div>
-        -->
+    <div class="remark-replies"><!--<div class="remark-reply"> clone the template $('.remark-item-reply').html() to here. </div>-->
     </div>
 
     <div class="leave-reply unselectable"><span>回复批注</span></div>
@@ -402,9 +378,6 @@ Bob--&gt;Alice: I am good thanks!
         <!-- clone the template $('.new-remark-reply').html() to here.-->
     </div>
 </div>
-
-<!-- jiawzhang NOTICE: .remark-icons will be put to mdeditor.mako and user_note.mako, where next to .wmd-preview -->
-<!-- <div class="remark-icons"></div> -->
 
 <!-- template for remark-icon -->
 <div class="remark-icon unselectable side-remark-hidden remark-icon-empty" style="display: none;">
@@ -414,7 +387,6 @@ Bob--&gt;Alice: I am good thanks!
     </span>
 </div>
 
-
 <!-- canvas, hidden always, this is used to convert svg to canvas and then convert canvas to png. -->
 <canvas id="svg-canvas-image" class="editor-reader-hidden-always"></canvas>
 
@@ -422,10 +394,6 @@ Bob--&gt;Alice: I am good thanks!
 <div id="large-image-panel">
     <img id="large-image"/>
 </div>
-
-
-
-
 
     <!-- Hidden Popup Modal -->
     <div id="notification-popup-window" class="modal hide fade theme" tabindex="-1" role="dialog" aria-labelledby="notification-title" aria-hidden="true">
@@ -444,31 +412,31 @@ Bob--&gt;Alice: I am good thanks!
 
     <!-- zybuluo's foot -->
 
-    <script src="./js/288313bb.base.lib.min.js"></script>
-
-    <script>
-        Namespace('com.zybuluo.base');
-        com.zybuluo.base.initData = {
-            globalPromptUrl: "",
-        };
-    </script>
-
+    <script src="./static/assets/288313bb.base.lib.min.js"></script>
 
     <!--mathjax-->
     <!--blacker: 1 below means font weight.-->
-    <!-- <script type="text/x-mathjax-config">
+    <script type="text/x-mathjax-config">
         MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ["\\(","\\)"]], processEscapes: true }, TeX: { equationNumbers: { autoNumber: "AMS" } }, messageStyle: "none", SVG: { blacker: 1 }});
-    </script> -->
-    <!-- <script src="./js/mathJax.js"></script> -->
+    </script>
+    <script src="./static/editor/libs/mathJax.js"></script>
     <!--mathjax source code is here: https://github.com/mathjax/MathJax.-->
-    <!-- <script src="./js/MathJaxX.js?config=TeX-AMS-MML_SVG"></script> -->
+    <script src="./static/MathJax/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 
     <script>
         Namespace('com.zybuluo.mdeditor.layout');
         com.zybuluo.mdeditor.layout.initData = {
-            // '' means not logged in, otherwise the logged in username, for mdeditor.mako, this value will be reset in render.js otherwise, for user_note.mako, it's rendered by server side.
             loggedInUsername: '',
             isPageOwner: 'True' === 'True' ? true : false,
+            loginComeFromUrl: '',
+            noteRemarksUrl: "",
+            newNoteRemarkUrl: "",
+            updateNoteRemarkUrl: "",
+            deleteNoteRemarkUrl: "",
+            publishNoteRemarkUrl: "",
+            newNoteRemarkReplyUrl: "",
+            updateNoteRemarkReplyUrl: "",
+            deleteNoteRemarkReplyUrl: "",
         };
 
         // BEGIN: pace.js configuration
@@ -485,15 +453,10 @@ Bob--&gt;Alice: I am good thanks!
 
     </script>
 
-    <script src="./js/7a70106e.layout.lib.min.js"></script>
+    <script src="./static/assets/mdeditor/7a70106e.layout.lib.min.js"></script>
+    <script src="./static/assets/mdeditor/dc648f35.layout.min.js"></script>
+    <script src="./static/editor/libs/mermaid/mermaid.min.js"></script>
 
-    <script src="./js/dc648f35.layout.min.js"></script>
-
-
-
-
-
-    <script src="./js/mermaid.min.js"></script>
     <script>
         var mermaidConfig = {
             flowchart:{
@@ -527,14 +490,15 @@ Bob--&gt;Alice: I am good thanks!
         _.noConflict();
     </script>
 
-        <script src="./js/0832e823.mdeditor.lib.min.js"></script>
+    <script src="./static/assets/mdeditor/0832e823.mdeditor.lib.min.js"></script>
 
     <script>
         Namespace('com.zybuluo.mdeditor');
         com.zybuluo.mdeditor.initData = {
-            markdownHelpUrl: "md-help.markdown",
-            staticAssetsUrl: "./css",
-            staticImgUrl: "./img",
+            markdownHelpUrl: "./static/md-help.markdown",
+            downloadPdfUrl: "https://www.zybuluo.com/mdeditor/note/downloadPdf",
+            staticAssetsUrl: "./static/assets/",
+            staticImgUrl: "./static/img/",
         };
         // jiawzhang NOTICE: switch textarea and ace editor
         window.lightMode = 'False' === 'True' ? true : false;
@@ -549,7 +513,7 @@ Bob--&gt;Alice: I am good thanks!
         }
     </script>
 
-    <script src="./js/7daebaf5.mdeditor.min.js"></script>
+    <script src="./static/assets/mdeditor/7daebaf5.mdeditor.min.js"></script>
 
 
 
