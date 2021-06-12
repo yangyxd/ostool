@@ -8,11 +8,12 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "codemirror": "^5.57.0",
     "element-ui": "^2.13.2",
     "highlight.js": "^10.2.0",
+    "iconv-lite": "^0.6.2",
     "js-base64": "^3.5.2",
     "js-md5": "^0.7.3",
     "lodash": "^4.17.20",
@@ -25,8 +26,7 @@
     "vue-i18n": "^8.21.1",
     "vue-router": "^3.4.3",
     "vue-schart": "^2.0.0",
-    "vuedraggable": "^2.24.1",
-    "iconv-lite": "^0.6.2"
+    "vuedraggable": "^2.24.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",

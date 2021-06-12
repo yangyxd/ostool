@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <iframe :src="url" scrolling="no" frameborder="0" class="iframeContain" name="jsonToolFrame" ref="jsonToolFrame"></iframe>
+        <iframe :src="url" scrolling="yes" frameborder="0" class="iframeContain" name="mdToolFrame" ref="mdToolFrame"></iframe>
     </div>
 </template>
 
@@ -52,7 +52,7 @@ h3 {
     margin-bottom: 1em;
 }
 .container {
-    height: calc(100vh - 70px);
+    height: calc(100vh - 70px)!important;
     padding: 6px 1px 6px 1px!important;
 }
 </style>
@@ -62,5 +62,6 @@ h3 {
 .iframeContain{
     width: 100%;
     height: 100%;
+    overflow-y: scroll;
 }
 </style>

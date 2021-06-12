@@ -79,6 +79,11 @@ export default {
                     ]
                 },
                 {
+                    icon: 'el-icon-lx-read',
+                    index: 'markdown',
+                    title: 'Markdown'
+                },
+                {
                     icon: 'el-icon-lx-edit',
                     index: 'regexp',
                     title: '正则表达式测试'
