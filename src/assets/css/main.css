@@ -34,6 +34,7 @@ a {
 
 .content {
     width: auto;
+    height: calc(100vh-46px);
     padding: 0px 6px 6px 6px;
     overflow-y: scroll;
     box-sizing: border-box;
