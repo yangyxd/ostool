@@ -1,6 +1,6 @@
 # 在线工具
 
-[开始使用 Github](https://yangyxd.github.io/estool/dist/index.html)
+[开始使用 Github](https://yangyxd.github.io/ostool/dist/index.html)
 
 [开始使用 Gitee](http://yangyxd.gitee.io/ostool/#/root)
 
