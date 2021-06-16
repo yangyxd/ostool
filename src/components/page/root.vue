@@ -30,7 +30,7 @@
                 items: [
                     {name: "JSON 格式化校验", icon: "Json", txt: "#fff", bg: "#3280fc", desc: "JSON 格式化校验工具", path: "/jsonformat", multiple: false},
                     {name: "JSON 在线解析", icon: "Json", txt: "#ff0", bg: "#009688", desc: "JSON 在线解析工具", path: "/json", multiple: false},
-                    {name: "Markdown 在线编辑", icon: "Markdown", txt: "#fff", bg: "#444444", desc: "Markdown在线编辑器(作业部落)", path: "/markdown"},
+                    {name: "Markdown 在线编辑", icon: "Markdown", txt: "#fff", bg: "#444444", desc: "Markdown在线编辑器", path: "/markdown"},
                     {name: "正则表达式测试", icon: "RegExp", txt: "#fff", bg: "#ff6000", desc: "在线正则表达式测试工具", path: "/regexp"},
                     {name: "XPath在线测试", icon: "XPath", txt: "#fff", bg: "#c06b26", desc: "XPath在线测试工具", path: "/xpath"},
                     {name: "Base64 编码转换", icon: "Base64", txt: "#fff", bg: "#08998c", desc: "将任意字节数据编码成ASCII字符串", path: "/base64"},
