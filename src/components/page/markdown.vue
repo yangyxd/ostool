@@ -11,8 +11,8 @@
         data() {
             return {
                 text: "{}",
-                url: "http://yangyxd.gitee.io/ostool/markdown/mdeditor.html",
-                // url: "http://127.0.0.1:8080/markdown/mdeditor.html",
+                // url: "http://yangyxd.gitee.io/ostool/markdown/mdeditor.html",
+                url: "http://127.0.0.1:8080/markdown/mdeditor.html",
             }
         },
         mounted() {
