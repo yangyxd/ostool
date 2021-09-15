@@ -11,11 +11,12 @@
         data() {
             return {
                 text: "{}",
-                url: "http://yangyxd.gitee.io/ostool/markdown/mdeditor.html",
+                url: this.isDebug ? "http://127.0.0.1:8080/markdown/mdeditor.html" : "http://yangyxd.gitee.io/ostool/markdown/mdeditor.html",
                 // url: "http://127.0.0.1:8080/markdown/mdeditor.html",
             }
         },
         mounted() {
+            console.log("debug: " + this.isDebug)
         },
         methods: {
         }
@@ -54,6 +55,9 @@ h3 {
 .container {
     height: calc(100vh - 70px)!important;
     padding: 6px 1px 6px 1px!important;
+}
+.mobile .container {
+    padding: 2px 1px 2px 1px!important;
 }
 </style>
 

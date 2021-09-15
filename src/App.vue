@@ -19,6 +19,8 @@ export default {
                 _this.$message(e.data.data);
         });
     },
+    mounted() {
+    },
     methods: {
         loadSysConfig() {
             config.sSiteTitle = "在线工具";

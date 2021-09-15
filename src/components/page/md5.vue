@@ -114,6 +114,9 @@ h3 {
     padding: 10px!important;
     overflow: hidden;
 }
+.mobile .container {
+    padding: 2px!important;
+}
 .pb8 {
     padding-bottom: 20px;
 }

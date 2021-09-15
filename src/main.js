@@ -30,6 +30,11 @@ const i18n = new VueI18n({
     messages
 });
 
+Vue.prototype.isMobile = () => {
+    let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+    return flag;
+};
+
 Vue.prototype.$const = _const;
 Vue.prototype.$http = request;
 Vue.prototype.$md5 = md5;
@@ -39,6 +44,10 @@ Vue.prototype._ = _;
 
 Vue.use(plugin);
 Vue.use(base64);
+
+// 调试标志，正式打包时需要设置为 false
+Vue.prototype.isDebug = true;
+console.log("debug: " + Vue.prototype.isDebug);
 
 VueClipboard.config.autoSetContainer = true
 Vue.use(VueClipboard)

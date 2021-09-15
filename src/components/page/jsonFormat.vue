@@ -52,6 +52,9 @@ h3 {
     height: calc(100vh - 70px);
     padding: 2px 8px 6px 8px!important;
 }
+.mobile .container {
+    padding: 2px!important;
+}
 </style>
 
 <style>

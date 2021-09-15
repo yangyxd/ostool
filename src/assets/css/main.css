@@ -44,6 +44,14 @@ a {
     left: 65px;
 }
 
+.mobile {
+    left: 0px;
+}
+
+.mobile .content {
+    padding: 0px;
+}
+
 .container {
     padding: 15px;
     background: #fff;
@@ -52,8 +60,16 @@ a {
     margin-bottom: 12px;
 }
 
+.mobile .container {
+    padding: 0px !important;
+}
+
 .crumbs {
     margin: 10px 0;
+}
+
+.mobile .crumbs {
+    padding-left: 4px;
 }
 
 .el-table th {

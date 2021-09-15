@@ -2,7 +2,7 @@
     <div class="container regexp">
         <div><a href="https://mp.weixin.qq.com/s/wkCHL_QzAJwWEg9JZaZnCQ" target="_blank">掌握开发利器：正则表达式</a></div>
         <el-row class="mt8">
-            <el-col style="width: calc(100% - 450px); min-width: 520px;">
+            <el-col :style="{width: 'calc(100% - 450px)', minWidth: (isMobile() ? '100%' : '520px')}">
                 <div>
                     <el-input
                     type="textarea"
@@ -12,7 +12,7 @@
                     v-model="textarea">
                     </el-input>
                 </div>
-                <el-row class="mt16">
+                <el-row v-if=!isMobile() class="mt16">
                     <div style="width: calc(100% - 105px); float: left">
                         <el-input placeholder="在此输入正则表达式" clearable v-model="regKey">
                             <template slot="prepend"><span class="subtitle">正则表达式</span></template>
@@ -26,6 +26,17 @@
                         <el-button type="primary" @click="execMatch()">测试匹配</el-button>
                     </div>
                 </el-row>
+                <div v-if=isMobile()>
+                    <el-row class="mt8"><el-input placeholder="在此输入正则表达式" clearable v-model="regKey">
+                        <div slot="append">
+                            <el-button type="primary" @click="execMatch()">测试匹配</el-button>
+                        </div>
+                    </el-input></el-row>
+                    <el-row class="mt8">
+                        <el-checkbox v-model="matchAll" title="/g" style="margin-left: 8px;">全局搜索</el-checkbox>
+                        <el-checkbox v-model="ingoreCase" title="/i">忽略大小写</el-checkbox>
+                    </el-row>
+                </div>
                 <div class="desc mt16">匹配结果：</div>
                 <div>
                     <el-input
@@ -39,7 +50,7 @@
                 <el-row class="mt16">
                     <div style="width: calc(100% - 85px); float: left">
                         <el-input placeholder="在此输入替换文本" clearable v-model="regReplace">
-                            <template slot="prepend"><span class="subtitle">替换文本</span></template>
+                            <template v-if=!isMobile() slot="prepend"><span class="subtitle">替换文本</span></template>
                         </el-input>
                     </div>
                     <div style="text-align: right; width: 80px; float: right">
@@ -208,6 +219,9 @@ h3 {
     min-height: calc(100vh - 70px);
     padding: 10px!important;
     overflow: hidden;
+}
+.mobile .container {
+    padding: 2px!important;
 }
 .pb8 {
     padding-bottom: 20px;

@@ -11,7 +11,26 @@
                     v-model="srcText">
                     </el-input>
                 </div>
-                <el-row class="mt8">
+                <el-row v-if=mobile class="mt8">
+                    <el-select v-model="mode" placeholder="请选择" size="medium" style="width: 120px; margin-top: -2px;">
+                        <el-option
+                        v-for="item in options"
+                        :key="item"
+                        :label="item"
+                        :value="item">
+                        </el-option>
+                    </el-select>
+                    <el-checkbox v-model="hex" style="margin-left: 16px">解密结果以16进制显示</el-checkbox>
+                    <div style="text-align: right; float: right">
+                        <el-button @click="srcText='';result=''">清空</el-button>
+                    </div>
+                </el-row>
+                <el-row v-if=mobile class="mt8">
+                    <el-button type="primary" @click="_encode()" size="medium">加密</el-button>
+                    <el-button type="success" @click="_decode()" size="medium">解密</el-button>
+                    <el-button @click="change()" size="medium">交换内容</el-button>
+                </el-row>
+                <el-row v-if=!mobile class="mt8">
                     <el-button type="primary" @click="_encode()" size="medium">加密</el-button>
                     <el-button type="success" @click="_decode()" size="medium">解密</el-button>
                     <el-button @click="change()" size="medium">交换内容</el-button>
@@ -64,10 +83,12 @@
                 result: undefined,
                 hex: false,
                 options: ["UTF-8", "GB2312", "UTF-8-URI"],
-                mode: "UTF-8"
+                mode: "UTF-8",
+                mobile: this.isMobile()
             }
         },
         mounted() {
+
         },
         methods: {
             change() {
@@ -183,6 +204,9 @@ h3 {
     min-height: calc(100vh - 70px);
     padding: 10px!important;
     overflow: hidden;
+}
+.mobile .container {
+    padding: 2px!important;
 }
 .pb8 {
     padding-bottom: 20px;

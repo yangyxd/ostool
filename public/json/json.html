@@ -25,15 +25,17 @@
 </style>
 </head>
 <body>
-<div id="container">
+<div id="container" style="height: 100%;">
     <div class="no-padding-h relative">
         <div class="json-empty">
             <div id="header" class="a">
-                <h1 style="font-size: 13px;margin: 0;padding: 0;display: inline">
+                <h1 style="margin: 0 45px 0 0; padding: 0; display: block; line-height: 1.1;">
                     <a class="button" href="javascript:formatJson();">格式化</a>
                     <a class="button" href="javascript:compressZipJson();">压缩</a>
                     <a class="button" href="javascript:escapeJson();">转义</a>
                     <a class="button" href="javascript:restoreJson();">去除转义</a>
+                    <a class="button" href="javascript:unicode2ch();">Unicode转中文</a>
+                    <a class="button" href="javascript:ch2unicode();">中文转Unicode</a>
                 </h1></b>
                 <div class="c">
                 <div class="n b"><span class="l">选项</span><span class="m">▼</span>
@@ -86,6 +88,15 @@
 <script src="./lz-string-1.4.4.js" type="text/javascript" charset="utf-8"></script>
 <script src="./inone.js" type="text/javascript" charset="utf-8"></script>
 <script>
+    function isMobile() {
+        let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+        return flag;
+    }
+
+    if (isMobile()) {
+
+    }
+
     function formatJson() {
         localStorage.setItem('lastJsonData_a', $("#eT").val());
         var jsonVal = jsl.format.formatJson($("#eT").val());
@@ -102,6 +113,41 @@
         var t = $("#eT").val();
         t = t.replace(/\\/g, "\\\\").replace(/\"/g, '\\"');
         $("#eT").val(t)
+    }
+
+    function isChinese(e) {
+        return /[\u4e00-\u9fa5]/.test(e)
+    }
+
+    function unicode2ch() {
+        var e = $("#eT").val();
+        if (e) {
+            for (var t = "", n = 0; n < e.length; n++) {
+                var i = e.charAt(n);
+                t += isChinese(i) ? "\\u" + i.charCodeAt(0).toString(16) : i
+            }
+            $("#eT").val(t)
+        }
+    }
+
+    function ch2unicode() {
+        var e = $("#eT").val();
+        if (e) {
+            for (var t = 1, n = "", i = 0; i < e.length; i += t) {
+                t = 1;
+                var o = e.charAt(i);
+                if ("\\" == o)
+                    if ("u" == e.charAt(i + 1)) {
+                        var r = e.substr(i + 2, 4);
+                        n += String.fromCharCode(parseInt(r, 16).toString(10)),
+                        t = 6
+                    } else
+                        n += o;
+                else
+                    n += o
+            }
+            $("#eT").val(n)
+        }
     }
 
     function compressZipJson() {

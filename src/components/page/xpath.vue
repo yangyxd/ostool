@@ -6,18 +6,18 @@
                     <codemirror v-model="textarea" :options="cmOptions"  class="el-textarea__inner" />
                 </div>
                 <el-row class="mt8">
-                    <div style="width: calc(100% - 255px); float: left">
+                    <div :style="{width: ('calc(100% - ' + (mobile ? 2 : 255) + 'px)'), float: 'left', marginBottom: (mobile ? '4px' : '0')}">
                         <el-input placeholder="在此输入XPath表达式" clearable v-model="regKey">
-                            <template slot="prepend"><span class="subtitle">XPath表达式</span></template>
+                            <template slot="prepend" v-if=!mobile><span class="subtitle">XPath表达式</span></template>
                         </el-input>
                     </div>
-                    <div style="text-align: right; float: right">
+                    <div :style="{textAlign: 'right', float: mobile ? 'left' : 'right', marginBottom: (mobile ? '0' : '8px')}">
                         <el-button type="primary" @click="execMatch()">测试匹配</el-button>
                         <el-button @click="textarea=demo; regKey=demoKey;">测试用例</el-button>
                         <el-button @click="textarea=''; regKey='';" icon="el-icon-delete" circle title="清空"></el-button>
                     </div>
                 </el-row>
-                <div class="desc mt16">匹配结果：</div>
+                <div class="desc mt8">匹配结果：</div>
                 <div class="mt8 e ret">
                     <codemirror v-model="result" :options="cmResultOptions"  class="el-textarea__inner" placeholder="显示正则匹配结果"/>
                 </div>
@@ -46,6 +46,7 @@
                     lineNumbers: true,
                     line: true,
                 },
+                mobile: this.isMobile(),
                 cmResultOptions: {
                     tabSize: 4,
                     mode: 'text/html',
@@ -167,6 +168,9 @@ h3 {
     min-height: calc(100vh - 70px);
     padding: 10px!important;
     overflow: hidden;
+}
+.mobile .container {
+    padding: 2px!important;
 }
 .pb8 {
     padding-bottom: 20px;

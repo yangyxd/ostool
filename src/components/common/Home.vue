@@ -1,8 +1,8 @@
 <template>
     <div class="wrapper">
-        <v-head></v-head>
-        <v-sidebar></v-sidebar>
-        <div class="content-box" :class="{'content-collapse':collapse}">
+        <v-head v-if="!mobile()"></v-head>
+        <v-sidebar v-if="!mobile()"></v-sidebar>
+        <div class="content-box" :class="{'content-collapse':collapse && !mobile(), 'mobile': mobile()}">
             <v-tags></v-tags>
             <!--                <transition name="move" mode="out-in">-->
             <!--                    <keep-alive :include="tagsList">-->
@@ -48,6 +48,9 @@ export default {
     mounted() {
     },
     methods: {
+        mobile() {
+            return this.isMobile()
+        },
         init() {
             try {
                 bus.$on('collapse-content', msg => {

@@ -1,9 +1,7 @@
 var plugin = {};
-
 plugin.install = function (Vue, options) {
   Vue.mixin({
     methods:{
-
       /**方法功能：
        * 获取一个随机字符串
        * @param number：返回字符串长度
@@ -89,7 +87,7 @@ plugin.install = function (Vue, options) {
         }
       },
 
-      
+
       /**
        * 搜索数组指定字段， 返回给定字段的值
        * @param items

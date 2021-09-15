@@ -6,7 +6,7 @@
                 <div class="e src">
                     <codemirror v-model="textarea" :options="cmOptions" placeholder="请输入" class="el-textarea__inner" />
                 </div>
-                <el-row class="mt8" style="text-align:center">
+                <el-row class="mt8" style="text-align:center; line-height: 2.5">
                     <el-button type="info" @click="textarea=demo">测试用例</el-button>
                     <el-button type="warning" @click="format()">格式化</el-button>
                     <el-button type="success" @click="compress()">普通压缩</el-button>
@@ -1127,6 +1127,9 @@ h3 {
     min-height: calc(100vh - 70px);
     padding: 10px!important;
     overflow: hidden;
+}
+.mobile .container {
+    padding: 2px!important;
 }
 .pb8 {
     padding-bottom: 20px;

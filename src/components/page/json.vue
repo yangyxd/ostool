@@ -9,11 +9,14 @@
         name: 'jsonPage',
         components: { },
         data() {
+            console.log("debug: " + this.isDebug)
             return {
                 text: "{}",
-                url: "http://yangyxd.gitee.io/ostool/json/json.html",
-                // url: "http://127.0.0.1:8080/json/json.html",
+                url: this.isDebug ? "http://127.0.0.1:8080/json/json.html" : "http://yangyxd.gitee.io/ostool/json/json.html",
             }
+        },
+        created: function () {
+            window.isMobile = this.isMobile;
         },
         mounted() {
         },
@@ -54,6 +57,10 @@ h3 {
 .container {
     height: calc(100vh - 70px);
     padding: 6px 1px 6px 1px!important;
+}
+.mobile .container {
+    padding: 2px!important;
+    height: 150vh;
 }
 </style>
 

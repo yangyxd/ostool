@@ -11,7 +11,7 @@
                     v-model="srcText">
                     </el-input>
                 </div>
-                <el-row class="mt8">
+                <el-row class="mt8" style="line-height: 2.5">
                     <el-button type="primary" @click="_encode()" size="medium">编码</el-button>
                     <el-button type="success" @click="_decode()" size="medium">解码</el-button>
                     <el-button @click="change()" size="medium">交换内容</el-button>
@@ -212,6 +212,9 @@ h4 {
     min-height: calc(100vh - 70px);
     padding: 10px!important;
     overflow: hidden;
+}
+.mobile .container {
+    padding: 2px!important;
 }
 .pb8 {
     padding-bottom: 20px;
