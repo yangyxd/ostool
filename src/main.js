@@ -46,7 +46,7 @@ Vue.use(plugin);
 Vue.use(base64);
 
 // 调试标志，正式打包时需要设置为 false
-Vue.prototype.isDebug = true;
+Vue.prototype.isDebug = false;
 console.log("debug: " + Vue.prototype.isDebug);
 
 VueClipboard.config.autoSetContainer = true
