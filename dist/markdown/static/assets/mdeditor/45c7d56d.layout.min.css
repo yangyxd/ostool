@@ -731,6 +731,16 @@ ul.dropdown-menu li i[class*=icon] {
     color      : #AAA
 }
 
+.reader-full-topInfo-shown-x {
+    position   : static;
+    margin     : 0 auto;
+    max-width  : 850px;
+    padding-top: 2px;
+    font-size  : 16px;
+    color      : #AAA
+}
+
+
 .editor-reader-hidden {
     position: absolute;
     top     : -1000px;
