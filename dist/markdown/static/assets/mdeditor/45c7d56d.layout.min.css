@@ -873,6 +873,11 @@ div.mermaid {
     top  : -15px
 }
 
+.in-page-preview-buttons-full-reader-x {
+    right: -5px;
+    top  : -15px
+}
+
 .preview-container {
     overflow: auto
 }
