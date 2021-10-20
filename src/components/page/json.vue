@@ -12,7 +12,7 @@
             console.log("debug: " + this.isDebug)
             return {
                 text: "{}",
-                url: this.isDebug ? "http://127.0.0.1:8080/json/json.html" : "http://yangyxd.gitee.io/ostool/json/json.html",
+                url: this.isDebug ? "/json/json.html" : "http://yangyxd.gitee.io/ostool/json/json.html",
             }
         },
         created: function () {
