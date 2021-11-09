@@ -249,48 +249,67 @@ if __name__ == &#39;__main__&#39;:
     print &#39;hello world&#39;
 ```
 
-### 16. 流程图
+### 16. 表格支持
 
-```flow
-st=&gt;start: Start
-op=&gt;operation: Your Operation
-cond=&gt;condition: Yes or No?
-e=&gt;end
+| 项目        | 价格   |  数量  |
+| --------   | -----:  | :----:  |
+| 计算机     | \$1600 |   5     |
+| 手机        |   \$12   |   12   |
+| 管线        |    \$1    |  234  |
 
-st-&gt;op-&gt;cond
-cond(yes)-&gt;e
-cond(no)-&gt;op
-```
+### 17. 定义型列表
 
-### 17. 序列图
+名词 1
+:   定义 1（左侧有一个可见的冒号和四个不可见的空格）
 
-```seq
-Title: Here is a title
-A-&gt;B: Normal line
-B--&gt;C: Dashed line
-C-&gt;&gt;D: Open arrow
-D--&gt;&gt;A: Dashed open arrow
-```
+代码块 2
+:   这是代码块的定义（左侧有一个可见的冒号和四个不可见的空格）
 
-### 17. 甘特图
+        代码块（左侧有八个不可见的空格）
 
-```gantt
-    title 项目开发流程
-    section 项目确定
-        需求分析       :a1, 2016-06-22, 3d
-        可行性报告     :after a1, 5d
-        概念验证       : 5d
-    section 项目实施
-        概要设计      :2016-07-05  , 5d
-        详细设计      :2016-07-08, 10d
-        编码          :2016-07-15, 10d
-        测试          :2016-07-22, 5d
-    section 发布验收
-        发布: 2d
-        验收: 3d
-```
+### 18. 待办事宜 Todo 列表
 
-### 18. PlantUML
+使用带有 [ ] 或 [x] （未完成或已完成）项的列表语法撰写一个待办事宜列表，并且支持子列表嵌套以及混用Markdown语法，例如：
+
+    - [ ] **Markdown 开发**
+        - [ ] 支持以 PDF 格式导出文稿
+    - [ ] **七月旅行准备**
+        - [ ] 准备邮轮上需要携带的物品
+        - [ ] 浏览日本免税店的物品
+        - [x] 购买蓝宝石公主号七月一日的船票
+
+对应显示如下待办事宜 Todo 列表：
+
+- [ ] **Markdown 开发**
+    - [ ] 支持以 PDF 格式导出文稿
+- [ ] **七月旅行准备**
+    - [ ] 准备邮轮上需要携带的物品
+    - [ ] 浏览日本免税店的物品
+    - [x] 购买蓝宝石公主号七月一日的船票
+
+### 19. Html 标签
+
+支持在 Markdown 语法中嵌套 `Html` 标签，譬如，你可以用 Html 写一个纵跨两行的表格：
+
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th rowspan="2"&gt;值班人员&lt;/th&gt;
+        &lt;th&gt;星期一&lt;/th&gt;
+        &lt;th&gt;星期二&lt;/th&gt;
+        &lt;th&gt;星期三&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;李强&lt;/td&gt;
+        &lt;td&gt;张明&lt;/td&gt;
+        &lt;td&gt;王平&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+
+### 20. 内容目录
+
+在段落中填写 `[TOC]` 以显示全文内容的目录结构。
+
+### 21. PlantUML
 
 #### PlantUML 序列图：
 ```plantuml
@@ -324,88 +343,6 @@ stop
 
 更多语法参考：[PlantUML 官网](https://plantuml.com/zh/)
 
-### 19. Mermaid 流程图
-
-```graphLR
-    A[Hard edge] --&gt;|Link text| B(Round edge)
-    B --&gt; C{Decision}
-    C --&gt;|One| D[Result one]
-    C --&gt;|Two| E[Result two]
-```
-
-#### 更多语法参考：[Mermaid 流程图语法参考](https://knsv.github.io/mermaid/#flowcharts-basic-syntax)
-
-### 20. Mermaid 序列图
-
-```sequence
-    Alice-&gt;John: Hello John, how are you?
-    loop every minute
-        John--&gt;Alice: Great!
-    end
-```
-
-### 21. 表格支持
-
-| 项目        | 价格   |  数量  |
-| --------   | -----:  | :----:  |
-| 计算机     | \$1600 |   5     |
-| 手机        |   \$12   |   12   |
-| 管线        |    \$1    |  234  |
-
-### 22. 定义型列表
-
-名词 1
-:   定义 1（左侧有一个可见的冒号和四个不可见的空格）
-
-代码块 2
-:   这是代码块的定义（左侧有一个可见的冒号和四个不可见的空格）
-
-        代码块（左侧有八个不可见的空格）
-
-### 23. 待办事宜 Todo 列表
-
-使用带有 [ ] 或 [x] （未完成或已完成）项的列表语法撰写一个待办事宜列表，并且支持子列表嵌套以及混用Markdown语法，例如：
-
-    - [ ] **Markdown 开发**
-        - [ ] 支持以 PDF 格式导出文稿
-    - [ ] **七月旅行准备**
-        - [ ] 准备邮轮上需要携带的物品
-        - [ ] 浏览日本免税店的物品
-        - [x] 购买蓝宝石公主号七月一日的船票
-
-对应显示如下待办事宜 Todo 列表：
-
-- [ ] **Markdown 开发**
-    - [ ] 支持以 PDF 格式导出文稿
-- [ ] **七月旅行准备**
-    - [ ] 准备邮轮上需要携带的物品
-    - [ ] 浏览日本免税店的物品
-    - [x] 购买蓝宝石公主号七月一日的船票
-
-### 24. Html 标签
-
-支持在 Markdown 语法中嵌套 `Html` 标签，譬如，你可以用 Html 写一个纵跨两行的表格：
-
-&lt;table&gt;
-    &lt;tr&gt;
-        &lt;th rowspan="2"&gt;值班人员&lt;/th&gt;
-        &lt;th&gt;星期一&lt;/th&gt;
-        &lt;th&gt;星期二&lt;/th&gt;
-        &lt;th&gt;星期三&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;李强&lt;/td&gt;
-        &lt;td&gt;张明&lt;/td&gt;
-        &lt;td&gt;王平&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;
-
-### 25. 内容目录
-
-在段落中填写 `[TOC]` 以显示全文内容的目录结构。
-
-[TOC]
-
 </textarea>
         </div>
     </div>
@@ -420,6 +357,10 @@ stop
                         <li>
                             <table>
                                 <tbody>
+                                    <tr title="文稿的标题">
+                                        <td class="menu-label">文稿标题</td>
+                                        <td class="menu-field article-title"></td>
+                                    </tr>
                                     <tr title="文稿的字数">
                                         <td class="menu-label">文稿字数</td>
                                         <td class="menu-field article-characters"></td>
@@ -438,6 +379,16 @@ stop
                     </ul>
                     <ul id="revision-list" class="dropdown-menu theme-black pull-right editor-reader-hidden" role="menu">
                         <!--insert 'ul.revision-item-template.editor-reader-hidden li.revision-item' below into here by editorReader.js-->
+                    </ul>
+                </li>
+                <li class="preview-button dropdown editor-only editor-reader-hidden" id="preview-doc-button" title="文稿管理 Ctrl+Alt+D">
+                    <span class="dropdown-toggle icon-folder-close" data-toggle="dropdown"></span>
+                    <ul id="settings-menu" class="dropdown-menu theme-black pull-right" role="menu">
+                        <li title="新建文档"><a id="menu-doc-add" tabindex="-1" href="#"><i class="icon-file"></i>新文档</a></li>
+                        <li class="divider"></li>
+                        <div id="menu-doc-items">
+                        <li title="文档名称"><a id="menu-doc-" tabindex="-1" href="#"><i class="icon-remove"></i>文档名称</a></li>
+                        </div>
                     </ul>
                 </li>
                 <li class="preview-button dropdown editor-only editor-reader-hidden" id="preview-settings-button" title="功能设置 Ctrl+Alt+R">
@@ -726,7 +677,7 @@ stop
     <script>
         Namespace('com.zybuluo.mdeditor');
         com.zybuluo.mdeditor.initData = {
-            markdownHelpUrl: "./static/md-help.markdown.md",
+            markdownHelpUrl: "./static/md-help.markdown.html",
             downloadPdfUrl: "https://www.zybuluo.com/mdeditor/note/downloadPdf",
             staticAssetsUrl: "./static/assets/",
             staticImgUrl: "./static/img/",

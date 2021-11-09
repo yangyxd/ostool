@@ -1,4 +1,12 @@
-﻿## 什么是 Markdown
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>什么是 Markdown</title>
+</head>
+<body>
+<pre>
+## 什么是 Markdown
 
 Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：譬如您正在阅读的这份文档。它使用简单的符号标记不同的标题，分割不同的段落，**粗体** 或者 *斜体* 某些文字，更棒的是，它还可以
 
@@ -72,11 +80,11 @@ Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以�
 
 ### 6. 文字引用
 
-使用 > 表示文字引用。
+使用 &gt; 表示文字引用。
 
 示例：
 
-> 野火烧不尽，春风吹又生。
+&gt; 野火烧不尽，春风吹又生。
 
 ### 7. 行内代码块
 
@@ -121,9 +129,9 @@ Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以�
     :fa-weibo:
     :weibo:
     或
-    <i class="icon-weibo"></i>
+    &lt;i class="icon-weibo"&gt;&lt;/i&gt;
 
-即显示微博的图标： <i class="icon-weibo icon-2x"></i> :weibo:
+即显示微博的图标： &lt;i class="icon-weibo icon-2x"&gt;&lt;/i&gt; :weibo:
 
 替换 上述的 `weibo` 替换掉以显示不同的图标，例如：
 
@@ -198,10 +206,10 @@ cond(no)-&gt;op
 
 ```seq
 Title: Here is a title
-A->B: Normal line
-B-->C: Dashed line
-C->>D: Open arrow
-D-->>A: Dashed open arrow
+A-&gt;B: Normal line
+B--&gt;C: Dashed line
+C-&gt;&gt;D: Open arrow
+D--&gt;&gt;A: Dashed open arrow
 ```
 
 ### 17. 甘特图
@@ -227,9 +235,9 @@ D-->>A: Dashed open arrow
 #### PlantUML 序列图：
 ```plantuml
 @startuml
-Alice->Bob: Hello Bob, how are you?
+Alice-&gt;Bob: Hello Bob, how are you?
 Note right of Bob: Bob thinks
-Bob-->Alice: I am good thanks!
+Bob--&gt;Alice: I am good thanks!
 @enduml
 ```
 #### PlantUML 流程图：
@@ -259,10 +267,10 @@ stop
 ### 19. Mermaid 流程图
 
 ```graphLR
-    A[Hard edge] -->|Link text| B(Round edge)
-    B --> C{Decision}
-    C -->|One| D[Result one]
-    C -->|Two| E[Result two]
+    A[Hard edge] --&gt;|Link text| B(Round edge)
+    B --&gt; C{Decision}
+    C --&gt;|One| D[Result one]
+    C --&gt;|Two| E[Result two]
 ```
 
 #### 更多语法参考：[Mermaid 流程图语法参考](https://knsv.github.io/mermaid/#flowcharts-basic-syntax)
@@ -270,9 +278,9 @@ stop
 ### 20. Mermaid 序列图
 
 ```sequence
-    Alice->John: Hello John, how are you?
+    Alice-&gt;John: Hello John, how are you?
     loop every minute
-        John-->Alice: Great!
+        John--&gt;Alice: Great!
     end
 ```
 
@@ -318,22 +326,26 @@ stop
 
 支持在 Markdown 语法中嵌套 `Html` 标签，譬如，你可以用 Html 写一个纵跨两行的表格：
 
-<table>
-    <tr>
-        <th rowspan="2">值班人员</th>
-        <th>星期一</th>
-        <th>星期二</th>
-        <th>星期三</th>
-    </tr>
-    <tr>
-        <td>李强</td>
-        <td>张明</td>
-        <td>王平</td>
-    </tr>
-</table>
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th rowspan="2"&gt;值班人员&lt;/th&gt;
+        &lt;th&gt;星期一&lt;/th&gt;
+        &lt;th&gt;星期二&lt;/th&gt;
+        &lt;th&gt;星期三&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;李强&lt;/td&gt;
+        &lt;td&gt;张明&lt;/td&gt;
+        &lt;td&gt;王平&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
 
 ### 25. 内容目录
 
 在段落中填写 `[TOC]` 以显示全文内容的目录结构。
 
 [TOC]
+
+</pre>
+</body>
+</html>
