@@ -1,155 +1,155 @@
-## ʲô�� Markdown
+## 什么是 Markdown
 
-Markdown ��һ�ַ�����䡢��д�Ĵ��ı�������ԣ��û�����ʹ����Щ��Ƿ�������С������������ɼ������������ĵ���Ʃ���������Ķ�������ĵ�����ʹ�ü򵥵ķ��ű�ǲ�ͬ�ı��⣬�ָͬ�Ķ��䣬**����** ���� *б��* ĳЩ���֣��������ǣ���������
+Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：譬如您正在阅读的这份文档。它使用简单的符号标记不同的标题，分割不同的段落，**粗体** 或者 *斜体* 某些文字，更棒的是，它还可以
 
 ------
 
-## Markdown �����﷨�ֲ�
+## Markdown 简明语法手册
 
-### 1. б��ʹ���
+### 1. 斜体和粗体
 
-ʹ�� * �� ** ��ʾб��ʹ��塣
+使用 * 和 ** 表示斜体和粗体。
 
-ʾ����
+示例：
 
-���� *б��*������ **����**��
+这是 *斜体*，这是 **粗体**。
 
-### 2. �ּ�����
+### 2. 分级标题
 
-ʹ�� === ��ʾһ�����⣬ʹ�� --- ��ʾ�������⡣Ҳ����ѡ�������׼Ӿ��ű�ʾ��ͬ����ı��� (H1-H6)�����磺# H1, ## H2, ### H3��#### H4, ##### H5, ###### H6��
+使用 === 表示一级标题，使用 --- 表示二级标题。也可以选择在行首加井号表示不同级别的标题 (H1-H6)，例如：# H1, ## H2, ### H3，#### H4, ##### H5, ###### H6。
 
-ʾ����
+示例：
 
 ```
-����һ��һ������
+这是一个一级标题
 ============================
 
-����һ����������
+这是一个二级标题
 --------------------------------------------------
 
-# ��Ҳ��һ��һ������
+# 这也是一个一级标题
 
-## ���Ƕ�������
+## 这是二级标题
 
-### ����һ����������
+### 这是一个三级标题
 
-#### ����4������
+#### 这是4级标题
 
-##### ����5������
+##### 这是5级标题
 
-###### ����6������
+###### 这是6级标题
 ```
 
-### 3. ������
+### 3. 外链接
 
-ʹ�� \[����](���ӵ�ַ) Ϊ�������������ӡ�
+使用 \[描述](链接地址) 为文字增加外链接。
 
-ʾ����
+示例：
 
-����ȥ�� [���˲���](http://yangyxd.github.com) �����ӡ�
+这是去往 [本人博客](http://yangyxd.github.com) 的链接。
 
-����һ���Զ����ֵĳ����� http://yangyxd.github.com
+这是一个自动发现的超链接 http://yangyxd.github.com
 
-### 4. �����б�
+### 4. 无序列表
 
-ʹ�� *��+��- ��ʾ�����б���
+使用 *，+，- 表示无序列表。
 
-ʾ����
+示例：
 
-- �����б��� һ
-- �����б��� ��
-- �����б��� ��
+- 无序列表项 一
+- 无序列表项 二
+- 无序列表项 三
 
-### 5. �����б�
+### 5. 有序列表
 
-ʹ�����ֺ͵��ʾ�����б���
+使用数字和点表示有序列表。
 
-ʾ����
+示例：
 
-1. �����б��� һ
-2. �����б��� ��
-3. �����б��� ��
+1. 有序列表项 一
+2. 有序列表项 二
+3. 有序列表项 三
 
-### 6. ��������
+### 6. 文字引用
 
-ʹ�� > ��ʾ�������á�
+使用 > 表示文字引用。
 
-ʾ����
+示例：
 
-> Ұ���ղ��������紵������
+> 野火烧不尽，春风吹又生。
 
-### 7. ���ڴ����
+### 7. 行内代码块
 
-ʹ�� \`����` ��ʾ���ڴ���顣
+使用 \`代码` 表示行内代码块。
 
-ʾ����
+示例：
 
-���������� `html`��
+让我们聊聊 `html`。
 
-### 8.  �����
+### 8.  代码块
 
-ʹ�� **�ĸ������ո�** ��ʾ����顣
+使用 **四个缩进空格** 表示代码块。
 
-ʾ����
+示例：
 
-    ����һ������飬����������ĸ����ɼ��Ŀո�
+    这是一个代码块，此行左侧有四个不可见的空格。
 
-### 9.  ����ͼ��
+### 9.  插入图像
 
-ʹ�� \!\[����](ͼƬ���ӵ�ַ) ����ͼ��
+使用 \!\[描述](图片链接地址) 插入图像。
 
-ʾ����
+示例：
 
-![�ҵ�ͷ��](https://www.baidu.com/img/flexible/logo/pc/result.png)
+![我的头像](https://www.baidu.com/img/flexible/logo/pc/result.png)
 
-### 10. ɾ����
+### 10. 删除线
 
-ʹ�� ~~ ��ʾɾ���ߡ�
+使用 ~~ 表示删除线。
 
-~~����һ�δ�����ı���~~
+~~这是一段错误的文本。~~
 
-### 11. ��ǩ����
+### 11. 标签分类
 
-�ڱ༭�������е�����λ���������´�����ĸ��ǩ��
+在编辑区任意行的列首位置输入以下代码给文稿标签：
 
-��ǩ�� ��ѧ Ӣ�� Markdown
+标签： 数学 英语 Markdown
 
-### 12. ��Ƕͼ��
+### 12. 内嵌图标
 
-ʹ��
+使用
 
     :fa-weibo:
     :weibo:
-    ��
+    或
     <i class="icon-weibo"></i>
 
-����ʾ΢����ͼ�꣺ <i class="icon-weibo icon-2x"></i> :weibo:
+即显示微博的图标： <i class="icon-weibo icon-2x"></i> :weibo:
 
-�滻 ������ `weibo` �滻������ʾ��ͬ��ͼ�꣬���磺
+替换 上述的 `weibo` 替换掉以显示不同的图标，例如：
 
 :fa-calendar: :fa-bullseye: :compass: :fa-font: :fa-qrcode: :fa-pencil: :forward: :fire:
 
-�����ͼ����淨���Բο� [font-awesome](http://fortawesome.github.io/Font-Awesome/3.2.1/icons/) �ٷ���վ��
+更多的图标和玩法可以参看 [font-awesome](http://fortawesome.github.io/Font-Awesome/3.2.1/icons/) 官方网站。
 
-### 13. ע��
+### 13. 注脚
 
-ʹ�� [^keyword] ��ʾע�š�
+使用 [^keyword] 表示注脚。
 
-����һ��ע��[^footnote]��������
+这是一个注脚[^footnote]的样例。
 
-���ǵڶ���ע��[^footnote2]��������
+这是第二个注脚[^footnote2]的样例。
 
-[^footnote]: ����һ�� *ע��* �� **�ı�**��
+[^footnote]: 这是一个 *注脚* 的 **文本**。
 
-[^footnote2]: ������һ�� *ע��* �� **�ı�**��
+[^footnote2]: 这是另一个 *注脚* 的 **文本**。
 
-### 14. LaTeX ��ʽ
+### 14. LaTeX 公式
 
-$ ��ʾ���ڹ�ʽ��
+$ 表示行内公式：
 
-�����غ㷽�̿�����һ���ܼ��ķ���ʽ $E=mc^2$ �����
+质能守恒方程可以用一个很简洁的方程式 $E=mc^2$ 来表达。
 
-$$ ��ʾ���й�ʽ��
+$$ 表示整行公式：
 
 $$\sum_{i=1}^n a_i=0$$
 
@@ -157,19 +157,19 @@ $$f(x_1,x_x,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2 $$
 
 $$\sum^{j-1}_{k=0}{\widehat{\gamma}_{kj} z_k}$$
 
-���� [MathJax](http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference) �ο�����ʹ�÷�����
+访问 [MathJax](http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference) 参考更多使用方法。
 
-### 15. ��ǿ�Ĵ����
+### 15. 加强的代码块
 
-֧����ʮһ�ֱ�����Ե��﷨��������ʾ���к���ʾ��
+支持四十一种编程语言的语法高亮的显示，行号显示。
 
-�Ǵ���ʾ����
+非代码示例：
 
 ```
 $ sudo apt-get install vim-gnome
 ```
 
-Python ʾ����
+Python 示例：
 
 ```python
 @requires_authorization
@@ -181,7 +181,7 @@ if __name__ == &#39;__main__&#39;:
     print &#39;hello world&#39;
 ```
 
-### 16. ����ͼ
+### 16. 流程图
 
 ```flow
 st=&gt;start: Start
@@ -194,7 +194,7 @@ cond(yes)-&gt;e
 cond(no)-&gt;op
 ```
 
-### 17. ����ͼ
+### 17. 序列图
 
 ```seq
 Title: Here is a title
@@ -204,27 +204,27 @@ C->>D: Open arrow
 D-->>A: Dashed open arrow
 ```
 
-### 17. ����ͼ
+### 17. 甘特图
 
 ```gantt
-    title ��Ŀ��������
-    section ��Ŀȷ��
-        �������       :a1, 2016-06-22, 3d
-        �����Ա���     :after a1, 5d
-        ������֤       : 5d
-    section ��Ŀʵʩ
-        ��Ҫ���      :2016-07-05  , 5d
-        ��ϸ���      :2016-07-08, 10d
-        ����          :2016-07-15, 10d
-        ����          :2016-07-22, 5d
-    section ��������
-        ����: 2d
-        ����: 3d
+    title 项目开发流程
+    section 项目确定
+        需求分析       :a1, 2016-06-22, 3d
+        可行性报告     :after a1, 5d
+        概念验证       : 5d
+    section 项目实施
+        概要设计      :2016-07-05  , 5d
+        详细设计      :2016-07-08, 10d
+        编码          :2016-07-15, 10d
+        测试          :2016-07-22, 5d
+    section 发布验收
+        发布: 2d
+        验收: 3d
 ```
 
 ### 18. PlantUML
 
-#### PlantUML ����ͼ��
+#### PlantUML 序列图：
 ```plantuml
 @startuml
 Alice->Bob: Hello Bob, how are you?
@@ -232,31 +232,31 @@ Note right of Bob: Bob thinks
 Bob-->Alice: I am good thanks!
 @enduml
 ```
-#### PlantUML ����ͼ��
+#### PlantUML 流程图：
 ```plantuml
 @startuml
 start
-    :��ʼ;
-partition ��˴���{
-    :������;
-    if(��ԱID?) then
-        :����token;
+    :开始;
+partition 后端处理{
+    :处理中;
+    if(会员ID?) then
+        :返回token;
     else
-        :������Ϣ����Ҫע��/��;
+        :返回消息，需要注册/绑定;
     endif;
 }
     if(token?) then
-        :����������;
+        :进入主界面;
         else
-        :����ע��󶨽���;
+        :进入注册绑定解密;
         endif;
 stop
 @enduml
 ```
 
-�����﷨�ο���[PlantUML ����](https://plantuml.com/zh/)
+更多语法参考：[PlantUML 官网](https://plantuml.com/zh/)
 
-### 19. Mermaid ����ͼ
+### 19. Mermaid 流程图
 
 ```graphLR
     A[Hard edge] -->|Link text| B(Round edge)
@@ -265,9 +265,9 @@ stop
     C -->|Two| E[Result two]
 ```
 
-#### �����﷨�ο���[Mermaid ����ͼ�﷨�ο�](https://knsv.github.io/mermaid/#flowcharts-basic-syntax)
+#### 更多语法参考：[Mermaid 流程图语法参考](https://knsv.github.io/mermaid/#flowcharts-basic-syntax)
 
-### 20. Mermaid ����ͼ
+### 20. Mermaid 序列图
 
 ```sequence
     Alice->John: Hello John, how are you?
@@ -276,64 +276,64 @@ stop
     end
 ```
 
-### 21. ����֧��
+### 21. 表格支持
 
-| ��Ŀ        | �۸�   |  ����  |
+| 项目        | 价格   |  数量  |
 | --------   | -----:  | :----:  |
-| �����     | \$1600 |   5     |
-| �ֻ�        |   \$12   |   12   |
-| ����        |    \$1    |  234  |
+| 计算机     | \$1600 |   5     |
+| 手机        |   \$12   |   12   |
+| 管线        |    \$1    |  234  |
 
-### 22. �������б�
+### 22. 定义型列表
 
-���� 1
-:   ���� 1�������һ���ɼ���ð�ź��ĸ����ɼ��Ŀո�
+名词 1
+:   定义 1（左侧有一个可见的冒号和四个不可见的空格）
 
-����� 2
-:   ���Ǵ����Ķ��壨�����һ���ɼ���ð�ź��ĸ����ɼ��Ŀո�
+代码块 2
+:   这是代码块的定义（左侧有一个可见的冒号和四个不可见的空格）
 
-        ����飨����а˸����ɼ��Ŀո�
+        代码块（左侧有八个不可见的空格）
 
-### 23. �������� Todo �б�
+### 23. 待办事宜 Todo 列表
 
-ʹ�ô��� [ ] �� [x] ��δ��ɻ�����ɣ�����б��﷨׫дһ�����������б�������֧�����б�Ƕ���Լ�����Markdown�﷨�����磺
+使用带有 [ ] 或 [x] （未完成或已完成）项的列表语法撰写一个待办事宜列表，并且支持子列表嵌套以及混用Markdown语法，例如：
 
-    - [ ] **Markdown ����**
-        - [ ] ֧���� PDF ��ʽ�����ĸ�
-    - [ ] **��������׼��**
-        - [ ] ׼����������ҪЯ������Ʒ
-        - [ ] ����ձ���˰�����Ʒ
-        - [x] ��������ʯ����������һ�յĴ�Ʊ
+    - [ ] **Markdown 开发**
+        - [ ] 支持以 PDF 格式导出文稿
+    - [ ] **七月旅行准备**
+        - [ ] 准备邮轮上需要携带的物品
+        - [ ] 浏览日本免税店的物品
+        - [x] 购买蓝宝石公主号七月一日的船票
 
-��Ӧ��ʾ���´������� Todo �б���
+对应显示如下待办事宜 Todo 列表：
 
-- [ ] **Markdown ����**
-    - [ ] ֧���� PDF ��ʽ�����ĸ�
-- [ ] **��������׼��**
-    - [ ] ׼����������ҪЯ������Ʒ
-    - [ ] ����ձ���˰�����Ʒ
-    - [x] ��������ʯ����������һ�յĴ�Ʊ
+- [ ] **Markdown 开发**
+    - [ ] 支持以 PDF 格式导出文稿
+- [ ] **七月旅行准备**
+    - [ ] 准备邮轮上需要携带的物品
+    - [ ] 浏览日本免税店的物品
+    - [x] 购买蓝宝石公主号七月一日的船票
 
-### 24. Html ��ǩ
+### 24. Html 标签
 
-֧���� Markdown �﷨��Ƕ�� `Html` ��ǩ��Ʃ�磬������� Html дһ���ݿ����еı���
+支持在 Markdown 语法中嵌套 `Html` 标签，譬如，你可以用 Html 写一个纵跨两行的表格：
 
 <table>
     <tr>
-        <th rowspan="2">ֵ����Ա</th>
-        <th>����һ</th>
-        <th>���ڶ�</th>
-        <th>������</th>
+        <th rowspan="2">值班人员</th>
+        <th>星期一</th>
+        <th>星期二</th>
+        <th>星期三</th>
     </tr>
     <tr>
-        <td>��ǿ</td>
-        <td>����</td>
-        <td>��ƽ</td>
+        <td>李强</td>
+        <td>张明</td>
+        <td>王平</td>
     </tr>
 </table>
 
-### 25. ����Ŀ¼
+### 25. 内容目录
 
-�ڶ�������д `[TOC]` ����ʾȫ�����ݵ�Ŀ¼�ṹ��
+在段落中填写 `[TOC]` 以显示全文内容的目录结构。
 
 [TOC]
