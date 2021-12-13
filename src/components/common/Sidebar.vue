@@ -91,7 +91,7 @@ export default {
                 {
                     icon: 'el-icon-lx-comment',
                     index: 'xpath',
-                    title: 'XPath测试'
+                    title: 'XPath/CSS测试'
                 },
                 {
                     icon: 'el-icon-lx-cascades',

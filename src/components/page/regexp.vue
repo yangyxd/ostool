@@ -48,22 +48,21 @@
                     </el-input>
                 </div>
                 <el-row class="mt16">
-                    <div style="width: calc(100% - 85px); float: left">
-                        <el-input placeholder="在此输入替换文本" clearable v-model="regReplace">
-                            <template v-if=!isMobile() slot="prepend"><span class="subtitle">替换文本</span></template>
-                        </el-input>
+                    <div style="width: calc(100% - 136px); float: left">
+                        <el-input placeholder="输入替换文本或值索引号" clearable v-model="regReplace"></el-input>
                     </div>
-                    <div style="text-align: right; width: 80px; float: right">
+                    <div style="text-align: right; width: 132px; float: right">
+                        <el-button type="danger" @click="execMatchValue()">取值</el-button>
                         <el-button type="primary" @click="execMatchReplace()">替换</el-button>
                     </div>
                 </el-row>
-                <div class="desc mt16">替换结果：</div>
+                <div class="desc mt16">替换/取值结果：</div>
                 <div class="pb8">
                     <el-input
                     type="textarea"
                     :rows="15"
                     readonly
-                    placeholder="显示替换结果"
+                    placeholder="显示替换/取值结果"
                     v-model="resultReplace">
                     </el-input>
                 </div>
@@ -153,6 +152,19 @@
                 try {
                     let regex = this.buildRegex();
                     this.resultReplace = this.textarea.replace(regex, this.regReplace);
+                } catch (e) {
+                    this.$message(e.message);
+                    this.resultReplace = "错误：\r\n" + e.message;
+                }
+            },
+            execMatchValue() {
+                try {
+                    let regex = this.buildRegex();
+                    let index = Number(this.regReplace)
+                    if (Number.isNaN(index)) {
+                        throw new Error('"' + this.regReplace + '" 无效的取值索引号，它应该是从 0 开始的数字。')
+                    }
+                    this.resultReplace = this.textarea.match(regex)[index];
                 } catch (e) {
                     this.$message(e.message);
                     this.resultReplace = "错误：\r\n" + e.message;

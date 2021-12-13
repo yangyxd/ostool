@@ -48,7 +48,7 @@ export default new Router({
                 {
                     path: '/xpath',
                     component: () => import(/* webpackChunkName: "xpath" */ '../components/page/xpath.vue'),
-                    meta: { title: 'XPath在线测试' }
+                    meta: { title: 'XPath/CSS测试' }
                 },
                 {
                     path: '/js',

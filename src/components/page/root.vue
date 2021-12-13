@@ -30,9 +30,9 @@
                 items: [
                     {name: "JSON 格式化校验", icon: "Json", txt: "#fff", bg: "#3280fc", desc: "JSON 格式化校验工具", path: "/jsonformat", multiple: false},
                     {name: "JSON 在线解析", icon: "Json", txt: "#ff0", bg: "#009688", desc: "JSON 在线解析工具", path: "/json", multiple: false},
-                    {name: "Markdown 在线编辑", icon: "Markdown", txt: "#fff", bg: "#444444", desc: "Markdown在线编辑器", path: "/markdown"},
+                    {name: "Markdown 在线编辑", icon: "Markdown", txt: "#fff", bg: "#444444", desc: "全网最强Markdown在线编辑器", path: "/markdown"},
                     {name: "正则表达式测试", icon: "RegExp", txt: "#fff", bg: "#ff6000", desc: "在线正则表达式测试工具", path: "/regexp"},
-                    {name: "XPath在线测试", icon: "XPath", txt: "#fff", bg: "#c06b26", desc: "XPath在线测试工具", path: "/xpath"},
+                    {name: "XPath/CSS 测试", icon: "XPath/CSS", txt: "#fff", bg: "#c06b26", desc: "XPath和CSS表达式在线匹配测试工具", path: "/xpath"},
                     {name: "Base64 编码转换", icon: "Base64", txt: "#fff", bg: "#08998c", desc: "将任意字节数据编码成ASCII字符串", path: "/base64"},
                     {name: "MD5 加密", icon: "MD5", txt: "#135201", bg: "#a9ffe0", desc: "MD5加密工具", path: "/md5"},
                     {name: "JS/Html 压缩格式化", icon: "Js", txt: "#4d6d09", bg: "#f1f1f1", desc: "JS/Html压缩格式化", path: "/js"},
@@ -83,10 +83,17 @@
     font-weight: bold;
     font-size: 24px;
     margin-bottom: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    text-indent: initial;
 }
 .desc {
     font-size: 14px;
     margin-bottom: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
 }
 h3 {
     display: block;
@@ -133,6 +140,7 @@ h3 {
 .el-card__body {
     text-align: center;
     margin-top: 8px;
+    min-height: 180px;
 }
 .el-card__header {
     background: #fafbfc;
