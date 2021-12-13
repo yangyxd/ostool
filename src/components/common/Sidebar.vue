@@ -114,6 +114,11 @@ export default {
                     title: 'URL编码解码'
                 },
                 {
+                    icon: 'el-icon-lx-time',
+                    index: 'timestamp',
+                    title: '时间戳转换'
+                },
+                {
                     icon: 'el-icon-lx-emoji',
                     index: 'icon',
                     title: '自定义图标'

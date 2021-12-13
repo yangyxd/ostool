@@ -66,6 +66,11 @@ export default new Router({
                     meta: { title: 'Markdown' }
                 },
                 {
+                    path: '/timestamp',
+                    component: () => import(/* webpackChunkName: "url" */ '../components/page/timestamp.vue'),
+                    meta: { title: '时间戳转换' }
+                },
+                {
                     path: '/404',
                     component: () => import(/* webpackChunkName: "404" */ '../components/page/404.vue'),
                     meta: { title: '404' }
