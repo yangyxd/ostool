@@ -56,18 +56,23 @@ export default new Router({
                     meta: { title: 'Js/Html压缩格式化' }
                 },
                 {
+                    path: '/jsrun',
+                    component: () => import(/* webpackChunkName: "jsrun" */ '../components/page/jsRun.vue'),
+                    meta: { title: 'Js在线运行工具' }
+                },
+                {
                     path: '/url',
                     component: () => import(/* webpackChunkName: "url" */ '../components/page/url.vue'),
                     meta: { title: 'URL编码解码' }
                 },
                 {
                     path: '/markdown',
-                    component: () => import(/* webpackChunkName: "url" */ '../components/page/markdown.vue'),
+                    component: () => import(/* webpackChunkName: "markdown" */ '../components/page/markdown.vue'),
                     meta: { title: 'Markdown' }
                 },
                 {
                     path: '/timestamp',
-                    component: () => import(/* webpackChunkName: "url" */ '../components/page/timestamp.vue'),
+                    component: () => import(/* webpackChunkName: "timestamp" */ '../components/page/timestamp.vue'),
                     meta: { title: '时间戳转换' }
                 },
                 {

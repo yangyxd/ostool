@@ -36,6 +36,7 @@
                     {name: "Base64 编码转换", icon: "Base64", txt: "#fff", bg: "#08998c", desc: "将任意字节数据编码成ASCII字符串", path: "/base64"},
                     {name: "MD5 加密", icon: "MD5", txt: "#135201", bg: "#a9ffe0", desc: "MD5加密工具", path: "/md5"},
                     {name: "JS/Html 压缩格式化", icon: "Js", txt: "#4d6d09", bg: "#f1f1f1", desc: "JS/Html压缩格式化", path: "/js"},
+                    {name: "JavaScript 在线运行", icon: "JavaScript", txt: "#f1f1f1", bg: "#4d6d09", desc: "JavaScript 在线运行工具", path: "/jsrun"},
                     {name: "URL 编码解码", icon: "URL", txt: "#3280fc", bg: "#dddddd", desc: "URL编码/解码", path: "/url"},
                     {name: "时间戳", icon: "Time", txt: "#fff", bg: "#009a61", desc: "在线时间戳转换", path: "/timestamp"},
                 ]

@@ -109,6 +109,11 @@ export default {
                     title: 'Js/Html压缩格式化'
                 },
                 {
+                    icon: 'el-icon-lx-hot',
+                    index: 'jsrun',
+                    title: 'Js在线运行工具'
+                },
+                {
                     icon: 'el-icon-lx-link',
                     index: 'url',
                     title: 'URL编码解码'

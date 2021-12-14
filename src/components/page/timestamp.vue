@@ -17,12 +17,12 @@
                         :value="item.value">
                         </el-option>
                     </el-select>
-                    <el-button class="ml8" @click="convToTimeStr()" type="primary">转换 >></el-button>
+                    <el-button class="ml8" @click="convToTimeStr()" type="info">转换 >></el-button>
                     <el-input class="tw3 ml8" v-model="valueStr"></el-input>
                 </div>
                 <div class="desc mt8"><span class="tt">时间：</span>
                     <el-date-picker class="tw3" v-model="valueStr2" type="datetime" prefix-icon="-" :clearable='false' value-format="yyyy-MM-dd HH:mm:ss"></el-date-picker>
-                    <el-button class="ml8" @click="convTimeStrToTime()" type="primary">转换 >></el-button>
+                    <el-button class="ml8" @click="convTimeStrToTime()" type="info">转换 >></el-button>
                     <el-input class="tw2 ml8" placeholder="时间戳" v-model="value2"></el-input>
                     <el-select v-model="valueType2" style="width: 110px" class="ml8">
                         <el-option
@@ -155,7 +155,7 @@
     font-size: 15px;
     margin-bottom: 8px;
     margin-left: 8px;
-    color: #888;
+    color: #666;
     line-height: 38px;
 }
 .cname {
