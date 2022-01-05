@@ -7,6 +7,8 @@
                     <codemirror v-model="textarea" :options="cmOptions" placeholder="请输入" class="el-textarea__inner" />
                 </div>
                 <el-row class="mt8" style="text-align:center; line-height: 2.5">
+                    <el-button type="text" @click="_escape()">转义</el-button>
+                    <el-button type="text" @click="_unescape()">反转义</el-button>
                     <el-button type="info" @click="textarea=demo">测试用例</el-button>
                     <el-button type="warning" @click="format()">格式化</el-button>
                     <el-button type="success" @click="compress()">普通压缩</el-button>
@@ -72,6 +74,32 @@ var getPositionLite = function(el) {        var x = 0,        y = 0;        whil
         methods: {
             onCopyOK() {
                 this.$message('复制成功');
+            },
+            _escape() {
+                let escapeMap = {'&': '&amp;', '<': '&lt;', '>': '&gt;'}
+                let escapeRe = []
+                for (var str in escapeMap) {
+                    const entity = escapeMap[str]
+                    escapeRe.push(str)
+                }
+                let reg = new RegExp(escapeRe.join("|"), "g")
+                this.textarea = this.textarea.replace(reg, function(str){
+                    return escapeMap[str] || str
+                })
+            },
+            _unescape() {
+                let escapeMap = {'&': '&amp;', '<': '&lt;', '>': '&gt;'}
+                let unescapeRe = []
+                let unescapeMap = {}
+                for (var str in escapeMap) {
+                    const entity = escapeMap[str]
+                    unescapeMap[entity] = str
+                    unescapeRe.push(entity)
+                }
+                let reg = new RegExp(unescapeRe.join("|"), "g")
+                this.textarea = this.textarea.replace(reg, function(str){
+                    return unescapeMap[str] || str
+                })
             },
             format() {
                 try {

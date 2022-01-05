@@ -1,5 +1,5 @@
 <template>
-    <div class="container base64">
+    <div class="container url">
         <el-row>
             <el-col>
                 <div>
@@ -12,12 +12,19 @@
                     </el-input>
                 </div>
                 <el-row class="mt8" style="line-height: 2.5">
-                    <el-button type="primary" @click="_encode()" size="medium">编码</el-button>
-                    <el-button type="success" @click="_decode()" size="medium">解码</el-button>
-                    <el-button @click="change()" size="medium">交换内容</el-button>
-                    <el-select v-model="mode" placeholder="请选择" size="medium" style="width: 120px; margin-left: 12px; margin-top: -2px;">
+                    <el-button type="primary" @click="_encode()" size="medium">↓ 编码</el-button>
+                    <el-button type="success" @click="_decode()" size="medium">↑ 解码</el-button>
+                    <el-select v-model="mode" placeholder="请选择" size="medium" style="width: 110px; margin-left: 12px; margin-top: -2px;">
                         <el-option
                         v-for="item in options"
+                        :key="item"
+                        :label="item"
+                        :value="item">
+                        </el-option>
+                    </el-select>
+                    <el-select v-model="modeFunc" placeholder="请选择" size="medium" style="width: 200px; margin-left: 12px; margin-top: -2px;">
+                        <el-option
+                        v-for="item in optionsFunc"
                         :key="item"
                         :label="item"
                         :value="item">
@@ -31,8 +38,7 @@
                     <el-input
                     type="textarea"
                     :autosize="{ minRows: 9, maxRows: 25}"
-                    readonly
-                    placeholder="显示加密或解密结果"
+                    placeholder="在此输入编码后的文本"
                     v-model="result">
                     </el-input>
                 </div>
@@ -78,7 +84,9 @@
                 result: undefined,
                 hex: false,
                 options: ["UTF-8", "GBK", "GB2312"],
-                mode: "UTF-8"
+                mode: "UTF-8",
+                optionsFunc: ["encodeURI", "encodeURIComponent"],
+                modeFunc: "encodeURIComponent"
             }
         },
         mounted() {
@@ -101,7 +109,7 @@
                 }
             },
             _decode() {
-                if (!this.srcText) {
+                if (!this.result) {
                     this.$message("请输入待解码内容");
                     return;
                 }
@@ -112,10 +120,11 @@
                 }
             },
             _encodeUrl() {
+                let encodeFunc = this.modeFunc === 'encodeURI' ? encodeURI : encodeURIComponent
                 if (this.mode == "UTF-8") {
-                    this.result = encodeURIComponent(this.srcText).toLowerCase();
+                    this.result = encodeFunc(this.srcText).toLowerCase();
                 } else if (this.mode == "GBK") {
-                    this.result = encodeURIComponent(this.utf16StrToGbkStr(this.srcText)).toLowerCase();
+                    this.result = encodeFunc(this.utf16StrToGbkStr(this.srcText)).toLowerCase();
                 } else {
                     let s = this.srcText;
                     let ss = '';
@@ -125,27 +134,28 @@
                         let j = this.indexOfGb2312(cc);
                         if (j > -1) {
                             if (i > m) {
-                                ss = ss + encodeURIComponent(s.substr(m, i - m));
+                                ss = ss + encodeFunc(s.substr(m, i - m));
                             }
                             iconv.encode(s.substr(i, 1), "gb2312").forEach(buffer => ss = ss + ('%' + buffer.toString(16))); // this.toGB2312(j);
                             m = i + 1;
                         }
                     }
                     if (s.length > m)
-                        ss = ss + encodeURIComponent(s.substr(m, s.length - m));
+                        ss = ss + encodeFunc(s.substr(m, s.length - m));
                     this.result = ss.toLowerCase();
                 }
             },
             _decodeUrl() {
+                let decodeFunc = this.modeFunc === 'encodeURI' ? decodeURI : decodeURIComponent
                 if (this.mode == "UTF-8") {
-                    this.result = decodeURIComponent(this.srcText);
+                    this.srcText = decodeFunc(this.result);
                 } else if (this.mode == "GBK") {
-                    this.result = this.gbkStrToUtf16Str(decodeURIComponent(this.srcText));
+                    this.srcText = this.gbkStrToUtf16Str(decodeFunc(this.result));
                 } else {
-                    let s = this.gb2312ToUtf8(this.srcText);
+                    let s = this.gb2312ToUtf8(this.result);
                     console.log(s);
                     s = iconv.decode(s, "gb2312");
-                    this.result = s;
+                    this.srcText = s;
                 }
             },
             gb2312ToUtf8(s) {
@@ -258,7 +268,7 @@ h4 {
     width: 100%;
     height: 100%;
 }
-.base64 .el-textarea__inner {
+.url .el-textarea__inner {
     color: #010203;
 }
 </style>

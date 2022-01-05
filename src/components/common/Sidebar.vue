@@ -12,7 +12,7 @@
         >
             <template v-for="item in items">
                 <template v-if="!item.hide && item.subs">
-                    <el-submenu :index="item.index" :key="item.index">
+                    <el-submenu :index="item.index" :key="item.index" class="menu-item-s">
                         <template slot="title">
                             <i :class="item.icon"></i>
                             <span slot="title">{{ item.title }}</span>
@@ -39,7 +39,7 @@
                     </el-submenu>
                 </template>
                 <template v-else-if="!item.hide">
-                    <el-menu-item :index="item.index" :key="item.index">
+                    <el-menu-item :index="item.index" :key="item.index" class="menu-item-s">
                         <i :class="item.icon"></i>
                         <span slot="title">{{ item.title }}</span>
                     </el-menu-item>
@@ -119,6 +119,11 @@ export default {
                     title: 'URL编码解码'
                 },
                 {
+                    icon: 'el-icon-lx-global',
+                    index: 'native',
+                    title: 'Native 编码解码'
+                },
+                {
                     icon: 'el-icon-lx-time',
                     index: 'timestamp',
                     title: '时间戳转换'
@@ -151,7 +156,7 @@ export default {
     display: block;
     position: absolute;
     left: 0;
-    top: 50px;
+    top: 42px;
     bottom: 0;
     overflow-y: scroll;
 }
@@ -161,7 +166,17 @@ export default {
 .sidebar-el-menu:not(.el-menu--collapse) {
     width: 250px;
 }
+.el-menu--collapse{width:45px}
 .sidebar > ul {
     height: 100%;
+}
+.menu-item-s { padding-left:12px !important; }
+</style>
+<style>
+.menu-item-s .el-tooltip {
+    padding-left:12px !important;
+}
+.menu-item-s .el-submenu__title {
+    padding-left:0px !important;
 }
 </style>

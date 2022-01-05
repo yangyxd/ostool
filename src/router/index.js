@@ -66,6 +66,11 @@ export default new Router({
                     meta: { title: 'URL编码解码' }
                 },
                 {
+                    path: '/native',
+                    component: () => import(/* webpackChunkName: "native" */ '../components/page/native.vue'),
+                    meta: { title: 'Native编码解码' }
+                },
+                {
                     path: '/markdown',
                     component: () => import(/* webpackChunkName: "markdown" */ '../components/page/markdown.vue'),
                     meta: { title: 'Markdown' }

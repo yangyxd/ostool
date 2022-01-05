@@ -128,20 +128,20 @@ export default {
     position: relative;
     box-sizing: border-box;
     width: 100%;
-    height: 50px;
+    height: 42px;
     font-size: 22px;
     color: #fff;
 }
 .collapse-btn {
     float: left;
-    padding: 0 21px;
+    padding: 0 12px;
     cursor: pointer;
-    line-height: 50px;
+    line-height: 42px;
 }
 .header .logo {
     float: left;
     width: 250px;
-    line-height: 50px;
+    line-height: 42px;
 }
 .header-right {
     float: right;
@@ -149,7 +149,7 @@ export default {
 }
 .header-user-con {
     display: flex;
-    height: 50px;
+    height: 42px;
     align-items: center;
 }
 .btn-fullscreen {

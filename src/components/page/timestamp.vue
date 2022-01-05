@@ -42,7 +42,7 @@
                     style="width: 100%">
                     <el-table-column
                     prop="name"
-                    width="110">
+                    width="120">
                     <template slot-scope="scope"><span class="cname">{{scope.row.name}}</span></template>
                     </el-table-column>
                     <el-table-column
