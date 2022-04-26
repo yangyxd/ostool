@@ -10,9 +10,11 @@
         components: { },
         data() {
             console.log("debug: " + this.isDebug)
+            const href = location.origin + location.pathname.replace('/index.html', '/') + "json/json.html"
+            console.log(href);
             return {
                 text: "{}",
-                url: this.isDebug ? "/json/json.html" : "http://yangyxd.gitee.io/ostool/json/json.html",
+                url: href,
             }
         },
         created: function () {

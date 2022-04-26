@@ -9,9 +9,11 @@
         name: 'jsonFormatPage',
         components: { },
         data() {
+            const href = location.origin + location.pathname.replace('/index.html', '/') + "json/jsonformat.html"
+            console.log(href);
             return {
                 text: "{}",
-                url: "http://yangyxd.gitee.io/ostool/json/jsonformat.html"
+                url: href
             }
         },
         methods: {

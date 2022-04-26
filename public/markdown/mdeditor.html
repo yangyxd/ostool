@@ -12,6 +12,7 @@
     <link href="./static/assets/1bc053c8.base.lib.min.css" rel="stylesheet" media="screen">
     <link id="prettify-style" href="./static/editor/libs/google-code-prettify/prettify-cmd.css" type="text/css" rel="stylesheet">
     <link href="./static/assets/mdeditor/45c7d56d.layout.min.css" rel="stylesheet" media="screen">
+    <link href="./static/editor/libs/mindmap/mrdoc.css" rel="stylesheet" media="screen">
 
 
 
@@ -343,6 +344,25 @@ stop
 
 更多语法参考：[PlantUML 官网](https://plantuml.com/zh/)
 
+
+### 22. Mind 思维导图
+
+#### 思维导图（指定高度）
+```mind
+@height 500px
+# Python生态
+## 数据采集
+## 数据分析
+### 数据挖掘
+### 机器学习
+### 自然语言处理
+## Web开发
+### Django
+### Flask
+## 图形界面开发
+## 渗透测试
+```
+
 </textarea>
         </div>
     </div>
@@ -396,6 +416,7 @@ stop
                     <ul id="settings-menu" class="dropdown-menu theme-black pull-right" role="menu">
                         <li title="自定义样式"><a id="customized-style-submenu" tabindex="-1" href="#"><i class="icon-wrench"></i>自定义样式</a></li>
                         <li class="divider"></li>
+                        <li title="打印文件"><a id="download-print-html-submenu" class="paid-user-color" tabindex="-1" href="#"><i class="icon-print"></i>打印</i></a></li>
                         <li title="导出 Markdown 文件"><a id="download-markdown-submenu" tabindex="-1" href="#"><i class="icon-cloud-download"></i>导出 Markdown</a></li>
                         <li title="导出 Html 文件"><a id="download-html-submenu" tabindex="-1" href="#"><i class="icon-cloud-download"></i>导出 Html</a></li>
                         <li title="导出带样式的 Html 文件"><a id="download-template-html-submenu" class="paid-user-color" tabindex="-1" href="#"><i class="icon-cloud-download"></i>导出带样式的 Html</a></li>
@@ -603,6 +624,11 @@ stop
     <script src="./static/editor/libs/mathJax.js"></script>
     <!--mathjax source code is here: https://github.com/mathjax/MathJax.-->
     <script src="./static/MathJax/MathJax.js?config=TeX-AMS-MML_SVG"></script>
+
+    <!-- mindmap -->
+    <script src="./static/editor/libs/mindmap/d3@5.js"></script>
+    <script src="./static/editor/libs/mindmap/view.min.js"></script>
+    <script src="./static/editor/libs/mindmap/transform.min.js"></script>
 
     <script>
         Namespace('com.zybuluo.mdeditor.layout');

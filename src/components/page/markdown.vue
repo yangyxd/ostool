@@ -9,10 +9,11 @@
         name: 'jsonPage',
         components: { },
         data() {
+            const href = location.origin + location.pathname.replace('/index.html', '/') + "markdown/mdeditor.html"
+            console.log(href);
             return {
                 text: "{}",
-                url: this.isDebug ? "/markdown/mdeditor.html" : "http://yangyxd.gitee.io/ostool/markdown/mdeditor.html",
-                // url: "http://127.0.0.1:8080/markdown/mdeditor.html",
+                url: href,
             }
         },
         mounted() {

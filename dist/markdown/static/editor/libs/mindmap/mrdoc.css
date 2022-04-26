@@ -1,0 +1,93 @@
+/* Gap filler */
+.theme-black .mindmap  {
+    background-color: #101010;
+}
+
+.mindmap  {
+    background-color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.mindmap .tooltip-item::after {
+    content          : '';
+    position         : absolute;
+    width            : 360px;
+    height           : 20px;
+    bottom           : 100%;
+    left             : 50%;
+    pointer-events   : none;
+    -webkit-transform: translateX(-50%);
+    transform        : translateX(-50%);
+}
+
+.mindmap .tooltip:hover .tooltip-item::after {
+    pointer-events: auto;
+}
+
+/* 文集简介提示工具 */
+.mindmap .tooltip-content {
+    position          : absolute;
+    z-index           : 9999;
+    /* width          : 200px; */
+    left              : 78%;
+    margin            : 0 -60px 20px -150px;
+    padding           : 10px;
+    /* top            : 100%; */
+    text-align        : left;
+    box-shadow        : -5px -5px 15px rgba(48, 54, 61, 0.2);
+    background        : #2a3035;
+    opacity           : 0;
+    cursor            : default;
+    pointer-events    : none;
+    font-size         : 0.68em;
+    line-height       : 1.35;
+    display           : block;
+    color             : #fff;
+    -webkit-transform : translate3d(0, -10px, 0);
+    transform         : translate3d(0, -10px, 0);
+    -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+    transition        : opacity 0.3s, transform 0.3s;
+}
+
+.mindmap .tooltip:hover .tooltip-content {
+    pointer-events   : auto;
+    opacity          : 1;
+    -webkit-transform: translate3d(0, 0, 0) rotate3d(0, 0, 0, 0);
+    transform        : translate3d(0, 0, 0) rotate3d(0, 0, 0, 0);
+}
+
+/* 箭头 */
+.mindmap .tooltip-content::after {
+    content            : '';
+    bottom             : 100%;
+    /* 箭头在头部 */
+    left               : 50%;
+    border             : solid transparent;
+    height             : 0;
+    width              : 0;
+    position           : absolute;
+    pointer-events     : none;
+    border-color       : transparent;
+    border-bottom-color: #2a3035;
+    border-width       : 10px;
+    /*margin-left      : 10px;8*/
+}
+
+.mindmap .index-doc-link {
+    color: #999;
+}
+
+.mindmap .index-doc-link:hover {
+    color: #333;
+}
+
+.mindmap a.index-add-link {
+    color   : #999;
+    float   : right;
+    position: absolute;
+    right   : 10px;
+}
+
+.mindmap a.index-add-link:hover {
+    color: #333;
+}
