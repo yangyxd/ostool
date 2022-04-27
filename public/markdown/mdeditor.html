@@ -702,11 +702,12 @@ stop
 
     <script>
         Namespace('com.zybuluo.mdeditor');
+        var origin = location.origin + location.pathname.replace('/mdeditor.html', '/');
         com.zybuluo.mdeditor.initData = {
             markdownHelpUrl: "./static/md-help.markdown.html",
             downloadPdfUrl: "https://www.zybuluo.com/mdeditor/note/downloadPdf",
-            staticAssetsUrl: "./static/assets/",
-            staticImgUrl: "./static/img/",
+            staticAssetsUrl: `${origin}/static/assets/`,
+            staticImgUrl: `${origin}/static/img/`,
         };
         // jiawzhang NOTICE: switch textarea and ace editor
         window.lightMode = 'False' === 'True' ? true : false;

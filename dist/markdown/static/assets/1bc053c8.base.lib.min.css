@@ -7458,14 +7458,6 @@ a [class*=" icon-"] {
     position: relative
 }
 
-.icons-ul .icon-li {
-    position   : absolute;
-    left       : -2.142857142857143em;
-    width      : 2.142857142857143em;
-    text-align : center;
-    line-height: inherit
-}
-
 [class^=icon-].hide,
 [class*=" icon-"].hide {
     display: none
