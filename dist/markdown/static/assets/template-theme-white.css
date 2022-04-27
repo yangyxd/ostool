@@ -209,7 +209,7 @@ textarea {
   ol.linenums {
     margin-top: 0;
     margin-bottom: 0;
-    color: rgba(0, 0, 0, 0.65)!important;
+    color: rgba(0, 0, 0, 0.65) !important;
   }
 
   ul.todo-list-item, ol.todo-list-item {
