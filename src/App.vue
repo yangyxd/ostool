@@ -1,39 +1,60 @@
 <template>
-    <div id="app">
-        <router-view></router-view>
-    </div>
-</template>
-<script>
-import bus from './components/common/bus';
-export default {
-    data() {
-        return {
-            sysConfig: undefined
+    <el-config-provider :locale="locale">
+      <router-view />
+    </el-config-provider>
+  </template>
+
+  <script lang="ts">
+  import { defineComponent, onMounted } from 'vue'
+  import { useEventListener } from '@vueuse/core'
+  import { useStore } from 'vuex'
+  import { debounce } from 'lodash-es'
+  import { ElConfigProvider } from 'element-plus'
+  import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+
+  export default defineComponent({
+    components: {
+      ElConfigProvider
+    },
+    setup() {
+      const { commit } = useStore()
+      const locale = zhCn
+
+      const resizeFun = () => {
+        const baseWidth = 1000
+        const clientWidth = document.documentElement.clientWidth
+        if (clientWidth < baseWidth) {
+          commit('layout/updateCollapse', true)
         }
-    },
-    created() {
-        let _this = this;
-        _this.loadSysConfig();
-        window.addEventListener('message', function(e){
-            if (e.data.type == "alert")
-                _this.$message(e.data.data);
-        });
-    },
-    mounted() {
-    },
-    methods: {
-        loadSysConfig() {
-            config.sSiteTitle = "在线工具";
-            console.log(config.sServiceHost);
-            this.$const.sSiteTitle = config.sSiteTitle;
-            document.title = config.sSiteTitle;
-            bus.$emit('titlechange', config.sSiteTitle);
-        }
+      }
+
+      const debounceResize = debounce(resizeFun, 300)
+
+      onMounted(() => {
+        // 视图发生变化更新菜单折叠状态
+        useEventListener(window, 'resize', debounceResize)
+      })
+      return {
+        locale
+      }
     }
-}
-</script>
-<style>
-    @import "./assets/css/main.css";
-    @import "./assets/css/color-dark.css";     /*深色主题*/
-    /*@import "./assets/css/theme-green/color-green.css";   浅绿色主题*/
-</style>
+  })
+  </script>
+
+  <style lang="scss">
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  </style>
