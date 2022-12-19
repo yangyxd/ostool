@@ -14,8 +14,8 @@
         ></path>
       </svg>
     </el-icon>
-    <span class="title" v-if="!showPath">{{ siteTitle }}</span>
-    <el-breadcrumb v-if="showPath" style="margin-left: 16px">
+    <span class="title" v-if="!showPath && !singleHeader">{{ siteTitle }}</span>
+    <el-breadcrumb v-if="showPath && !singleHeader" style="margin-left: 16px">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item
         v-for="(item, index) in paths"
@@ -24,6 +24,7 @@
         >{{ item.name }}</el-breadcrumb-item
       >
     </el-breadcrumb>
+    <slot></slot>
   </div>
   <div class="header-right" :class="[showPath ? 'path' : '']">
     <div class="btn-fullscreen" @click="handleFullScreen">
@@ -39,7 +40,7 @@
 </template>
 
 <script lang="ts">
-import { ElMessageBox, ElBreadcrumb, ElBreadcrumbItem } from 'element-plus'
+import { ElIcon, ElBreadcrumb, ElBreadcrumbItem } from 'element-plus'
 import { computed, defineComponent, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
@@ -53,6 +54,7 @@ interface PathItem {
 export default defineComponent({
   name: 'GHeader',
   components: {
+    ElIcon,
     ElBreadcrumb,
     ElBreadcrumbItem,
   },
@@ -135,6 +137,7 @@ export default defineComponent({
       fullscreen,
       paths,
       showPath: computed(() => store.state.layout.showPath),
+      singleHeader: computed(() => store.state.layout.singleHeader),
       handleCollapseClick,
       handleFullScreen,
       updatePaths,
@@ -199,6 +202,10 @@ export default defineComponent({
   }
 }
 
+.mobile .btn-fullscreen {
+  display: none;
+}
+
 :deep(.el-dropdown) {
   color: #fff;
   cursor: pointer;
@@ -249,4 +256,19 @@ export default defineComponent({
     opacity: 0.5;
   }
 }
+</style>
+
+<style>
+.header-left .tags {
+  width: calc(100% - 42px) !important;
+  box-shadow: none !important;
+  margin-left: 8px;
+}
+.header-left .tags-close-box.close {
+  border-right: 1px solid #f0f1f2 !important;
+}
+.header-left .tags .el-tabs__header.is-top {
+  display: inline-grid !important;
+}
+
 </style>

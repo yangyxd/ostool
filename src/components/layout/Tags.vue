@@ -34,7 +34,7 @@
     <div class="tags-close-box shadow br" style="right: 42px" @click="$store.commit('layout/reloadPage')">
       <el-icon class="icon" title="刷新当前页面"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-ba633cb8=""><path fill="currentColor" d="M784.512 230.272v-50.56a32 32 0 1 1 64 0v149.056a32 32 0 0 1-32 32H667.52a32 32 0 1 1 0-64h92.992A320 320 0 1 0 524.8 833.152a320 320 0 0 0 320-320h64a384 384 0 0 1-384 384 384 384 0 0 1-384-384 384 384 0 0 1 643.712-282.88z"></path></svg></el-icon>
     </div>
-    <div class="tags-close-box">
+    <div class="tags-close-box close">
       <el-dropdown @command="handleTags">
         <el-icon class="icon"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-ba633cb8=""><path fill="currentColor" d="M831.872 340.864 512 652.672 192.128 340.864a30.592 30.592 0 0 0-42.752 0 29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728 30.592 30.592 0 0 0-42.752 0z"></path></svg></el-icon>
         <template #dropdown>
@@ -236,6 +236,7 @@ export default defineComponent({
     line-height: 40px;
     width: 40px;
     height: 40px;
+    color: $header;
     font-size: 16px;
   }
 }

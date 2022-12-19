@@ -13,7 +13,7 @@ const routes: any[] = [
   {
     path: '/',
     name: 'Layout',
-    redirect: '/home',
+    redirect: '/',
     component: () => import('@/components/layout/index.vue'),
     children: [
       {

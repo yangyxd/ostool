@@ -43,8 +43,8 @@ for (const e in menusMap) {
 console.log('routes', routes)
 
 const router = createRouter({
-  history: createWebHistory(),
-  // history: createWebHashHistory(),
+  // history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 })
 

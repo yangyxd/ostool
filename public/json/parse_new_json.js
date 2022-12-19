@@ -6208,16 +6208,16 @@ jQuery.cookie = function(b, j, m) {
                     left: 0
                 };
             return {
-                top: t.top + (parseInt(this.offsetParent.css("borderTopWidth"), 10) || 0),
-                left: t.left + (parseInt(this.offsetParent.css("borderLeftWidth"), 10) || 0)
+                top: t.top ,
+                left: t.left
             }
         },
         _getRelativeOffset: function() {
             if (this.cssPosition == "relative") {
                 var e = this.element.position();
                 return {
-                    top: e.top - (parseInt(this.helper.css("top"), 10) || 0) + this.scrollParent.scrollTop(),
-                    left: e.left - (parseInt(this.helper.css("left"), 10) || 0) + this.scrollParent.scrollLeft()
+                    top: e.top - (0) + this.scrollParent.scrollTop(),
+                    left: e.left - (0) + this.scrollParent.scrollLeft()
                 }
             }
             return {
@@ -6227,10 +6227,10 @@ jQuery.cookie = function(b, j, m) {
         },
         _cacheMargins: function() {
             this.margins = {
-                left: parseInt(this.element.css("marginLeft"), 10) || 0,
-                top: parseInt(this.element.css("marginTop"), 10) || 0,
-                right: parseInt(this.element.css("marginRight"), 10) || 0,
-                bottom: parseInt(this.element.css("marginBottom"), 10) || 0
+                left: 0,
+                top: 0,
+                right: 0,
+                bottom: 0
             }
         },
         _cacheHelperProportions: function() {

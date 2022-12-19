@@ -160,4 +160,7 @@ export default defineComponent({
 .el-menu .iconfont {
   width: 18px !important;
 }
+.mobile .el-menu--collapse {
+  width: 0px;
+}
 </style>

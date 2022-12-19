@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container :class="(isMobile ? 'mobile' : '')">
     <!-- 头部 -->
     <el-header v-if="!showPath">
       <Header :is-collapse="isCollapse" />
@@ -14,12 +14,14 @@
     <el-main id="nucarf-main" :class="[isCollapse ? 'isCollapse' : '', showPath ? 'path' : '']">
       <!-- 头部 -->
       <el-header v-if="showPath" :class="[showPath ? 'path' : '']">
-        <Header :is-collapse="isCollapse" />
+        <Header :is-collapse="isCollapse">
+          <tags v-if="singleHeader"></tags>
+        </Header>
       </el-header>
       <!-- PageTab -->
-      <tags></tags>
+      <tags v-if="!singleHeader"></tags>
       <!-- 主体部分 -->
-      <el-scrollbar max-height="calc(100vh - 82px)" view-style="padding: 10px;">
+      <el-scrollbar :max-height="'calc(100vh - '+ (singleHeader ? '40px' : '82px') + ')'" view-style="padding: 10px;">
         <router-view v-slot="{ Component, route }">
           <keep-alive :include="tagsName">
             <component :is="Component" :key="route.fullPath" v-if="isRefresh===false" />
@@ -52,6 +54,8 @@ export default defineComponent({
     const store = useStore()
     return {
       showPath: computed(() => store.state.layout.showPath),
+      singleHeader: computed(() => store.state.layout.singleHeader),
+      isMobile: computed(() => store.state.layout.isMobile),
       isCollapse: computed(() => store.state.layout.isCollapse),
       isRefresh: computed(() => store.state.layout.isRefresh),
       tagsName: computed(() => store.state.layout.tagsName),
@@ -133,5 +137,10 @@ export default defineComponent({
   // :deep(.el-scrollbar__view:not(.el-time-spinner__list)) {
   //   padding: 10px;
   // }
+}
+
+.mobile .isCollapse {
+  margin-left: 0px;
+  width: 0px;
 }
 </style>

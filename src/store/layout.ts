@@ -5,6 +5,8 @@ interface LayoutState {
   isCollapse: boolean
   isRefresh: boolean
   showPath: boolean
+  isMobile: boolean
+  singleHeader: boolean
   tagsList: any[]
   tagsName: string[]
 }
@@ -16,6 +18,10 @@ const state: LayoutState = {
   isRefresh: false,
   // 是否显示菜单路径
   showPath: true,
+  // 是否单行头部
+  singleHeader: true,
+  // 是否使用移动版式
+  isMobile: window && window.innerHeight > 0 && (window.innerWidth / window.innerHeight) < 0.65,
   // 打开的页面
   tagsList: [] as string[],
   // 打开页面的路径列表
