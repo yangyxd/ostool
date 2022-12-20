@@ -18,7 +18,6 @@
 
 <script lang="ts">
 import dayjs from 'dayjs'
-import { random } from 'lodash-es'
 import { ElCard } from 'element-plus'
 import { ref, computed } from 'vue'
 import { Options } from 'vue-class-component'

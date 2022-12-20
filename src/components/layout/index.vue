@@ -21,7 +21,7 @@
       <!-- PageTab -->
       <tags v-if="!singleHeader"></tags>
       <!-- 主体部分 -->
-      <el-scrollbar :max-height="'calc(100vh - '+ (singleHeader ? '40px' : '82px') + ')'" view-style="padding: 10px;">
+      <el-scrollbar :max-height="'calc(100vh - '+ (singleHeader ? '40px' : '82px') + ')'" view-class="ui-body">
         <router-view v-slot="{ Component, route }">
           <keep-alive :include="tagsName">
             <component :is="Component" :key="route.fullPath" v-if="isRefresh===false" />
@@ -134,9 +134,9 @@ export default defineComponent({
     margin-top: 0px;
   }
 
-  // :deep(.el-scrollbar__view:not(.el-time-spinner__list)) {
-  //   padding: 10px;
-  // }
+  :deep(.el-scrollbar__view:not(.full)) {
+    padding: 10px;
+  }
 }
 
 .mobile .el-main {

@@ -38,6 +38,13 @@ const menus: Record<string, MenuItem> = {
       },
     }
   },
+  markdown: {
+    name: 'Markdown 编辑器',
+    icon: 'icon-offline_bolt',
+    path: '/markdown',
+    data: { icon: 'Markdown', txt: '#fff', bg: '#444444', desc: '多功能Markdown在线编辑器' },
+    component: () => import('@/views/pages/markdown.vue'),
+  },
   regexp: {
     name: '正则表达式测试',
     icon: 'icon-offline_bolt',
