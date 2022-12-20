@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "@vueuse/core": "~7.5.3",
-    "codemirror": "~5.65.2",
+    "@codemirror/lang-html": "~6.4.0",
+    "@codemirror/lang-xml": "~6.0.1",
+    "@codemirror/lang-javascript": "~6.1.2",
+    "@codemirror/theme-one-dark": "~6.1.0",
     "axios": "~0.26.1",
     "core-js": "~3.8.3",
     "dayjs": "~1.11.0",
@@ -24,7 +27,7 @@
     "vue-worker": "~1.2.1",
     "vuex": "~4.0.2",
     "vue-clipboard3": "~2.0.0",
-    "vue-codemirror": "~4.0.6"
+    "vue-codemirror": "~6.1.1"
   },
   "devDependencies": {
     "@babel/core": "~7.20.5",

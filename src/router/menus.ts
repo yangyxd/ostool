@@ -54,6 +54,13 @@ const menus: Record<string, MenuItem> = {
     data: { icon: 'RegExp', txt: '#fff', bg: '#ff6000', desc: '在线正则表达式测试工具' },
     component: () => import('@/views/pages/regexp.vue'),
   },
+  xpath: {
+    name: 'XPath/CSS 测试',
+    icon: 'icon-offline_bolt',
+    path: '/xpath',
+    data: { icon: 'XPath/CSS', txt: '#fff', bg: '#c06b26', desc: 'XPath和CSS表达式在线匹配测试工具' },
+    component: () => import('@/views/pages/xpath.vue'),
+  },
   base64: {
     name: 'Base64编码转换',
     icon: 'icon-bolt',

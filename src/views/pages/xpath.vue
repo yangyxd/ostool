@@ -1,70 +1,78 @@
 <template>
-    <div class="container xpath">
-        <el-row>
-            <el-col>
-                <div class="e src">
-                    <codemirror v-model="textarea" :options="cmOptions"  class="el-textarea__inner" />
-                </div>
-                <el-row class="mt8">
-                    <div :style="{width: ('calc(100% - ' + (mobile ? 2 : 388) + 'px)'), float: 'left', marginBottom: (mobile ? '4px' : '0'), lineHeight: '34px'}">
-                        <el-input placeholder="输入XPath或CSS选择器表达式" clearable v-model="regKey" @keyup.enter.native="execAutoMatch">
-                            <template slot="append"><el-checkbox v-model="jsonStr">JSON</el-checkbox></template>
-                        </el-input>
-                    </div>
-                    <div :style="{textAlign: 'right', float: mobile ? 'left' : 'right', marginBottom: (mobile ? '0' : '8px'), lineHeight: '36px', textAlign: 'center'}">
-                        <el-button type="info" @click="execCssMatch()" title="CSS表达式测试匹配"><b>CSS</b> 匹配</el-button>
-                        <el-button type="primary" @click="execMatch()" title="XPath表达式测试匹配"><b>XPath</b> 匹配</el-button>
-                        <el-button type="success" @click="execAutoMatch()" title="自动匹配">自动</el-button>
-                        <el-button @click="textarea=demo; regKey=demoKey;">XPath用例</el-button>
-                        <el-button @click="textarea=''; regKey='';" icon="el-icon-delete" circle title="清空"></el-button>
-                    </div>
-                </el-row>
-                <div class="desc mt8"><b>匹配结果：</b>({{matchNum}}个)
-                    <span class="ml16">参考：</span><a href="https://www.w3school.com.cn/cssref/css_selectors.asp" target="_blank">CSS 选择器参考手册</a>
-                </div>
-                <div class="mt8 e ret">
-                    <codemirror v-model="result" :options="cmResultOptions"  class="el-textarea__inner" placeholder="显示正则匹配结果"/>
-                </div>
-            </el-col>
+  <div class="container xpath">
+    <el-row>
+      <el-col>
+        <div class="e src">
+          <codemirror v-model="textarea" placeholder="请输入代码" :style="{ padding: '0px !important', height: 'calc(50vh - 42px)' }" :indent-with-tab="true" :tab-size="4" :extensions="cmExt" />
+        </div>
+        <el-row class="mt8">
+          <div
+            :style="{
+              width: 'calc(100% - ' + (mobile ? 2 : 410) + 'px)',
+              minWidth: '320px',
+              float: 'left',
+              marginBottom: mobile ? '4px' : '0',
+              marginRight: mobile ? '0' : '8px',
+              lineHeight: '34px'
+            }"
+          >
+            <el-input placeholder="输入XPath或CSS选择器表达式" clearable v-model="regKey" @keyup.enter="execAutoMatch">
+              <template #append><el-checkbox v-model="jsonStr">JSON</el-checkbox></template>
+            </el-input>
+          </div>
+          <div
+            :style="{
+              textAlign: 'right',
+              float: mobile ? 'left' : 'right',
+              margin: 0,
+              textAlign: 'center',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }"
+          >
+            <el-button type="info" @click="execCssMatch()" title="CSS表达式测试匹配"><b>CSS</b> 匹配</el-button>
+            <el-button type="primary" @click="execMatch()" title="XPath表达式测试匹配"><b>XPath</b> 匹配</el-button>
+            <el-button type="success" @click="execAutoMatch()" title="自动匹配">自动</el-button>
+            <el-button @click=";(textarea = demo), (regKey = demoKey)">XPath用例</el-button>
+            <el-button @click=";(textarea = ''), (regKey = '')" circle title="清空">
+                <el-icon><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-029747aa=""><path fill="currentColor" d="M160 256H96a32 32 0 0 1 0-64h256V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64h-64v672a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32V256zm448-64v-64H416v64h192zM224 896h576V256H224v640zm192-128a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32zm192 0a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32z"></path></svg></el-icon>
+            </el-button>
+          </div>
         </el-row>
-    </div>
+        <div class="desc mt8">
+          <b>匹配结果：</b>({{ matchNum }}个) <span class="ml16">参考：</span
+          ><a href="https://www.w3school.com.cn/cssref/css_selectors.asp" target="_blank">CSS 选择器参考手册</a>
+        </div>
+        <div class="mt8 e ret">
+          <codemirror v-model="result" placeholder="显示正则匹配结果" :style="{ padding: '0px !important', height: 'calc(50vh - 100px)' }" :indent-with-tab="true" :tab-size="4" :extensions="cmResultExt" disabled />
+        </div>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
-    import { codemirror } from 'vue-codemirror'
-    import 'codemirror/lib/codemirror.css'
-    import 'codemirror/theme/idea.css'
+import { Codemirror } from 'vue-codemirror'
+import { xml } from '@codemirror/lang-xml'
+import { javascript } from '@codemirror/lang-javascript'
+import { oneDark } from '@codemirror/theme-one-dark'
 
-    import 'codemirror/mode/javascript/javascript.js'
-    import 'codemirror/mode/xml/xml.js'
+// doc: https://www.npmjs.com/package/vue-codemirror
 
-    export default {
-        name: 'xpathPage',
-        components: { codemirror },
-        data() {
-            return {
-                cmOptions: {
-                    tabSize: 4,
-                    mode: 'text/html',
-                    theme: 'idea',
-                    lineNumbers: true,
-                    line: true,
-                },
-                mobile: this.isMobile(),
-                cmResultOptions: {
-                    tabSize: 4,
-                    mode: 'text/html',
-                    theme: 'idea',
-                    lineNumbers: true,
-                    line: true,
-                    readOnly: true,
-                },
-                regKey: "",
-                textarea: "",
-                result: "",
-                matchNum: 0,
-                jsonStr: false,
-                demo: `<webinfo>
+export default {
+  name: 'XpathPage',
+  components: { Codemirror },
+  data() {
+    return {
+      cmExt: [javascript( {jsx: true} ), oneDark],
+      cmResultExt: [xml(), oneDark],
+      mobile: this.isMobile(),
+      regKey: '',
+      textarea: '',
+      result: '',
+      matchNum: 0,
+      jsonStr: false,
+      demo: `<webinfo>
 	<site dig="1">
 		<domain><![CDATA[http://fly.layui.com/]]></domain>
 		<title class="s-title">LayUI前端社区</title>
@@ -75,201 +83,113 @@
 	</site>
 </webinfo>
 `,
-                demoKey: `/webinfo//site[@dig=1]`
-            }
-        },
-        computed: {
-            editor() {
-                return this.$refs.myQuillEditor.quill;
-            },
-        },
-        mounted() {
-        },
-        methods: {
-            execAutoMatch() {
-                if (this.regKey.trim().startsWith('/')) {
-                    this.execMatch()
-                } else {
-                    this.execCssMatch()
-                }
-            },
-            execMatch() {
-                try {
-                    if (!this.isValidFields())
-                        return false;
-                    this.result = undefined;
-                    this.matchNum = 0;
-                    let xmldom = undefined;
-                    let parser = new DOMParser();
-                    xmldom = parser.parseFromString(this.textarea, "text/xml");
-                    let result = xmldom.evaluate(this.regKey, xmldom.documentElement, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
-                    if (result != null) {
-                        let node = result.iterateNext();
-                        let str = [];
-                        while (node) {
-                            this.matchNum++
-                            str.push(node.innerHTML)
-                            node = result.iterateNext();
-                        }
-                        this.result = this.jsonStr ? JSON.stringify(str) : str.join("\n");
-                    } else {
-                        this.result = "(没有匹配)"
-                    }
-                    return true;
-                } catch (e) {
-                    this.$message(e.message);
-                    this.result = "错误：\r\n" + e.message;
-                    return false;
-                }
-            },
-            execCssMatch() {
-                try {
-                    if (!this.isValidFields())
-                        return false;
-                    this.result = undefined;
-                    this.matchNum = 0;
-                    let parser = new DOMParser();
-                    let dom = parser.parseFromString(this.textarea, "text/xml");
-                    let result = dom.querySelectorAll(this.regKey)
-                    this.matchNum = result.length;
-                    if (result != null && result.length > 0) {
-                        let str = [];
-                        result.forEach((node) => {
-                            str.push(node.innerHTML)
-                        })
-                        this.result = this.jsonStr ? JSON.stringify(str) : str.join("\n");
-                    } else {
-                        this.result = "(没有匹配)"
-                    }
-                    return true;
-                } catch (e) {
-                    this.$message(e.message);
-                    this.result = "错误：\r\n" + e.message;
-                    return false;
-                }
-            },
-            isValidFields() {
-                if (!this.textarea || this.textarea.length < 1) {
-                    this.$message("请输入待匹配文本");
-                    return false;
-                }
-                if (!this.regKey || this.regKey.length < 1) {
-                    this.$message("请输入XPath表达式或CSS选择器表达式");
-                    return false;
-                }
-                return true;
-            },
-            onSwiper(swiper) {
-                console.log(swiper)
-            },
-            onSlideChange() {
-                console.log('slide change')
-            },
+      demoKey: `/webinfo//site[@dig=1]`
+    }
+  },
+  computed: {
+    editor() {
+      return this.$refs.myQuillEditor.quill
+    }
+  },
+  mounted() {},
+  methods: {
+    execAutoMatch() {
+      if (this.regKey.trim().startsWith('/')) {
+        this.execMatch()
+      } else {
+        this.execCssMatch()
+      }
+    },
+    execMatch() {
+      try {
+        if (!this.isValidFields()) return false
+        this.result = undefined
+        this.matchNum = 0
+        let xmldom = undefined
+        let parser = new DOMParser()
+        xmldom = parser.parseFromString(this.textarea, 'text/xml')
+        let result = xmldom.evaluate(this.regKey, xmldom.documentElement, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null)
+        if (result != null) {
+          let node = result.iterateNext()
+          let str = []
+          while (node) {
+            this.matchNum++
+            str.push(node.innerHTML)
+            node = result.iterateNext()
+          }
+          this.result = this.jsonStr ? JSON.stringify(str) : str.join('\n')
+        } else {
+          this.result = '(没有匹配)'
         }
-    };
+        return true
+      } catch (e) {
+        this.$message(e.message)
+        this.result = '错误：\r\n' + e.message
+        return false
+      }
+    },
+    execCssMatch() {
+      try {
+        if (!this.isValidFields()) return false
+        this.result = undefined
+        this.matchNum = 0
+        let parser = new DOMParser()
+        let dom = parser.parseFromString(this.textarea, 'text/xml')
+        let result = dom.querySelectorAll(this.regKey)
+        this.matchNum = result.length
+        if (result != null && result.length > 0) {
+          let str = []
+          result.forEach((node) => {
+            str.push(node.innerHTML)
+          })
+          this.result = this.jsonStr ? JSON.stringify(str) : str.join('\n')
+        } else {
+          this.result = '(没有匹配)'
+        }
+        return true
+      } catch (e) {
+        this.$message(e.message)
+        this.result = '错误：\r\n' + e.message
+        return false
+      }
+    },
+    isValidFields() {
+      if (!this.textarea || this.textarea.length < 1) {
+        this.$message('请输入待匹配文本')
+        return false
+      }
+      if (!this.regKey || this.regKey.length < 1) {
+        this.$message('请输入XPath表达式或CSS选择器表达式')
+        return false
+      }
+      return true
+    },
+    onSwiper(swiper) {
+      console.log(swiper)
+    },
+    onSlideChange() {
+      console.log('slide change')
+    }
+  }
+}
 </script>
 
 <style scoped>
-.icon span {
-    padding: 12px;
-    width: auto;
-    border: 1px solid #d9d9d9;
-    border-radius: 5px;
-    background-color: #999;
-    font-size: 36px;
-    font-weight: bold;
-}
-.icon {
-    padding: 16px;
-    margin-bottom: 16px;
-    color: #fff;
-}
-.title {
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 16px;
-}
-.subtitle {
-    font-weight: bold;
-    font-size: 14px;
-    color: #111
-}
-.desc {
-    font-size: 15px;
-    margin-bottom: 8px;
-    margin-left: 8px;
-    color: #888;
-}
-h3 {
-    display: block;
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
 .container {
-    min-height: calc(100vh - 70px);
-    padding: 10px!important;
-    overflow: hidden;
+  min-height: calc(100vh - 70px);
+  padding: 0px !important;
+  overflow: hidden;
 }
 .mobile .container {
-    padding: 2px!important;
-}
-.pb8 {
-    padding-bottom: 20px;
+  padding: 0px !important;
 }
 .mt8 {
-    margin-top: 8px;
+  margin-top: 8px;
 }
-.mt16 {
-    margin-top: 16px;
+.ml16 {
+  margin-left: 16px;
 }
-.ml16 { margin-left: 16px; }
-.titem {
-    cursor: pointer;
-    color: #0058a8;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    font-size: 16px;
-}
-.titem span:hover{
-    color: #409eff;
-}
-.rightpl {
-    margin-top: 16px;
-    padding: 16px;
-    background: #f1f2f3;
-}
-.rightpl p {
-    margin-top: 8px;
-    margin-bottom: 8px;
-    font-size: 15px;
-    text-indent:30px;
-    color: #111;
-}
-.el-button+.el-button {
-    margin-left: 3px;
-}
-</style>
-
-<style>
-.CodeMirror {
-    min-height: calc(50vh - 100px);
-    font-size: 13px;
-}
-.CodeMirror-scroll {
-    min-height: calc(50vh - 100px);
-}
-.e .el-textarea__inner {
-    padding: 0px!important;
-}
-</style>
-
-<style>
-.xpath .el-input__inner {
-    font-size: 15px;
-    font-family: 'Courier New', Courier, monospace;
-    color: #010203;
-}
-.xpath .el-textarea__inner {
-    color: #010203;
+.el-button + .el-button {
+  margin-left: 3px;
 }
 </style>
