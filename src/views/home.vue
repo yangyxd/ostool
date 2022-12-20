@@ -46,9 +46,11 @@ export default class HomePage extends BaseVue {
   items: Array<FuncItem> = []
 
   gotoTool(o: FuncItem) {
-    this.$router.push({
-      path: o.path + (o.multiple == undefined || o.multiple == true ? '?' + new Date().getTime() : '')
-    })
+    let to = {
+      path: o.path,
+      hash: o.multiple == undefined || o.multiple == true ? '#' + new Date().getTime().toString() : ''
+    }
+    this.$router.push(to)
   }
 
   created() {
@@ -57,7 +59,7 @@ export default class HomePage extends BaseVue {
       const v = menusMap[o]
       if (!v.data) continue
       const data = v.data as FuncItem
-      this.items.push({ name: v.name, icon: data.icon, txt: data.txt, bg: data.bg, desc: data.desc, path: v.path || '' })
+      this.items.push({ name: v.name, icon: data.icon, txt: data.txt, bg: data.bg, desc: data.desc, path: v.path || '', multiple: v.multiple })
     }
   }
 }

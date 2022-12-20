@@ -143,7 +143,7 @@ export default defineComponent({
 
     const activeTag = (index: number) => {
       const item = tagsList.value[index]
-      router.push({ path: item.path, params: item.params })
+      router.push({ path: item.path, params: item.params, hash: item.hash })
     }
 
     const handleTags = (command: string) => {
@@ -172,6 +172,7 @@ export default defineComponent({
           icon: route.meta.icon,
           path: path,
           params: route.params,
+          hash: route.hash,
           name: route.matched[1].components.default.name ?? '404',
         })
       }
