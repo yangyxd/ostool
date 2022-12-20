@@ -6717,7 +6717,7 @@ $(function() {
               , B = w - v - k
               , A = j - q - b;
             h.css("top", q).css("width", "");
-            l.outerWidth(D - 8);
+            l.outerWidth(D);
             if (B === 0) {
                 if (!y) {
                     p.hide();
@@ -6728,7 +6728,7 @@ $(function() {
                     p.show();
                     y = false
                 }
-                p.outerWidth(B - 8)
+                p.outerWidth(B)
             }
             var z = p.hasClass("R") || p.hasClass("S") ? 1 : 2
               , C = Math.floor(a.outerWidth() / z);
@@ -6832,11 +6832,11 @@ $(function() {
             q = H;
             b = B;
             if (I) {
-                h.width(w - 42);
+                h.width(w - 2);
                 var C = p.hasClass("R") || p.hasClass("S") ? 1 : 2
                   , y = Math.floor(a.innerWidth() / C);
                 o.not(":eq(1)").outerWidth(y - 1);
-                l.outerWidth(w - 40)
+                l.outerWidth(w)
             }
             if (D || z || E) {
                 h.height(j - q - b + 40);

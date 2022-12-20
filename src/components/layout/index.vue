@@ -139,6 +139,10 @@ export default defineComponent({
   // }
 }
 
+.mobile .el-main {
+  margin-left: 0px;
+}
+
 .mobile .isCollapse {
   margin-left: 0px;
   width: 0px;
