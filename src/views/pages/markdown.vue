@@ -25,7 +25,7 @@ export default {
 
 <style scoped>
 .container {
-  height: calc(100vh - 48px) !important;
+  height: calc(100vh - 46px) !important;
   padding: 0px !important;
 }
 .mobile .container {
@@ -33,7 +33,7 @@ export default {
 }
 
 .full {
-   margin: -8px;
+   margin: -9px -10px -10px -10px;
 }
 </style>
 
