@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import base64 from './utils/base64'
 import './assets/styles/index.scss'
 import './assets/styles/element-plus.scss'
 import './assets/styles/element-theme.scss'
@@ -55,6 +56,17 @@ router.beforeEach((to, from, next) => {
 //   }
 // }
 
+app.config.globalProperties.isMobile = () => {
+  return store.state.layout.isMobile
+  // return !!navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+}
+
+// 调试标志，正式打包时需要设置为 false
+app.config.globalProperties.isDebug = false
+
+console.log('isMobile: ' + app.config.globalProperties.isMobile())
+
 app.use(store).use(router)
   // .use(useVxeTable)
+  .use(base64)
   .mount('#app')

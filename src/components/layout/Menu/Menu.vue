@@ -85,6 +85,10 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import '@/assets/styles/var.scss';
 
+.mobile .logo {
+  display: none;
+}
+
 .logo {
   display: flex;
   background-color: $header;

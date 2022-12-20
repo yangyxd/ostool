@@ -36,6 +36,7 @@
                     <a class="button" href="javascript:restoreJson();">去除转义</a>
                     <a class="button" href="javascript:unicode2ch();">Unicode转中文</a>
                     <a class="button" href="javascript:ch2unicode();">中文转Unicode</a>
+                    <a class="button" href="javascript:json2get();">转GET参数</a>
                 </h1></b>
                 <div class="c">
                 <div class="n b"><span class="l">选项</span><span class="m">▼</span>
@@ -137,6 +138,31 @@
                 else
                     n += o
             }
+            $("#eT").val(n)
+        }
+    }
+
+    function parseParam(e, t) {
+        var n = "";
+        if ("string" == typeof e || "number" == typeof e || "boolean" == typeof e || null === e || void 0 === e)
+            n += "&" + t + "=" + e;
+        else if (e instanceof Array)
+            $.each(e, function(i, o) {
+                var r = null == t ? i : t + (e instanceof Array ? "[" + i + "]" : "." + i);
+                n += "&" + parseParam(o, r)
+            });
+        else if (e instanceof Object)
+            for (var i in e) {
+                var o = null == t ? i : t + (e instanceof Array ? "[" + i + "]" : "." + i);
+                n += "&" + parseParam(e[i], o)
+            }
+        return n.substr(1)
+    }
+
+    function json2get() {
+        var e = $("#eT").val();
+        if (e) {
+            let n = parseParam(JSON.parse(e))
             $("#eT").val(n)
         }
     }

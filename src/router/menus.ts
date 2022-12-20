@@ -36,13 +36,6 @@ const menus: Record<string, MenuItem> = {
         data: {  icon: 'Json', txt: '#ff0', bg: '#009688', desc: 'JSON 在线解析工具' },
         component: () => import('@/views/pages/json/json.vue'),
       },
-      jsonformat: {
-        name: 'JSON格式化校验',
-        icon: 'icon-print',
-        path: '/json-tools/jsonformat',
-        data: {  icon: 'Json', txt: '#fff', bg: '#3280fc', desc: 'JSON 格式化校验工具' },
-        component: () => import('@/views/pages/json/jsonFormat.vue'),
-      },
     }
   },
   regexp: {
