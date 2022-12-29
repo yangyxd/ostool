@@ -89,6 +89,27 @@ const menus: Record<string, MenuItem> = {
     data: { icon: 'JavaScript', txt: '#f1f1f1', bg: '#4d6d09', desc: 'JavaScript 在线运行工具' },
     component: () => import('@/views/pages/jsRun.vue'),
   },
+  url: {
+    name: 'URL编码解码',
+    icon: 'icon-bolt',
+    path: '/url',
+    data: { icon: 'URL', txt: '#3280fc', bg: '#dddddd', desc: 'URL编码/解码' },
+    component: () => import('@/views/pages/url.vue'),
+  },
+  native: {
+    name: 'Native编码解码',
+    icon: 'icon-bolt',
+    path: '/native',
+    data: { icon: 'Native', txt: '#006600', bg: '#66ffff', desc: 'Native编码/解码' },
+    component: () => import('@/views/pages/native.vue'),
+  },
+  timestamp: {
+    name: '时间戳',
+    icon: 'icon-bolt',
+    path: '/timestamp',
+    data: { icon: 'Time', txt: '#fff', bg: '#009a61', desc: '在线时间戳转换' },
+    component: () => import('@/views/pages/timestamp.vue'),
+  },
 }
 
 // {name: "JSON 格式化校验", icon: "Json", txt: "#fff", bg: "#3280fc", desc: "JSON 格式化校验工具", path: "/jsonformat", multiple: false},
