@@ -68,7 +68,41 @@ const menus: Record<string, MenuItem> = {
     data: { icon: 'Base64', txt: '#fff', bg: '#08998c', desc: '将任意字节数据编码成ASCII字符串' },
     component: () => import('@/views/pages/base64.vue'),
   },
+  md5: {
+    name: 'MD5加密',
+    icon: 'icon-bolt',
+    path: '/md5',
+    data: { icon: 'MD5', txt: '#135201', bg: '#a9ffe0', desc: 'MD5加密工具' },
+    component: () => import('@/views/pages/md5.vue'),
+  },
+  js: {
+    name: 'JS/Html压缩格式化',
+    icon: 'icon-bolt',
+    path: '/js',
+    data: { icon: ' - JS - ', txt: '#4d6d09', bg: '#f1f1f1', desc: 'JS/Html压缩格式化' },
+    component: () => import('@/views/pages/js.vue'),
+  },
+  jsrun: {
+    name: 'JavaScript在线运行',
+    icon: 'icon-bolt',
+    path: '/jsrun',
+    data: { icon: 'JavaScript', txt: '#f1f1f1', bg: '#4d6d09', desc: 'JavaScript 在线运行工具' },
+    component: () => import('@/views/pages/jsRun.vue'),
+  },
 }
+
+// {name: "JSON 格式化校验", icon: "Json", txt: "#fff", bg: "#3280fc", desc: "JSON 格式化校验工具", path: "/jsonformat", multiple: false},
+// {name: "JSON 在线解析", icon: "Json", txt: "#ff0", bg: "#009688", desc: "JSON 在线解析工具", path: "/json", multiple: false},
+// {name: "Markdown 在线编辑", icon: "Markdown", txt: "#fff", bg: "#444444", desc: "全网最强Markdown在线编辑器", path: "/markdown"},
+// {name: "正则表达式测试", icon: "RegExp", txt: "#fff", bg: "#ff6000", desc: "在线正则表达式测试工具", path: "/regexp"},
+// {name: "XPath/CSS 测试", icon: "XPath/CSS", txt: "#fff", bg: "#c06b26", desc: "XPath和CSS表达式在线匹配测试工具", path: "/xpath"},
+// {name: "Base64 编码转换", icon: "Base64", txt: "#fff", bg: "#08998c", desc: "将任意字节数据编码成ASCII字符串", path: "/base64"},
+// {name: "MD5 加密", icon: "MD5", txt: "#135201", bg: "#a9ffe0", desc: "MD5加密工具", path: "/md5"},
+// {name: "JS/Html 压缩格式化", icon: " - JS - ", txt: "#4d6d09", bg: "#f1f1f1", desc: "JS/Html压缩格式化", path: "/js"},
+// {name: "JavaScript 在线运行", icon: "JavaScript", txt: "#f1f1f1", bg: "#4d6d09", desc: "JavaScript 在线运行工具", path: "/jsrun"},
+// {name: "URL 编码解码", icon: "URL", txt: "#3280fc", bg: "#dddddd", desc: "URL编码/解码", path: "/url"},
+// {name: "Native 编码解码", icon: "Native", txt: "#006600", bg: "#66ffff", desc: "Native编码/解码", path: "/native"},
+// {name: "时间戳", icon: "Time", txt: "#fff", bg: "#009a61", desc: "在线时间戳转换", path: "/timestamp"},
 
 /** 将 menus 配置装入 map 中, 子菜单路径以 "/" 分隔 */
 export const menusMap: Record<string, MenuItem> = {}

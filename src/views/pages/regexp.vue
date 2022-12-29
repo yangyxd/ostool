@@ -183,20 +183,6 @@ export default {
 </script>
 
 <style scoped>
-.icon span {
-  padding: 12px;
-  width: auto;
-  border: 1px solid #d9d9d9;
-  border-radius: 5px;
-  background-color: #999;
-  font-size: 36px;
-  font-weight: bold;
-}
-.icon {
-  padding: 16px;
-  margin-bottom: 16px;
-  color: #fff;
-}
 .title {
   font-weight: bold;
   font-size: 20px;

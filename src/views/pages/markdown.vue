@@ -33,7 +33,7 @@ export default {
 }
 
 .full {
-   margin: -9px -10px -10px -10px;
+   margin: -9px -10px -5px -10px;
 }
 </style>
 

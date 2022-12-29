@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import base64 from './utils/base64'
+import md5 from 'js-md5'
 import './assets/styles/index.scss'
 import './assets/styles/element-plus.scss'
 import './assets/styles/element-theme.scss'
@@ -65,6 +66,8 @@ app.config.globalProperties.isMobile = () => {
 app.config.globalProperties.isDebug = false
 
 console.log('isMobile: ' + app.config.globalProperties.isMobile())
+
+app.config.globalProperties.$md5 = md5
 
 app.use(store).use(router)
   // .use(useVxeTable)
