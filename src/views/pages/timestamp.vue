@@ -6,9 +6,10 @@
           <span class="tt">现在：</span>
           <a class="ml8 tw1" title="点击复制" href="javascript:;" @click="setValue()">{{ now }}</a>
           <span>控制：</span>
-          <el-button :type="stopUpdateNow ? 'success' : 'danger'" @click="switchUpdateNow()"
-            ><i class="el-icon-lx-time"></i> {{ stopUpdateNow ? '开始' : '停止' }}</el-button
-          >
+          <el-button :type="stopUpdateNow ? 'success' : 'danger'" @click="switchUpdateNow()">
+            <el-icon><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-029747aa=""><path fill="currentColor" d="M512 896a320 320 0 1 0 0-640 320 320 0 0 0 0 640zm0 64a384 384 0 1 1 0-768 384 384 0 0 1 0 768z"></path><path fill="currentColor" d="M512 320a32 32 0 0 1 32 32l-.512 224a32 32 0 1 1-64 0L480 352a32 32 0 0 1 32-32z"></path><path fill="currentColor" d="M448 576a64 64 0 1 0 128 0 64 64 0 1 0-128 0zm96-448v128h-64V128h-96a32 32 0 0 1 0-64h256a32 32 0 1 1 0 64h-96z"></path></svg></el-icon>
+             {{ stopUpdateNow ? '开始' : '停止' }}
+          </el-button>
         </div>
         <div class="desc mt8">
           <span class="tt">时间戳：</span>
@@ -37,10 +38,12 @@
         <div class="title mt16">获取当前时间戳</div>
         <el-table :data="tableData" border stripe :show-header="false" style="width: 100%">
           <el-table-column prop="name" width="120">
-            <template #scope><span class="cname">{{ scope.row.name }}</span></template>
+            <template #default="scope"><span class="cname">{{ scope.row.name }}</span></template>
           </el-table-column>
           <el-table-column prop="code">
-            <template #scope><el-input type="textarea" :value="scope.row.code" maxlength="10" autosize></el-input></template>
+            <template #default="scope">
+              <el-input type="textarea" v-model="scope.row.code" class="tb-input" readonly :rows="scope.row.code.split('\n').length"></el-input>
+            </template>
           </el-table-column>
         </el-table>
       </el-col>
@@ -147,11 +150,6 @@ export default {
   font-size: 20px;
   margin-bottom: 16px;
 }
-.subtitle {
-  font-weight: bold;
-  font-size: 14px;
-  color: #111;
-}
 .desc {
   font-size: 15px;
   margin-bottom: 8px;
@@ -168,14 +166,9 @@ export default {
   width: 75px;
   display: inline-block;
 }
-h3 {
-  display: block;
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
 .container {
   min-height: calc(100vh - 70px);
-  padding: 10px !important;
+  padding: 0px !important;
   overflow: hidden;
 }
 .pb8 {
@@ -212,10 +205,8 @@ h3 {
 </style>
 
 <style>
-/** iframe样式 */
-.iframeContain {
-  width: 100%;
-  height: 100%;
+.timestamp .el-scrollbar__view {
+  padding: 0 !important;
 }
 .timestamp .el-input__inner {
   font-size: 15px;
@@ -226,5 +217,8 @@ h3 {
 }
 .timestamp .el-textarea__inner {
   color: #010203;
+}
+.timestamp .tb-input .el-textarea__inner {
+  font-family: 'Courier New', Courier, monospace;
 }
 </style>
