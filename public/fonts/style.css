@@ -1,499 +1,657 @@
 @font-face {
   font-family: 'iconfont';
-  src:
+  src        :
     url('iconfont.ttf?msxp2w') format('truetype'),
     url('iconfont.woff?msxp2w') format('woff');
-  font-weight: normal;
-  font-style: normal;
+  font-weight : normal;
+  font-style  : normal;
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'iconfont' !important;
-  speak: never;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
+  font-family   : 'iconfont' !important;
+  speak         : never;
+  font-style    : normal;
+  font-weight   : normal;
+  font-variant  : normal;
   text-transform: none;
-  line-height: 1;
+  line-height   : 1;
 
   /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing : antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .icon-aperture:before {
   content: "\e908";
 }
+
 .icon-award:before {
   content: "\e91e";
 }
+
 .icon-camera:before {
   content: "\e921";
 }
+
 .icon-check:before {
   content: "\e926";
 }
+
 .icon-clipboard:before {
   content: "\e92a";
 }
+
 .icon-cloud1:before {
   content: "\e936";
 }
+
 .icon-coffee:before {
   content: "\e93d";
 }
+
 .icon-database:before {
   content: "\e93e";
 }
+
 .icon-download:before {
   content: "\e941";
 }
+
 .icon-download-cloud:before {
   content: "\e947";
 }
+
 .icon-edit:before {
   content: "\e948";
 }
+
 .icon-eye:before {
   content: "\e950";
 }
+
 .icon-eye-off:before {
   content: "\e958";
 }
+
 .icon-file:before {
   content: "\e959";
 }
+
 .icon-file-minus:before {
   content: "\e95a";
 }
+
 .icon-file-plus:before {
   content: "\e95b";
 }
+
 .icon-file-text:before {
   content: "\e95c";
 }
+
 .icon-filter:before {
   content: "\e95d";
 }
+
 .icon-folder2:before {
   content: "\e95e";
 }
+
 .icon-folder-minus:before {
   content: "\e95f";
 }
+
 .icon-folder-plus:before {
   content: "\e960";
 }
+
 .icon-grid:before {
   content: "\e961";
 }
+
 .icon-home3:before {
   content: "\e962";
 }
+
 .icon-key:before {
   content: "\e963";
 }
+
 .icon-layers1:before {
   content: "\e964";
 }
+
 .icon-lock1:before {
   content: "\e965";
 }
+
 .icon-mail:before {
   content: "\e966";
 }
+
 .icon-menu:before {
   content: "\e967";
 }
+
 .icon-message-circle:before {
   content: "\e968";
 }
+
 .icon-minus:before {
   content: "\e969";
 }
+
 .icon-monitor1:before {
   content: "\e96a";
 }
+
 .icon-package:before {
   content: "\e96b";
 }
+
 .icon-paperclip:before {
   content: "\e96c";
 }
+
 .icon-plus:before {
   content: "\e96d";
 }
+
 .icon-printer:before {
   content: "\e96e";
 }
+
 .icon-search1:before {
   content: "\e96f";
 }
+
 .icon-send:before {
   content: "\e970";
 }
+
 .icon-server:before {
   content: "\e971";
 }
+
 .icon-settings1:before {
   content: "\e972";
 }
+
 .icon-share:before {
   content: "\e973";
 }
+
 .icon-share-2:before {
   content: "\e974";
 }
+
 .icon-shield:before {
   content: "\e975";
 }
+
 .icon-trash:before {
   content: "\e976";
 }
+
 .icon-trash-2:before {
   content: "\e977";
 }
+
 .icon-upload-cloud:before {
   content: "\e978";
 }
+
 .icon-user2:before {
   content: "\e979";
 }
+
 .icon-user-check:before {
   content: "\e97a";
 }
+
 .icon-user-minus:before {
   content: "\e97b";
 }
+
 .icon-user-plus:before {
   content: "\e97c";
 }
+
 .icon-user-x:before {
   content: "\e97d";
 }
+
 .icon-users:before {
   content: "\e97e";
 }
+
 .icon-x:before {
   content: "\e97f";
 }
+
 .icon-zap:before {
   content: "\e980";
 }
+
 .icon-error:before {
   content: "\e900";
 }
+
 .icon-error_outline:before {
   content: "\e901";
 }
+
 .icon-equalizer:before {
   content: "\e902";
 }
+
 .icon-loop:before {
   content: "\e903";
 }
+
 .icon-pause:before {
   content: "\e904";
 }
+
 .icon-play_arrow:before {
   content: "\e905";
 }
+
 .icon-playlist_add:before {
   content: "\e906";
 }
+
 .icon-web:before {
   content: "\e907";
 }
+
 .icon-web_asset:before {
   content: "\e909";
 }
+
 .icon-mail_outline:before {
   content: "\e90a";
 }
+
 .icon-sentiment_satisfied_alt:before {
   content: "\e90b";
 }
+
 .icon-list_alt:before {
   content: "\e90c";
 }
+
 .icon-lightbulb:before {
   content: "\e981";
 }
+
 .icon-add:before {
   content: "\e90d";
 }
+
 .icon-block:before {
   content: "\e90e";
 }
+
 .icon-clear:before {
   content: "\e90f";
 }
+
 .icon-content_paste:before {
   content: "\e910";
 }
+
 .icon-flag:before {
   content: "\e911";
 }
+
 .icon-remove:before {
   content: "\e912";
 }
+
 .icon-send1:before {
   content: "\e982";
 }
+
 .icon-outlined_flag:before {
   content: "\e913";
 }
+
 .icon-save_alt:before {
   content: "\e983";
 }
+
 .icon-ballot:before {
   content: "\e914";
 }
+
 .icon-access_time:before {
   content: "\e915";
 }
+
 .icon-now_widgets:before {
   content: "\e916";
 }
+
 .icon-insert_chart_outlined:before {
   content: "\e917";
 }
+
 .icon-cloud:before {
   content: "\e918";
 }
+
 .icon-cloud_queue:before {
   content: "\e919";
 }
+
 .icon-folder1:before {
   content: "\e91a";
 }
+
 .icon-folder_open:before {
   content: "\e91b";
 }
+
 .icon-security:before {
   content: "\e91c";
 }
+
 .icon-device_hub:before {
   content: "\e984";
 }
+
 .icon-flash_on:before {
   content: "\e91d";
 }
+
 .icon-lens:before {
   content: "\e985";
 }
+
 .icon-remove_red_eye:before {
   content: "\e91f";
 }
+
 .icon-tune:before {
   content: "\e920";
 }
+
 .icon-layers:before {
   content: "\e922";
 }
+
 .icon-local_printshop:before {
   content: "\e923";
 }
+
 .icon-map:before {
   content: "\e924";
 }
+
 .icon-zoom_out_map:before {
   content: "\e986";
 }
+
 .icon-trip_origin:before {
   content: "\e987";
 }
+
 .icon-apps:before {
   content: "\e925";
 }
+
 .icon-arrow_drop_down:before {
   content: "\e988";
 }
+
 .icon-arrow_drop_up:before {
   content: "\e989";
 }
+
 .icon-keyboard_control:before {
   content: "\e927";
 }
+
 .icon-more_vert:before {
   content: "\e928";
 }
+
 .icon-arrow_left:before {
   content: "\e98a";
 }
+
 .icon-arrow_right:before {
   content: "\e98b";
 }
+
 .icon-event_note:before {
   content: "\e929";
 }
+
 .icon-person:before {
   content: "\e92b";
 }
+
 .icon-person_outline:before {
   content: "\e92c";
 }
+
 .icon-star:before {
   content: "\e92d";
 }
+
 .icon-star_half:before {
   content: "\e98c";
 }
+
 .icon-star_outline:before {
   content: "\e92e";
 }
+
 .icon-bug_report:before {
   content: "\e92f";
 }
+
 .icon-cached:before {
   content: "\e930";
 }
+
 .icon-check_circle:before {
   content: "\e98d";
 }
+
 .icon-code:before {
   content: "\e98e";
 }
+
 .icon-done:before {
   content: "\e98f";
 }
+
 .icon-exit_to_app:before {
   content: "\e990";
 }
+
 .icon-explore:before {
   content: "\e931";
 }
+
 .icon-favorite:before {
   content: "\e932";
 }
+
 .icon-favorite_outline:before {
   content: "\e933";
 }
+
 .icon-find_in_page:before {
   content: "\e991";
 }
+
 .icon-history:before {
   content: "\e992";
 }
+
 .icon-home1:before {
   content: "\e934";
 }
+
 .icon-https:before {
   content: "\e935";
 }
+
 .icon-lock_outline:before {
   content: "\e937";
 }
+
 .icon-search2:before {
   content: "\e993";
 }
+
 .icon-settings:before {
   content: "\e938";
 }
+
 .icon-settings_ethernet:before {
   content: "\e939";
 }
+
 .icon-help_outline:before {
   content: "\e93a";
 }
+
 .icon-offline_bolt:before {
   content: "\e93b";
 }
+
 .icon-dashboard_customize:before {
   content: "\e93c";
 }
+
 .icon-grid_view:before {
   content: "\e93f";
 }
+
 .icon-padding:before {
   content: "\e940";
 }
+
 .icon-bolt:before {
   content: "\e942";
 }
+
 .icon-sports_soccer:before {
   content: "\e943";
 }
+
 .icon-addchart:before {
   content: "\e944";
 }
+
 .icon-animation:before {
   content: "\e945";
 }
+
 .icon-auto_awesome:before {
   content: "\e946";
 }
+
 .icon-miscellaneous_services:before {
   content: "\e949";
 }
+
 .icon-monitor:before {
   content: "\e94a";
 }
+
 .icon-person_add_alt:before {
   content: "\e94b";
 }
+
 .icon-person_add_alt_1:before {
   content: "\e94c";
 }
+
 .icon-person_remove:before {
   content: "\e94d";
 }
+
 .icon-person_search:before {
   content: "\e94e";
 }
+
 .icon-pest_control:before {
   content: "\e94f";
 }
+
 .icon-text_snippet:before {
   content: "\e951";
 }
+
 .icon-wysiwyg:before {
   content: "\e952";
 }
+
 .icon-leaderboard:before {
   content: "\e953";
 }
+
 .icon-home2:before {
   content: "\e954";
 }
+
 .icon-location:before {
   content: "\e955";
 }
+
 .icon-user1:before {
   content: "\e956";
 }
+
 .icon-lock-closed:before {
   content: "\e957";
 }
+
 .icon-search:before {
   content: "\f002";
 }
+
 .icon-user:before {
   content: "\f007";
 }
+
 .icon-cog:before {
   content: "\f013";
 }
+
 .icon-gear:before {
   content: "\f013";
 }
+
 .icon-home:before {
   content: "\f015";
 }
+
 .icon-lock:before {
   content: "\f023";
 }
+
 .icon-print:before {
   content: "\f02f";
 }
+
 .icon-folder:before {
   content: "\f07b";
 }
+
 .icon-folder-open:before {
   content: "\f07c";
 }
+
 .icon-embed2:before {
   content: "\ea80";
 }
