@@ -116,7 +116,7 @@ noscript {
 }
 
 .N.H {
-    margin: 0 20px
+    margin: 0 0
 }
 
 .J {
@@ -128,7 +128,7 @@ noscript {
 }
 
 .I .J {
-    margin-left: 12px
+    margin-left: 0px
 }
 
 .K {
@@ -147,7 +147,7 @@ noscript {
 }
 
 .I .K {
-    margin-right: 12px;
+    margin-right: 0px;
     right       : 0;
     top         : 0
 }
@@ -164,7 +164,7 @@ noscript {
     background-image  : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAACCAYAAABc8yy2AAAAFklEQVQI12M4c+bMfxBmQAJUEaOVwQCIbUO9/544twAAAABJRU5ErkJggg==);
     background-color-0: #555;
     cursor            : ns-resize;
-    height            : 20px;
+    height            : 12px;
     width             : 100%
 }
 
@@ -182,7 +182,7 @@ noscript {
     cursor          : ew-resize;
     cursor          : col-resize;
     top             : 0;
-    width           : 20px
+    width           : 12px
 }
 
 .I .M.G,
@@ -215,7 +215,7 @@ noscript {
 }
 
 .a {
-    padding : 10px 10px 10px 12px;
+    padding : 0px;
     position: relative
 }
 

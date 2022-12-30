@@ -29,13 +29,14 @@
     <div class="no-padding-h relative">
         <div class="json-empty">
             <div id="header" class="a">
-                <h1 style="margin: 0 45px 0 0; padding: 0; display: block; line-height: 1.1;">
+                <h1 style="margin: -8px 45px 0 0; padding: 0; display: block; line-height: 1.1;">
                     <a class="button" href="javascript:formatJson();">格式化</a>
                     <a class="button" href="javascript:compressZipJson();">压缩</a>
                     <a class="button" href="javascript:escapeJson();">转义</a>
                     <a class="button" href="javascript:restoreJson();">去除转义</a>
                     <a class="button" href="javascript:unicode2ch();">Unicode转中文</a>
                     <a class="button" href="javascript:ch2unicode();">中文转Unicode</a>
+                    <a class="button" href="javascript:json2get();">转GET参数</a>
                 </h1></b>
                 <div class="c">
                 <div class="n b"><span class="l">选项</span><span class="m">▼</span>
@@ -55,22 +56,22 @@
                 </div>
             </div>
 
-            <div id="split" class="N I" style="height: 151px; top: 39px;">
-                <textarea class="J x P" id="eT" spellcheck="false" style="height: 139.667px; width: 624.667px;"></textarea>
+            <div id="split" class="N I" style="height: 151px; top: 40px;">
+                <textarea class="J x P" id="eT" spellcheck="false" style="height: 139.667px; width: 636.667px;"></textarea>
                 <div class="M ui-draggable" style="left: 656px;"></div>
                 <div class="K F color" id="fU">
                 <div class="y Q">
-                <div class="C A" id="hW" style="width: 496px;">准备就绪</div>
+                <div class="C A" id="hW" style="width: 508px;">准备就绪</div>
                 <div class="C B" id="kZ">&nbsp;</div>
                 </div>
                 <div class="z L" style="height: 113.667px;">
                 <div class="E" id="dS">
-                <div class="C A" style="width: 496px;float:left">
+                <div class="C A" style="width: 508px;float:left">
                 <div class="w">
                 <div class="P" id="iX"></div>
                 </div>
                 </div>
-                <div class="C B" style="width: 495px;">
+                <div class="C B" style="width: 507px;">
                 <div class="w D">
                 <div class="P" id="lA"></div>
                 </div>
@@ -88,15 +89,6 @@
 <script src="./lz-string-1.4.4.js" type="text/javascript" charset="utf-8"></script>
 <script src="./inone.js" type="text/javascript" charset="utf-8"></script>
 <script>
-    function isMobile() {
-        let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
-        return flag;
-    }
-
-    if (isMobile()) {
-
-    }
-
     function formatJson() {
         localStorage.setItem('lastJsonData_a', $("#eT").val());
         var jsonVal = jsl.format.formatJson($("#eT").val());
@@ -146,6 +138,31 @@
                 else
                     n += o
             }
+            $("#eT").val(n)
+        }
+    }
+
+    function parseParam(e, t) {
+        var n = "";
+        if ("string" == typeof e || "number" == typeof e || "boolean" == typeof e || null === e || void 0 === e)
+            n += "&" + t + "=" + e;
+        else if (e instanceof Array)
+            $.each(e, function(i, o) {
+                var r = null == t ? i : t + (e instanceof Array ? "[" + i + "]" : "." + i);
+                n += "&" + parseParam(o, r)
+            });
+        else if (e instanceof Object)
+            for (var i in e) {
+                var o = null == t ? i : t + (e instanceof Array ? "[" + i + "]" : "." + i);
+                n += "&" + parseParam(e[i], o)
+            }
+        return n.substr(1)
+    }
+
+    function json2get() {
+        var e = $("#eT").val();
+        if (e) {
+            let n = parseParam(JSON.parse(e))
             $("#eT").val(n)
         }
     }

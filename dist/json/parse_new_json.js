@@ -6208,16 +6208,16 @@ jQuery.cookie = function(b, j, m) {
                     left: 0
                 };
             return {
-                top: t.top + (parseInt(this.offsetParent.css("borderTopWidth"), 10) || 0),
-                left: t.left + (parseInt(this.offsetParent.css("borderLeftWidth"), 10) || 0)
+                top: t.top ,
+                left: t.left
             }
         },
         _getRelativeOffset: function() {
             if (this.cssPosition == "relative") {
                 var e = this.element.position();
                 return {
-                    top: e.top - (parseInt(this.helper.css("top"), 10) || 0) + this.scrollParent.scrollTop(),
-                    left: e.left - (parseInt(this.helper.css("left"), 10) || 0) + this.scrollParent.scrollLeft()
+                    top: e.top - (0) + this.scrollParent.scrollTop(),
+                    left: e.left - (0) + this.scrollParent.scrollLeft()
                 }
             }
             return {
@@ -6227,10 +6227,10 @@ jQuery.cookie = function(b, j, m) {
         },
         _cacheMargins: function() {
             this.margins = {
-                left: parseInt(this.element.css("marginLeft"), 10) || 0,
-                top: parseInt(this.element.css("marginTop"), 10) || 0,
-                right: parseInt(this.element.css("marginRight"), 10) || 0,
-                bottom: parseInt(this.element.css("marginBottom"), 10) || 0
+                left: 0,
+                top: 0,
+                right: 0,
+                bottom: 0
             }
         },
         _cacheHelperProportions: function() {
@@ -6717,7 +6717,7 @@ $(function() {
               , B = w - v - k
               , A = j - q - b;
             h.css("top", q).css("width", "");
-            l.outerWidth(D - 8);
+            l.outerWidth(D);
             if (B === 0) {
                 if (!y) {
                     p.hide();
@@ -6728,7 +6728,7 @@ $(function() {
                     p.show();
                     y = false
                 }
-                p.outerWidth(B - 8)
+                p.outerWidth(B)
             }
             var z = p.hasClass("R") || p.hasClass("S") ? 1 : 2
               , C = Math.floor(a.outerWidth() / z);
@@ -6832,11 +6832,11 @@ $(function() {
             q = H;
             b = B;
             if (I) {
-                h.width(w - 42);
+                h.width(w - 2);
                 var C = p.hasClass("R") || p.hasClass("S") ? 1 : 2
                   , y = Math.floor(a.innerWidth() / C);
                 o.not(":eq(1)").outerWidth(y - 1);
-                l.outerWidth(w - 40)
+                l.outerWidth(w)
             }
             if (D || z || E) {
                 h.height(j - q - b + 40);
