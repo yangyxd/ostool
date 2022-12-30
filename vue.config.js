@@ -3,7 +3,9 @@ const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
   runtimeCompiler: false,
-  assetsDir: 'assets',
+  // assetsDir: 'assets',
+  publicPath: './',
+  assetsDir: './assets',
   productionSourceMap: false,
   // 启动命令指定端口： npm run serve -- --port 8081
   // devServer: {
