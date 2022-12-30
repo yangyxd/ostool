@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="showPath" class="logo">
-      <img src="/favicon.ico" /><span :class="[!isCollapse ? 'active' : '']" style="margin-left: 6px">{{siteTitle}}</span>
+      <img src="favicon.ico" /><span :class="[!isCollapse ? 'active' : '']" style="margin-left: 6px">{{siteTitle}}</span>
     </div>
     <el-scrollbar class="menu-container" :class="[showPath ? 'path' : '']">
       <el-menu :collapse="isCollapse" :default-active="activeMenu" unique-opened>
