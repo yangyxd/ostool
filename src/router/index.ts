@@ -40,7 +40,7 @@ for (const e in menusMap) {
   }
 }
 
-console.log('routes', routes)
+// console.log('routes', routes)
 
 const router = createRouter({
   // history: createWebHistory(),

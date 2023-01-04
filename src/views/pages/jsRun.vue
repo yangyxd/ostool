@@ -96,7 +96,6 @@ console.log(numbers);
         console.oldErrLog = console.error
         console.oldInfoLog = console.info
         console.oldWarnLog = console.warn
-        console.__print = window.print
         console.log = function (args) {
           console.oldLog(args)
           _this.log(args, false)
@@ -113,7 +112,6 @@ console.log(numbers);
           console.oldWarnLog(args)
           _this.warn(args, false)
         }
-        let print = function (args) {}
         try {
           const AsyncFunction = Object.getPrototypeOf(async function f() {}).constructor
           const data = new AsyncFunction('$', `return (async () => {${code ? code : 'undefined;'}})().catch((e)=>$.error(e))`)
@@ -124,12 +122,10 @@ console.log(numbers);
           console.error = console.oldErrLog
           console.info = console.oldInfoLog
           console.warn = console.oldWarnLog
-          window.print = console.__print
           delete console.oldLog
           delete console.oldErrLog
           delete console.oldInfoLog
           delete console.oldWarnLog
-          delete console.__print
         }
         if (result !== undefined) {
           this.log(result, true)

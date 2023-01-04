@@ -59,7 +59,7 @@ export default defineComponent({
     const getMenuList = () => {
       const customMenus = new Array<CustomMenuItem>()
       getMenuData(menus, customMenus)
-      console.log(customMenus)
+      // console.log(customMenus)
       getMenus(customMenus).then((v: CustomMenuItem[]) => {
         if (v.length === 0) {
           // 为空时，将主页加入菜单中
