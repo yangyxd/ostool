@@ -32,15 +32,22 @@ td a {
     color           : #D6DBDF
 }
 
-.theme-black h1 { color: #83b9ff }
-.theme-black a { color: #0099ff }
+.theme-black h1 {
+    color: #83b9ff
+}
+
+.theme-black a {
+    color: #0099ff
+}
 
 .theme-white {
     background-color: #F9F9F5;
     color           : #2C3E50
 }
 
-.theme-white h1 { color: #0077bb }
+.theme-white h1 {
+    color: #0077bb
+}
 
 .table-striped-black tbody>tr:nth-child(2n+1)>td,
 .table-striped-black tbody>tr:nth-child(2n+1)>th {
@@ -178,6 +185,96 @@ h6 {
 .black-blockquote {
     border-color: #333;
     background  : none repeat scroll 0 0 rgba(51, 51, 51, .5)
+}
+
+.wmd-preview .custom-block {
+    padding          : 10px 15px;
+    border-left-style: solid;
+    border-left-width: 10px;
+    border-color: #42b983;
+    background  : none repeat scroll 0 0 #f3f5f7
+}
+
+.custom-block.warning {
+    border-color: #e7c000;
+    background  : none repeat scroll 0 0 rgba(255,229,100,.3);
+    color: #6b5900;
+}
+.custom-block.danger {
+    border-color: #c00;
+    background  : none repeat scroll 0 0 #ffe6e6;
+    color: #4d0000;
+}
+.custom-block.details {
+    border: none;
+    padding: 15px 15px 15px 25px;
+    background  : none repeat scroll 0 0 #eee;
+}
+.custom-block.details .summary {
+    cursor: pointer;
+    display: list-item;
+    outline: none;
+    counter-increment: list-item 0;
+    list-style: inside disclosure-closed;
+}
+.custom-block.details.open .summary {
+    list-style-type: disclosure-open;
+    padding: 0px 0px 10px 0px;
+}
+.custom-block.details .conent{
+    display: none;
+}
+.custom-block.details.open .conent{
+    display: inherit;
+}
+
+.wmd-preview kbd {
+    display: inline-block;
+    color: #666;
+    font-family: arial;
+    font-weight: 300;
+    text-decoration: none;
+    text-align: center;
+    padding: 2px 5px;
+    margin: 0 5px;
+    background: #eff0f2;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border-top: 1px solid #f5f5f5;
+    -webkit-box-shadow: inset 0 0 20px #e8e8e8, 0 1px 0 #c3c3c3, 0 1px 0 #c9c9c9, 0 1px 2px #333;
+    -moz-box-shadow: inset 0 0 20px #e8e8e8, 0 1px 0 #c3c3c3, 0 1px 0 #c9c9c9, 0 1px 2px #333;
+    -webkit-box-shadow: inset 0 0 20px #e8e8e8, 0 1px 0 #c3c3c3, 0 1px 0 #c9c9c9, 0 1px 2px #333;
+    box-shadow: inset 0 0 20px #e8e8e8, 0 1px 0 #c3c3c3, 0 1px 0 #c9c9c9, 0 1px 2px #333;
+    text-shadow: 0 1px 0 #f5f5f5;
+    overflow-wrap: break-word;
+}
+
+.theme-black .custom-block {
+    border-color: #318a62;
+    background  : none repeat scroll 0 0 #2b313a
+}
+.theme-black .custom-block.warning {
+    border-color: #e0ad15;
+    background  : none repeat scroll 0 0 #2d2f2d;
+    color: #d8d96d;
+}
+.theme-black .custom-block.danger {
+    border-color: #fc1e38;
+    background  : none repeat scroll 0 0 #39232c;
+    color: #ea9ca0;
+}
+
+.wmd-preview .mark {
+    padding: .1em;
+    background-color: #f8f840;
+}
+
+.theme-black .wmd-preview .mark {
+    background-color: #fcf8e3;
+    color: #111;
+}
+.theme-black .custom-block.details {
+    background  : none repeat scroll 0 0 #353535;
 }
 
 .MathJax_Preview {
@@ -491,8 +588,8 @@ ul.dropdown-menu#signup-login-intro {
     padding      : 3px 16px;
     border-right : #333 1px solid;
     border-bottom: #333 1px solid;
-    white-space: nowrap;
-    overflow: hidden;
+    white-space  : nowrap;
+    overflow     : hidden;
     text-overflow: ellipsis;
 }
 
@@ -504,8 +601,8 @@ ul.dropdown-menu#signup-login-intro {
 
 .menu-doc-del {
     margin-left: 8px;
-    padding: 8px;
-    cursor: pointer;
+    padding    : 8px;
+    cursor     : pointer;
 }
 
 #revision-list {
