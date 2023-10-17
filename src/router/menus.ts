@@ -110,6 +110,13 @@ const menus: Record<string, MenuItem> = {
     data: { icon: 'Time', txt: '#fff', bg: '#009a61', desc: '在线时间戳转换' },
     component: () => import('@/views/pages/timestamp.vue'),
   },
+  color_tool: {
+    name: '常用色彩',
+    icon: 'icon-web',
+    path: '/color-tool',
+    data: { icon: '<span style="color:#ffffcc">C</span>ol<span style="color:#801dae">o</span><span style="color:#4b5cc4">r</span>', txt: '#fff', bg: '#FBC02D', desc: '常用色彩大全' },
+    component: () => import('@/views/pages/color-tool.vue'),
+  },
 }
 
 /** 将 menus 配置装入 map 中, 子菜单路径以 "/" 分隔 */

@@ -5,7 +5,7 @@
         <el-card shadow="hover">
           <div @click="gotoTool(o)" style="cursor: pointer">
             <div class="icon">
-              <span :style="'color:' + o.txt + '; background-color: ' + o.bg">{{ o.icon }}</span>
+              <span :style="'color:' + o.txt + '; background-color: ' + o.bg" v-html="o.icon"></span>
             </div>
             <div class="title">{{ o.name }}</div>
             <div class="desc">{{ o.desc }}</div>

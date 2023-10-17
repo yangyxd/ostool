@@ -65,3 +65,51 @@ ul {
     color: $header;
   }
 }
+
+
+h3 {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+h4 {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+
+.pl8 {
+  padding-left: 8px;
+}
+.pb8 {
+  padding-bottom: 20px;
+}
+.mt8 {
+  margin-top: 8px;
+}
+.mt12 {
+  margin-top: 12px;
+}
+.mt16 {
+  margin-top: 16px;
+}
+.ml8 {
+  margin-left: 8px;
+}
+.mb16 {
+  margin-bottom: 16px;
+}
+.ml16 {
+  margin-left: 16px;
+}
+.tw1 {
+  width: 140px;
+}
+.tw2 {
+  width: 150px;
+}
+.tw3 {
+  width: 220px;
+}

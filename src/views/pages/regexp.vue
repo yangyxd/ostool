@@ -6,36 +6,22 @@
         <div>
           <el-input type="textarea" :rows="10" clearable placeholder="在此输入待匹配文本" v-model="textarea"> </el-input>
         </div>
-        <el-row v-if="!isMobile()" class="mt16">
-          <div style="width: calc(100% - 105px); float: left">
-            <el-input placeholder="在此输入正则表达式" clearable v-model="regKey">
-              <template #prepend><span class="subtitle">正则表达式</span></template>
-              <slot name="append"
-                ><div>
-                  <el-checkbox v-model="matchAll" title="/g">全局搜索</el-checkbox>
-                  <el-checkbox v-model="ingoreCase" title="/i">忽略大小写</el-checkbox>
-                </div></slot
-              >
-            </el-input>
+        <el-row class="mt8">
+            <div style="width: calc(100% - 102px); float: left">
+            <el-input placeholder="在此输入正则表达式" clearable v-model="regKey"></el-input>
           </div>
           <div style="text-align: right; width: 100px; float: right">
             <el-button type="primary" @click="execMatch()">测试匹配</el-button>
           </div>
         </el-row>
-        <div v-if="isMobile()">
-          <el-row class="mt8"
-            ><el-input placeholder="在此输入正则表达式" clearable v-model="regKey">
-              <template #append>
-                <el-button type="primary" @click="execMatch()">测试匹配</el-button>
-              </template>
-            </el-input></el-row
-          >
-          <el-row class="mt8">
-            <el-checkbox v-model="matchAll" title="/g" style="margin-left: 8px">全局搜索</el-checkbox>
-            <el-checkbox v-model="ingoreCase" title="/i">忽略大小写</el-checkbox>
-          </el-row>
+        <div class="desc mt8">
+          匹配结果：
+          <div v-if="isMobile()"></div>
+          <el-checkbox v-model="matchAll" title="/g 全局匹配模式">全局</el-checkbox>
+          <el-checkbox v-model="ingoreCase" title="/i 忽略大小写匹配模式">忽略大小写</el-checkbox>
+          <el-checkbox v-model="multipleLine" title="/m 多行匹配">多行</el-checkbox>
+          <el-button size="small" style="margin: 0 0 6px 10px" @click="execMatchX()">分组数据</el-button>
         </div>
-        <div class="desc mt16">匹配结果：</div>
         <div>
           <el-input type="textarea" :rows="12" readonly placeholder="显示正则匹配结果" v-model="result"> </el-input>
         </div>
@@ -48,7 +34,7 @@
             <el-button type="primary" @click="execMatchReplace()">替换</el-button>
           </div>
         </el-row>
-        <div class="desc mt16">替换/取值结果：</div>
+        <div class="desc mt8">替换/取值结果：</div>
         <div class="pb8">
           <el-input type="textarea" :rows="15" readonly placeholder="显示替换/取值结果" v-model="resultReplace"> </el-input>
         </div>
@@ -78,6 +64,7 @@ export default {
       resultReplace: '',
       matchAll: true,
       ingoreCase: false,
+      multipleLine: false,
       templates: [
         ['匹配中文字符', '[\\u4e00-\\u9fa5]'],
         ['匹配双字节字符(包括汉字在内)', '[^\\x00-\\xff]'],
@@ -89,17 +76,18 @@ export default {
           "[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?"
         ],
         ['匹配网址URL', '[a-zA-z]+://[^\\s]*'],
+        ['匹配手机号码', '1[3-9]\\d{9}'],
         ['匹配国内电话号码', '\\d{3}-\\d{8}|\\d{4}-\\{7,8}'],
         ['匹配腾讯QQ号', '[1-9][0-9]{4,}'],
         ['匹配中国邮政编码', '[1-9]\\d{5}(?!\\d)'],
-        ['匹配18位身份证号', '^(\\d{6})(\\d{4})(\\d{2})(\\d{2})(\\d{3})([0-9]|X)$'],
+        ['匹配18位身份证号', '\\d{17}[0-9Xx]|\\d{15}'],
         [
           '匹配(年-月-日)格式日期',
           '([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8])))'
         ],
         ['匹配正整数', '^[1-9]\\d*$'],
         ['匹配负整数', '^-[1-9]\\d*$'],
-        ['匹配整数', '-?[1-9]\\d*$'],
+        ['匹配整数', '[1-9][0-9]?'],
         ['匹配非负整数（正整数 + 0）', '^[1-9]\\d*|0$'],
         ['匹配非正整数（负整数 + 0）', '^-[1-9]\\d*|0$'],
         ['匹配正浮点数', '^[1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*$'],
@@ -131,6 +119,36 @@ export default {
           this.result = strResult
         } else {
           this.result = '匹配位置: ' + regex.lastIndex + '\r\n匹配结果: ' + result[0]
+        }
+        return true
+      } catch (e) {
+        this.$message(e.message)
+        this.result = '错误：\r\n' + e.message
+        return false
+      }
+    },
+    execMatchX() {
+      try {
+        if (!this.isValidFields()) return false
+        this.result = ''
+        let regex = this.buildRegex()
+        let str = this.textarea;
+        let matches = Array.from(str.matchAll(regex));
+        // console.log(matches)
+        let i = 0;
+
+        for (const m of matches) {
+          this.result += `结果 ${i}：${m && m.length > 0 ? m[0] : ''}\n`;
+          let j = 0;
+          for (const v of m) {
+            this.result += `【分组${j}】 ${v}\n`;
+            j++;
+          }
+          this.result += '\n'
+          i++;
+        }
+        if (!this.result) {
+          this.result = '(没有匹配)'
         }
         return true
       } catch (e) {
@@ -176,6 +194,7 @@ export default {
       let op = ''
       if (this.matchAll) op = 'g'
       if (this.ingoreCase) op = op + 'i'
+      if (this.multipleLine) op = op + 'm'
       return new RegExp(this.regKey, op)
     }
   }
@@ -199,11 +218,7 @@ export default {
   margin-left: 8px;
   color: #888;
 }
-h3 {
-  display: block;
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
+
 .container {
   min-height: calc(100vh - 70px);
   padding: 2px !important;
@@ -211,15 +226,6 @@ h3 {
 }
 .mobile .container {
   padding: 0px !important;
-}
-.pb8 {
-  padding-bottom: 20px;
-}
-.mt8 {
-  margin-top: 8px;
-}
-.mt16 {
-  margin-top: 16px;
 }
 .titem {
   cursor: pointer;
@@ -243,5 +249,8 @@ h3 {
   font-size: 14px;
   font-family: 'Courier New', Courier, monospace;
   color: #010203;
+}
+.regexp.container .el-checkbox {
+  margin-right: 16px;
 }
 </style>

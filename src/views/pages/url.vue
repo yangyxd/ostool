@@ -178,18 +178,6 @@ export default {
   }
 }
 
-h3 {
-    display: block;
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-h4 {
-    display: block;
-    margin-top: 16px;
-    margin-bottom: 8px;
-}
-
 .container {
     min-height: calc(100vh - 70px);
     padding: 0 !important;
