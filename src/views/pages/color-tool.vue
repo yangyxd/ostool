@@ -466,7 +466,7 @@
                 <li class="white" style="background: rgb(0, 82, 67);"><a>鉄色<span class="btn" data-clipboard-text="#005243">#005243 </span></a></li>
             </ul>
             <ul @click="handleClick">
-                <li class="white" style="background: rgb(150, 81, 77);"><a>小豆色<span class="btn" data-clipboard-text="#bce672">">#96514d</span></a></li>
+                <li class="white" style="background: rgb(150, 81, 77);"><a>小豆色<span class="btn" data-clipboard-text="#96514d">#96514d</span></a></li>
                 <li class="white" style="background: rgb(141, 100, 73);"><a>枯茶<span class="btn" data-clipboard-text="#8d6449">#8d6449</span></a></li>
                 <li style="background: rgb(222, 176, 104);"><a>饴色<span class="btn" data-clipboard-text="#deb068">#deb068</span></a></li>
                 <li class="white" style="background: rgb(191, 121, 78);"><a>骆驼色<span class="btn" data-clipboard-text="#bf794e">#bf794e</span></a></li>
