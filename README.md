@@ -4,6 +4,8 @@
 
 [开始使用 Gitee](http://yangyxd.gitee.io/ostool/#/root)
 
+[开始使用 腾讯云(测试)](http://43.136.183.49:8090/web/ostool/index.html)
+
 ## 主要功能
 
 * xxx
