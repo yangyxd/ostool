@@ -41,8 +41,12 @@ td a {
 }
 
 .theme-white {
-    background-color: #F9F9F5;
+    background-color: #FFFFFF;
     color           : #2C3E50
+}
+
+.theme-white .wmd-panel-editor{
+    background-color: #f5f9f9;
 }
 
 .theme-white h1 {
@@ -756,7 +760,7 @@ ul.dropdown-menu li i[class*=icon] {
     width: 50%
 }
 
-.wmd-panel-editor {
+.wmd-panel-editor {    
     padding-left : 20px;
     padding-right: 20px
 }

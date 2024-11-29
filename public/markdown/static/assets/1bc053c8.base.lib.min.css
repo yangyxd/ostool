@@ -2466,6 +2466,10 @@ table th[class*=span],
     background-position: -192px -48px
 }
 
+.icon-high {
+    background-position: -192px -48px
+}
+
 .icon-center {
     background-position: -192px -48px
 }
@@ -7987,6 +7991,10 @@ a .icon-flip-vertical:before {
 
 .icon-delete:before {
     content: "\f0cc"
+}
+
+.icon-high:before {
+    content: "\f185"
 }
 
 .icon-center:before {
