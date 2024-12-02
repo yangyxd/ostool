@@ -85,12 +85,13 @@ export default {
         { name: 'Erlang', code: 'calendar:datetime_to_gregorian_seconds(calendar:universal_time())-719528*24*3600.' },
         // eslint-disable-next-line no-useless-escape
         { name: 'PHP', code: '// pure php\ntime()\n\n// Carbon\Carbon\nCarbon::now()->timestamp' },
-        { name: 'Python', code: 'import time\ntime.time()' },
+        { name: 'Python', code: 'import time\ntime.time()\n\nfrom datetime import datetime\ndatetime.now().timestamp()' },
         { name: 'Ruby', code: 'Time.now.to_i' },
         { name: 'Shell', code: 'date +%s' },
         { name: 'Groovy', code: '(new Date().time / 1000).intValue()' },
         { name: 'Lua', code: 'os.time()' },
-        { name: '.NET/C#', code: '(DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000' }
+        { name: '.NET/C#', code: '(DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000' },
+        { name: 'Delphi', code: 'uses DateUtils; \nTrunc(milliSecondSpan(Now, 25569.3333333333))' },
       ]
     }
   },
@@ -217,6 +218,8 @@ export default {
 }
 .timestamp .el-textarea__inner {
   color: #010203;
+  box-shadow: none;
+  resize: none;
 }
 .timestamp .tb-input .el-textarea__inner {
   font-family: 'Courier New', Courier, monospace;
