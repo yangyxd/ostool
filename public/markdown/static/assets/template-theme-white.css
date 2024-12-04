@@ -4691,7 +4691,7 @@ button.btn.btn-mini,input[type=submit].btn.btn-mini {
 
 .modal-body {
   position: relative;
-  max-height: 400px;
+  max-height: 750px;
   padding: 15px;
   overflow-y: auto
 }
