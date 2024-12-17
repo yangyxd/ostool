@@ -17,8 +17,9 @@ import { useStore } from 'vuex'
 import { useRoute, useRouter } from 'vue-router'
 import { ElScrollbar, ElMenu } from 'element-plus'
 import MenuItem from './MenuItem.vue'
-import menus from '@/router/menus'
-import { CustomMenuItem, getMenus } from '@/api/index'
+import menus, {menusMap, MenuItem as MenuItemData} from '@/router/menus'
+import { checkPower, CustomMenuItem, getMenus } from '@/api/index'
+import { Utils } from '@/utils/utils'
 
 export default defineComponent({
   components: {
@@ -32,6 +33,9 @@ export default defineComponent({
       // 对应菜单激活 menu
       this.activeMenu = meta.activePath && meta.activePath as string ? meta.activePath : newValue.path
     },
+    userInfo(a, b) {
+      this.getMenuList()
+    }
   },
   mounted() {
     this.getMenuList()
@@ -39,16 +43,17 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const store = useStore()
+    const router = useRouter()
     const activeMenu = ref(route.meta?.activePath ?? '')
     const menuList = ref<any>([])
 
-    const getMenuItem = (key: string, item): CustomMenuItem => {
+    const getMenuItem = (key: string, item: MenuItemData): CustomMenuItem => {
       let children: CustomMenuItem[] = []
       if (item.children) getMenuData(item.children, children)
-      return { id: key, name: item.name, children, power: item.power }
+      return { id: key, name: item.name, children }
     }
 
-    const getMenuData = (menus, customMenus: Array<CustomMenuItem>) => {
+    const getMenuData = (menus: Record<string, MenuItemData>, customMenus: Array<CustomMenuItem>) => {
       Object.keys(menus).forEach((v) => {
         const item = getMenuItem(v, menus[v])
         customMenus.push(item)
@@ -60,7 +65,13 @@ export default defineComponent({
       const customMenus = new Array<CustomMenuItem>()
       getMenuData(menus, customMenus)
       // console.log(customMenus)
-      getMenus(customMenus).then((v: CustomMenuItem[]) => {
+      getMenus(customMenus).then((v: CustomMenuItem[]) => { 
+        for (let i = v.length; i--; i >= 0) {
+          const m = v[i]
+          if (m.children && Utils.empty(m.children)) {
+            v.splice(i, 1)
+          }
+        }
         if (v.length === 0) {
           // 为空时，将主页加入菜单中
           v.push(getMenuItem('home', menus.home))
@@ -91,14 +102,14 @@ export default defineComponent({
 
 .logo {
   display: flex;
-  background-color: $header;
-  height: $topHeaderH - 1px;
-  line-height: $topHeaderH;
-  border-bottom: 1px solid $menu-sub;
+  background-color: var(--ts-header);
+  height: var(--ts-header-logoH);
+  line-height: var(--ts-header-logo-lineH);
+  // border-bottom: 1px solid $menu-sub;
   text-align: start;
 
   &:not(.el-menu--collapse) {
-    width: 220px;
+    width: var(--ts-menuExW);
   }
 
   img {
@@ -110,7 +121,7 @@ export default defineComponent({
 
   span {
     font-size: 16px;
-    color: #eee;
+    color: var(--ts-menu-txt);
     opacity: 0;
     transition: opacity 1s;
   }
@@ -123,15 +134,16 @@ export default defineComponent({
 .menu-container {
   position: fixed;
   left: 0;
-  top: $topHeaderH;
+  top: var(--ts-topHeaderH);
   bottom: 0;
   z-index: 1500;
   box-sizing: border-box;
-  background-color: $header;
+  background-color: var(--ts-header);
+  margin: var(--ts-topMenuOffset) 0 0 0;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
 
   &.path {
-    top: $topHeaderH;
+    top: var(--ts-topHeaderH);
   }
 }
 
@@ -140,7 +152,7 @@ export default defineComponent({
   padding-bottom: 50px;
 
   &:not(.el-menu--collapse) {
-    width: 220px;
+    width: var(--ts-menuExW);
   }
 
   .iconfont {

@@ -7,6 +7,8 @@
       class="tabs"
       @tab-click="tabClick"
       @tab-remove="closeTagsWithPath"
+      @touchstart="handleTouchStart"
+      @touchmove="handleTouchMove"
     >
       <el-tab-pane
         v-for="(item, index) in tagsList"
@@ -66,7 +68,7 @@ export default defineComponent({
   name: 'Tags',
   components: {
     ElIcon,
-    ElTabs, ElTabPane,
+    ElTabs, ElTabPane
   },
   props: {
     isCollapse: {
@@ -104,7 +106,7 @@ export default defineComponent({
       const delItem = tagsList.value.splice(index, 1)[0]
       const count = tagsList.value.length
       if (count === 0) {
-        router.push('/')
+        router.push('/home')
       } else {
         const fullPath = router.currentRoute.value.fullPath
         if (delItem.path === fullPath) {
@@ -138,7 +140,7 @@ export default defineComponent({
           return item.fixed === true
         })
       )
-      router.push('/')
+      router.push('/home')
     }
 
     const activeTag = (index: number) => {
@@ -167,13 +169,13 @@ export default defineComponent({
         // console.log(route)
         const path = route.fullPath
         tagsList.value.push({
-          title: route.params.title ?? route.meta.title ?? route.name,
+          title: route.params.title ?? route.meta.title ?? route.query.title ?? route.name,
           fixed: route.meta.fixed,
           icon: route.meta.icon,
           path: path,
           params: route.params,
           hash: route.hash,
-          name: route.matched[1].components.default.name ?? '404',
+          name: route.matched[1]!.components!.default!.name ?? '404',
         })
       }
       updateTagsNameList()
@@ -182,6 +184,42 @@ export default defineComponent({
     const userInfo = computed(() => store.state['user'].userInfo)
 
     setTags(router.currentRoute.value)
+
+    const $ = (window as any).$
+    let startOffset = 0
+    let view: any
+    let pw = 0
+
+    const handleTouchStart = (event: TouchEvent) => {
+      startOffset = event.touches[0].clientX;
+      view = $('.el-tabs__nav');
+      pw = view.parent().width() - 4
+    }
+
+    const handleTouchMove = (event: TouchEvent) => {
+      event.preventDefault();
+      const touchX = event.touches[0].clientX;
+      const distance = touchX - startOffset;
+      startOffset = touchX
+      const dom = view[0]
+      if (dom.style?.cssText) {
+        const v = dom.style.cssText as string
+        const i = v.indexOf('translateX(')
+        if (i < 0) return
+        const j = v.indexOf(')', i)
+        let x = Number(v.substring(i + 11, j - 2))
+        const lastX = x
+        if (x >= 0 && distance >= 0) {
+          x = 0
+        } else if (x <= -(dom.scrollWidth - pw) && distance < 1) {
+          x = -dom.scrollWidth + pw
+        } else {
+          x = x + distance
+        }
+        if (lastX === x) return
+        dom.style.cssText = `transform: translateX(${x}px)`
+      }
+    }
 
     return {
       showTags: computed(() => store.state.layout.tagsList.length > 0),
@@ -193,6 +231,8 @@ export default defineComponent({
       handleTags,
       setTags,
       tabClick,
+      handleTouchStart,
+      handleTouchMove,
     }
   },
 })
@@ -204,11 +244,12 @@ export default defineComponent({
   position: relative;
   height: 42px;
   overflow: hidden;
-  background: #fefefe;
+  background: var(--ts-bg-color);
   padding-right: 85px;
-  box-shadow: 0 2px 10px #eee;
+  box-shadow: 0 2px 10px var(--ts-tab-shadow);
   margin-bottom: 1px;
 }
+
 
 .tags .iconfont {
   margin-right: 5px;
@@ -225,7 +266,7 @@ export default defineComponent({
   text-align: center;
   width: 42px;
   height: 42px;
-  background: #fefefe;
+  background: var(--ts-bg-color);
   z-index: 10;
 
   .ex {
@@ -237,7 +278,7 @@ export default defineComponent({
     line-height: 40px;
     width: 40px;
     height: 40px;
-    color: $header;
+    color: var(--ts-header-txt);
     font-size: 16px;
   }
 }
@@ -245,7 +286,7 @@ export default defineComponent({
   box-shadow: -3px 0 15px 3px rgba(0, 0, 0, 0.1);
 }
 .tags-close-box.br {
-  border-right: 1px solid #f0f1f2;
+  border-right: 1px solid var(--ts-header-btn-border-color);
 }
 </style>
 
@@ -264,19 +305,19 @@ export default defineComponent({
   }
 
   .el-tabs--border-card {
-    background-color: #fefefe;
+    background-color: var(--ts-bg-color);
     border: none;
     box-shadow: none;
   }
 
   .el-tabs--border-card > .el-tabs__header .el-tabs__item {
     border: 1px solid transparent;
-    border-right-color: #e9eaec;
+    border-right-color: var(--ts-header-tab-border-color);
   }
 
   .el-tabs--border-card > .el-tabs__header {
     border: none;
-    background-color: #fefefe;
+    background-color: var(--ts-bg-color);
 
     .el-tabs__item {
       margin: 0;

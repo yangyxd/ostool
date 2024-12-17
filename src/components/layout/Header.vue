@@ -27,6 +27,12 @@
     <slot></slot>
   </div>
   <div class="header-right" :class="[showPath ? 'path' : '']">
+    <div class="btn-themes" @click="handleTheme">
+      <el-tooltip effect="dark" content="主题设置" placement="bottom">
+        <el-icon><svg t="1734427130670" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2518" width="128" height="128">
+          <path d="M759.695266 951.642024H263.192794c-41.142784 0-74.614619-33.472859-74.614619-74.614619V448.264162l-33.911082 21.694083c-7.176412 4.957653-17.120387 7.970947-27.227158 7.970947-24.241509 0-43.634921-16.10674-47.168349-39.197402l-3.479163-21.803638c-5.724543-35.417217-13.585934-83.92788-13.668869-113.949222-0.081911-29.74694 25.446622-58.426992 41.553362-69.519765L299.048235 100.55373c7.64228-5.094853 14.408114-5.094853 21.556881-5.094853l44.264611 0.246756 16.571584-0.05529c7.807126-1.041291 14.654871 2.876094 19.913545 8.108148a28.085174 28.085174 0 0 1 8.32726 19.85928c0.163822 55.523253 44.292255 99.020974 100.472843 99.020973 56.180588 0 100.335642-43.49772 100.472843-99.020973a28.175276 28.175276 0 0 1 8.299614-19.85928c5.28632-5.258675 12.134065-9.450462 19.941191-8.108148l16.626874 0.05529 44.401811-0.246756c7.313613 0 14.216648 0 21.666437 5.149119l198.864127 132.712944c26.159246 18.763722 37.253044 40.211048 36.787176 70.122834-0.657334 6.793479-11.559665 102.061913-17.229942 135.589038-3.670629 21.803638-24.679732 38.239045-48.866975 38.239046-9.586638 0-18.571232-2.684627-26.022046-7.807126l-30.788231-19.666789v427.229462c0.003072 41.14176-33.469787 74.614619-74.612572 74.614619z m-543.068776-582.704401c4.628986 0 9.257971 1.150847 13.449757 3.451517 9.012239 4.903387 14.599581 14.352824 14.599581 24.597821v480.040444c0 10.217352 8.299614 18.516966 18.516966 18.516966h496.502472c10.217352 0 18.516966-8.299614 18.516966-18.516966V398.630297a28.062649 28.062649 0 0 1 14.571936-24.597821c9.03886-4.875742 19.913546-4.547075 28.569472 0.958357l65.329004 41.717184c5.752188-39.581359 14.51767-116.031804 14.627225-116.880606-0.027645-7.148767-1.123202-11.997888-12.792423-20.379413L696.886045 151.584175l-9.121795 0.054265c-6.464812 0.054266-14.46238 0.137201-23.666085 0.163822-13.531668 72.094837-77.464092 126.933111-153.941159 126.933112-76.450446 0-140.382869-54.838274-153.941158-126.933112-9.148415-0.027645-17.065097-0.109556-23.502264-0.163822l-8.902683-0.054265-187.387396 128.111603c-7.066857 4.875742-16.901275 18.106388-17.202298 23.173597 0.081911 25.529557 7.532724 71.519414 12.956245 105.101828l1.424225 8.902683 67.904074-43.49772a27.937735 27.937735 0 0 1 15.120739-4.438543z" fill="currentColor" p-id="2519"></path></svg></el-icon>
+      </el-tooltip>
+    </div>
     <div class="btn-fullscreen" @click="handleFullScreen">
       <el-tooltip effect="dark" :content="fullscreen ? `取消全屏` : `全屏`" placement="bottom">
         <el-icon><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-ba633cb8="">
@@ -40,11 +46,12 @@
 </template>
 
 <script lang="ts">
-import { ElIcon, ElBreadcrumb, ElBreadcrumbItem } from 'element-plus'
+import { ElIcon, ElAvatar, ElMessageBox, ElBreadcrumb, ElBreadcrumbItem } from 'element-plus'
 import { computed, defineComponent, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import { menusMap } from '@/router/menus'
+import { exitLogin } from '@/utils/auth'
 
 interface PathItem {
   name: string
@@ -78,6 +85,21 @@ export default defineComponent({
     const siteTitle = document.title
     const fullscreen = ref(false)
     const paths = ref([] as PathItem[])
+
+    // 退出
+    const handlelogout = () => {
+      ElMessageBox.confirm('确认退出当前账户吗？', '退出登录', {customStyle: { 'max-width': '420px', 'width': '85%' }}).then(() => {
+        exitLogin()
+      })
+    }
+
+    // 主题设置
+    const handleTheme = () => {
+      store.dispatch('settings/changeSetting', {
+        key: 'showSettings',
+        value: true
+      })
+    }
 
     // 点击菜单缩起展开
     const handleCollapseClick = () => {
@@ -138,9 +160,12 @@ export default defineComponent({
       paths,
       showPath: computed(() => store.state.layout.showPath),
       singleHeader: computed(() => store.state.layout.singleHeader),
+      // userInfo: computed(() => store.state.user.userInfo),
       handleCollapseClick,
       handleFullScreen,
       updatePaths,
+      handlelogout,
+      handleTheme,
     }
   },
 })
@@ -169,7 +194,7 @@ export default defineComponent({
   }
 
   &.path {
-    color: $header;
+    color: var(--ts-header-txt);
 
     .el-icon svg {
       font-size: 18px;
@@ -178,16 +203,16 @@ export default defineComponent({
 }
 
 .header-right {
-  height: $topHeaderH;
+  height: var(--ts-topHeaderH);
   display: flex;
   justify-content: flex-end;
-  line-height: $topHeaderH;
+  line-height: var(--ts-topHeaderH);
 
   .company-name {
     margin-left: 24px;
     margin-right: 24px;
     font-size: 13px;
-    color: $success;
+    color: var(--ts-success);
     white-space: nowrap;
     // overflow: hidden;
   }
@@ -197,12 +222,29 @@ export default defineComponent({
     margin-right: 10px;
     margin-left: 10px;
     font-size: 22px;
-    color: #666;
-    line-height: $topHeaderH + 6px;
+    color: var(--ts-header-txt);
+    line-height: calc(var(--ts-topHeaderH) + 6px);
+  }
+
+  .btn-themes {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+    color: var(--ts-header-txt);
+    line-height: calc(var(--ts-topHeaderH) + 6px);
   }
 }
 
 .mobile .btn-fullscreen {
+  display: none;
+}
+
+
+.mobile .el-dropdown-link {
+  padding: 0 8px 0 0;
+}
+
+.mobile .el-dropdown-link .name {
   display: none;
 }
 
@@ -211,8 +253,8 @@ export default defineComponent({
   cursor: pointer;
 
   .el-dropdown-link {
-    height: $topHeaderH;
-    line-height: $topHeaderH;
+    height: var(--ts-topHeaderH);
+    line-height: var(--ts-topHeaderH);
     vertical-align: middle;
     white-space: nowrap;
 
@@ -225,8 +267,8 @@ export default defineComponent({
   .name {
     font-size: 13px;
     // float: right;
-    height: $topHeaderH;
-    line-height: $topHeaderH;
+    height: var(--ts-topHeaderH);
+    line-height: var(--ts-topHeaderH);
     margin-left: 10px;
   }
 
@@ -236,7 +278,7 @@ export default defineComponent({
 }
 
 .path :deep(.el-dropdown) .name {
-  color: $header;
+  color: var(--ts-header-txt);
 }
 
 .el-avatar {

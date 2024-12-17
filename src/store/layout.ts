@@ -11,9 +11,14 @@ interface LayoutState {
   tagsName: string[]
 }
 
+function getIsMobile() {
+  const v = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i);
+  return !!v || (window && window.innerHeight > 0 && (window.innerWidth / window.innerHeight) < 0.65);
+}
+
 const state: LayoutState = {
   // 导航栏菜单是否隐藏
-  isCollapse: true,
+  isCollapse: getIsMobile() ? true : false,
   // 是否正在刷新页面
   isRefresh: false,
   // 是否显示菜单路径
@@ -21,16 +26,17 @@ const state: LayoutState = {
   // 是否单行头部
   singleHeader: true,
   // 是否使用移动版式
-  isMobile: window && window.innerHeight > 0 && (window.innerWidth / window.innerHeight) < 0.65,
+  isMobile: getIsMobile(),
   // 打开的页面
   tagsList: [] as string[],
   // 打开页面的路径列表
-  tagsName: [] as string[]
+  tagsName: [] as string[],
 }
 
 const mutations = {
   // 更新二级导航显示隐藏
   updateCollapse(state, payload) {
+    state.isMobile = getIsMobile()
     state.isCollapse = payload
   },
   // 更新 tagsName
@@ -45,8 +51,8 @@ const mutations = {
   },
   // 刷新页面
   reloadPage(state: LayoutState) {
-    const route = router.currentRoute.value
-    const name = route.matched.length >= 2 ? route.matched[1].components.default.name : undefined
+    const route = router().currentRoute.value
+    const name = route.matched.length >= 2 ? route.matched[1]!.components!.default!.name : undefined
     const i = name ? state.tagsName.findIndex((e) => e === name) : -1
     if (i >= 0) {
       mutations.updateTagsNameList(state, name)

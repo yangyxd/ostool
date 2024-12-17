@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import layout from './layout'
+import settings from './settings'
 
 export default createStore({
   state: {
@@ -16,6 +17,6 @@ export default createStore({
     }
   },
   modules: {
-    ...{layout},
+    ...{layout, settings},
   }
 })

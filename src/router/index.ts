@@ -1,6 +1,6 @@
-import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory, Router } from 'vue-router'
 import routes from './routes'
-import { menusMap } from './menus'
+import { MenuItem, menusMap } from './menus'
 
 const routeMap: Record<string, any> = {}
 
@@ -22,30 +22,50 @@ const initRoute = (routes: any[]) => {
   })
 }
 
-const bodyRoutes = routes[0].children
+const bodyRoutes = routes[0].children || routes[1].children
+export const routerFlagMap: Record<string, {key: string, menu: MenuItem}> = {}
 
 // 根据菜单设置，补充 router
 initRoute(bodyRoutes)
 
+/** 根据 MenuItem 初始化 Route */
+export const initRouteFromMenuItem = (v: MenuItem, name: string) => {
+  if (v.path && v.component && !routeMap[v.path]) {
+    const item = {
+      path: v.path,
+      component: v.component,
+      name: name,
+      meta: { title: v.name, icon: v.icon, activePath: v.path, power: v.power }
+    }
+    routeMap[v.path] = item
+    bodyRoutes.push(item)
+  }
+}
+
 // 将菜单中已经设置， router 中未指定的路径加入
 for (const e in menusMap) {
   const v = menusMap[e]
-  if (v.path && v.component && !routeMap[v.path]) {
-    bodyRoutes.push({
-      path: v.path,
-      component: v.component,
-      name: e,
-      meta: { title: v.name, icon: v.icon, activePath: v.path, power: v.power }
-    })
+  initRouteFromMenuItem(v, e)
+  if (v.id !== undefined && v.id !== null && v.id !== '') {
+    routerFlagMap[v.id.toString()] = {key: e, menu: v}
   }
 }
 
 // console.log('routes', routes)
+const routerData = {
+  router: undefined as (Router | undefined)
+}
 
-const router = createRouter({
-  // history: createWebHistory(),
-  history: createWebHashHistory(),
-  routes
-})
+/** 获取 router */
+const router = (newRouuter?: boolean) => {
+  if (!routerData.router || newRouuter === true) {
+    routerData.router = createRouter({
+      // history: createWebHistory(),
+      history: createWebHashHistory(),
+      routes
+    })
+  }
+  return routerData.router
+}
 
 export default router

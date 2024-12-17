@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import base64 from './utils/base64'
 import md5 from 'js-md5'
+import cache from './plugins/cache'
 import './assets/styles/index.scss'
 import './assets/styles/element-plus.scss'
 import './assets/styles/element-theme.scss'
@@ -40,13 +41,6 @@ plugins.forEach((plugin) => {
 const siteName = document.title ?? ''
 store.dispatch('setSiteName', siteName)
 
-router.beforeEach((to, from, next) => {
-  if (to.meta.title && document) {
-    document.title = siteName + ' - ' + to.meta.title as string
-  }
-  next()
-})
-
 // 统一注册Icon图标
 // import * as ElIconModules from '@element-plus/icons-vue'
 // import component from './shims-vue';
@@ -68,8 +62,17 @@ app.config.globalProperties.isDebug = false
 console.log('isMobile: ' + app.config.globalProperties.isMobile())
 
 app.config.globalProperties.$md5 = md5
+app.config.globalProperties.$cache = cache
 
-app.use(store).use(router)
+const routerBeforeEach = (to, from, next) => {
+  if (to.meta.title && document) {
+    document.title = siteName + ' - ' + to.meta.title as string
+  }
+  next()
+}
+router(true).beforeEach(routerBeforeEach)
+app.use(store)
+  .use(router())
   // .use(useVxeTable)
   .use(base64)
   .mount('#app')

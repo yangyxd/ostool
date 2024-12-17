@@ -75,12 +75,12 @@
 .menu-container,
 .el-menu--vertical {
   .el-menu .el-menu-item:hover {
-    background-color: #242d4d;
+    background-color: var(--ts-menu-hover);
   }
 
   .el-menu {
-    background-color: $header;
-    color: rgba(255, 255, 255, 0.7);
+    background-color: var(--ts-header);
+    color: var(--ts-menu-txt);
 
     .el-menu-item,
     .el-sub-menu__title {
@@ -89,51 +89,55 @@
     }
 
     .el-sub-menu__title {
-      color: rgba(255, 255, 255, 0.7);
+      color: var(--ts-menu-txt);
 
       &:hover {
-        color: #fff;
-        background-color: #242d4d;
+        color: var(--ts-menu-txt-hover);
+        background-color: var(--ts-menu-hover);
       }
 
       i {
-        color: rgba(255, 255, 255, 0.7);
+        color: var(--ts-menu-txt);
         transition: color 0.3s;
       }
     }
 
     .el-sub-menu.g-submenu.is-active {
-      color: #fff;
+      color: var(--ts-menu-txt-active);
 
       & > .el-sub-menu__title {
-        color: #fff;
+        color: var(--ts-menu-txt-active);
 
         i {
-          color: #fff;
+          color: var(--ts-menu-txt-active);
         }
       }
     }
 
     .el-sub-menu .el-menu {
-      background-color: $menu-sub;
+      background-color: var(--ts-menu-sub);
     }
 
     .el-menu-item {
-      color: rgba(255, 255, 255, 0.7);
+      color: var(--ts-menu-txt);
 
       i {
-        color: rgba(255, 255, 255, 0.7);
+        color: var(--ts-menu-txt);
         transition: color 0.3s;
       }
 
       &.is-active {
-        color: rgba(255, 255, 255, 0.7);
-        background-color: $menu;
+        color: var(--ts-menu-txt-active);
+        background-color: var(--ts-menu);
+
+        i {
+          color: var(--ts-menu-txt-active);
+        }
       }
 
       &:not(.is-active):hover {
         outline: 0;
-        color: #fff;
+        color: var(--ts-menu-txt-hover);
       }
 
     }
@@ -164,6 +168,23 @@
   td,
   th {
     padding: 3px 0;
+  }
+}
+
+.mobile .el-table .el-table-fixed-column--right {
+  z-index: var(--el-table-index) !important;
+}
+
+// dark 表格右侧固定列
+.dark {
+  .el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell.el-table-fixed-column--right {
+    background: #1D1D1D;
+  }
+  .el-table th.el-table__cell.is-leaf, .el-table td.el-table__cel.el-table-fixed-column--right {
+    background: #141414;
+  }
+  .el-table--striped .el-table__body tr.el-table__row.hover-row td.el-table__cell.el-table-fixed-column--right {
+    background: #262626;
   }
 }
 
@@ -210,7 +231,7 @@
   }
 
   &.default {
-    @include button-colors($normal: $primary, $hover: #38568b, $active: #242d4d);
+    @include button-colors($normal: var(--ts-primary), $hover: #38568b, $active: #242d4d);
   }
 
   &.success {
@@ -250,4 +271,89 @@
 }
 .el-sub-menu__title {
   padding-left: 24px!important;
+}
+
+// 部分区域
+.dlg-custom {
+  .el-input:not(.is-disabled) input[readonly] {
+    background-color: #f5f7fa !important;
+  }
+  .select-trigger {
+    .el-input:not(.is-disabled) input[readonly] {
+      background-color: transparent !important;
+    }
+  }
+  .el-dialog__body {
+    padding: 8px var(--el-dialog-padding-primary);
+  }
+  hr {
+    border: dashed 0.5px #eee;
+    margin: 0 8px 16px 8px;
+  }
+}
+
+.header {
+  .right {
+    justify-content: right;
+    .el-button {
+      margin: 0 0 0 6px !important;
+    }
+    .el-input {
+      margin: 0 0 0 6px !important;
+    }
+  }
+}
+
+.mobile .header {
+  .el-button {
+    margin: 4px 4px 2px 0 !important;
+  }
+  .el-input {
+    margin: 4px 4px 2px 0 !important;
+  }
+  .right {
+    justify-content: left;
+    text-align: left;
+  }
+}
+
+.body .tabs {
+  height: 100%;
+
+  .el-tabs__item.is-active {
+    font-weight: bold;
+  }
+
+  .el-tabs__content {
+    padding: 0;
+    min-height: calc(100vh - 148px);
+  }
+}
+
+// el card
+.body {
+  .el-card {
+    box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .el-form-item--default {
+    margin-bottom: 30px;
+  }
+}
+
+.el-card {
+  .el-card__header {
+    font-size: 16px;
+    color: var(--ts-primary);
+    font-weight: 700;
+  }
+}
+
+.el-table {
+  .el-link {
+    margin: 0 8px 0 2px;
+  }
+  .el-link .el-icon--right.el-icon {
+    vertical-align: text-bottom;
+  }
 }

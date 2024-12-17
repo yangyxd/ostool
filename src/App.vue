@@ -2,6 +2,7 @@
   <el-config-provider :locale="locale">
     <router-view />
   </el-config-provider>
+  <theme-picker />
 </template>
 
 <script lang="ts">
@@ -10,10 +11,12 @@ import { useEventListener } from '@vueuse/core'
 import { useStore } from 'vuex'
 import { debounce } from 'lodash-es'
 import { ElConfigProvider } from 'element-plus'
-import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+import ThemePicker from '@/components/layout/Settings/ThemePicker/index.vue';
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
 export default defineComponent({
   components: {
+    ThemePicker,
     ElConfigProvider
   },
   setup() {

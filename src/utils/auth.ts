@@ -38,5 +38,5 @@ export function exitLogin() {
     layout.state.tagsList = []
     layout.mutations.updateTagsNameList(layout.state, '')
   } catch (_) { null }
-  router.push('/login')
+  router().push('/login')
 }

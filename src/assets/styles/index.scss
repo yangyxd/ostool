@@ -4,6 +4,12 @@
 @tailwind utilities;
 @import 'var.scss';
 
+@mixin ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* reset css */
 html,
 body {
@@ -11,9 +17,9 @@ body {
   padding: 0;
   height: 100%;
   min-width: 300px;
-  color: $text-color;
-  font-size: $font-size-sm;
-  background-color: #f2f5fb;
+  color: var(--ts-text-color);
+  font-size: var(--ts-font-size-sm);
+  background-color: var(--ts-bg-color);
 }
 
 ::-webkit-scrollbar-track-piece {
@@ -62,10 +68,17 @@ ul {
 
 .el-table {
   .table-header-row {
-    color: $header;
+    color: var(--ts-header);
   }
 }
 
+.right {
+  text-align: right;
+}
+
+.flex {
+  display: flex !important;
+}
 
 h3 {
   display: block;
@@ -79,6 +92,13 @@ h4 {
   margin-bottom: 8px;
 }
 
+.p8 {
+  padding: 8px
+}
+
+.p12 {
+  padding: 12px;
+}
 
 .pl8 {
   padding-left: 8px;
@@ -86,6 +106,15 @@ h4 {
 .pb8 {
   padding-bottom: 20px;
 }
+
+.plrb12 {
+  padding: 2px 12px 12px 12px;
+}
+
+.mb2 {
+  margin-bottom: 2px;
+}
+
 .mt8 {
   margin-top: 8px;
 }
@@ -98,6 +127,27 @@ h4 {
 .ml8 {
   margin-left: 8px;
 }
+
+.mr8 {
+  margin-right: 8px;
+}
+
+.mr12 {
+  margin-right: 12px;
+}
+
+mb2 {
+  margin-bottom: 2px;
+}
+
+.mr4 {
+  margin-right: 4px;
+}
+
+.mt8 {
+  margin-top: 8px;
+}
+
 .mb16 {
   margin-bottom: 16px;
 }
@@ -112,4 +162,18 @@ h4 {
 }
 .tw3 {
   width: 220px;
+}
+
+.mw-320 {
+  max-width: 320px;
+}
+
+.readonly .luckysheet {
+  // border: 1px solid #000;
+  // border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 0;
+}
+
+.hint {
+  color: var(--ts-text-hint-color)
 }

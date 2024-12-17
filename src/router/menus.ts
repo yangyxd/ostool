@@ -7,9 +7,14 @@ export interface MenuItem {
   /** 图标 */
   icon?: string
   /** 需要的权限 */
-  power?: (string)[] | { options: (string)[] } | ((powers: (string)[]) => boolean)
+  power?: (string)[] | { 
+    /** 具备可选权限中的一个就可以使用 */
+    options: (string)[] 
+  } | ((powers: (string)[]) => boolean)
   /** 子菜单项 */
   children?: Record<string, MenuItem>
+  /** 标识ID */
+  id?: string | number
   /** 是否允许多开 */
   multiple?: boolean
   /** 扩展数据 */

@@ -24,6 +24,7 @@
 import { defineComponent, PropType } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { ElSubMenu, ElMenuItem } from 'element-plus'
+import { useStore } from 'vuex'
 
 interface Route {
   id: string
@@ -50,10 +51,12 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const router = useRouter()
+    const store = useStore()
 
     // 点击菜单
     const handleSelect = (item: Route) => {
       if (item.path === route.path || !item.path) return
+      if (store.state.layout.isMobile) store.commit('layout/updateCollapse', true)
       router.push(item.path)
       // router.push({ path: item.path, params: { title: item.name} })
     }
@@ -66,6 +69,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/var.scss';
 .menu-container {
   position: fixed;
   left: 0;
@@ -82,7 +86,7 @@ export default defineComponent({
   padding-bottom: 50px;
 
   &:not(.el-menu--collapse) {
-    width: 220px;
+    width: var(--ts-menuExW);
   }
 
   .iconfont {
@@ -100,5 +104,9 @@ export default defineComponent({
   .rightMenu {
     cursor: pointer;
   }
+}
+
+.el-sub-menu.g-submenu > ul > li.el-menu-item {
+  margin-left: 4px;
 }
 </style>

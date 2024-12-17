@@ -1,0 +1,49 @@
+:root {
+    --ts-drak: 1;
+    --el-bg-color: #141414;
+    --ts-bg-color: #141414;
+    --ts-theme-shadow: #000;
+    --ts-primary: #214e1b;
+    --ts-success: #67c23a;
+    --ts-warning: #e6a23c;
+    --ts-error: #f56c6c;
+    --ts-header: #1d1e23;
+    --ts-header-txt: #eee;
+    --ts-header-tab-border-color: #333;
+    --ts-header-btn-border-color: #222;
+    --ts-menu: #33343a;
+    --ts-menu-hover: #242d4d;
+    --ts-menu-txt: rgba(255, 255, 255, 0.7);
+    --ts-menu-txt-active: #308806;
+    --ts-menu-txt-hover: #fff;
+    --ts-menu-sub: #101117;
+    --ts-tab-active: #fff;
+    --ts-tab-shadow: #000;
+    --ts-nav: #141414;
+    /* 顶部导航条高度 */
+    --ts-topHeaderH: 45px;
+    --ts-topMenuOffset: 0px;
+    --ts-header-logoH: 45px;
+    --ts-header-logo-lineH: 45px;
+    /* PageTab 行高度 */
+    --ts-topTabH: 50px;
+    /* 菜单栏宽度 */
+    --ts-menuW: 40px;
+    --ts-menuExW: 280px;
+    
+    /* 行为相关颜色 */
+    --ts-border: 1px solid #202020;
+    --ts-border-radius: 2px;
+    --ts-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+    
+    /* 文字基本颜色 */
+    --ts-text-color: #eee; /**  基本色 */
+    --ts-text-hint-color: #999;
+    
+    /** font */
+    --ts-font-size-xl: 20px; /**  特殊 大字体 */
+    --ts-font-size-lg: 18px; /**  大标题 */
+    --ts-font-size-md: 16px; /**  标题 */
+    --ts-font-size-sm: 14px; /**  正文 */
+    --ts-font-size-xs: 12px; /**  辅助文字 */
+    }
