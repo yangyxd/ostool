@@ -26,6 +26,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/var.scss';
+
 .wrap {
   text-align: center;
   padding: 40px 0;
@@ -50,7 +52,7 @@ export default defineComponent({
   }
 
   p {
-    color: #000;
+    color: var(--ts-text-color);
     margin: 50px 0;
     font-size: 1.55rem;
     font-family: cursive;

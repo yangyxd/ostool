@@ -65,9 +65,8 @@
   
     theme = this.store.state.settings.theme || ''
     themeColor = (this.store.state.settings.themeColor || '')
-    themeMenuColor = (this.store.state.settings.themeMenuColor || '')
-  
-    themes = [['默认', ''], ['主题 1', 'var-wd'], ['主题 2', 'var-ry'], ['主题 Light', 'var-light'], ['主题 Drak', 'var-drak']]
+    themeMenuColor = (this.store.state.settings.themeMenuColor || '')  
+    themes = [['默认', ''], ['主题 RY', 'var-ry'], ['主题 Drak', 'var-drak'], ['主题 Light', 'var-light'],]
   
     handleTheme(val: string){
       this.themeColorChange('')

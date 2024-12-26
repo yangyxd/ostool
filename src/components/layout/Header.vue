@@ -306,9 +306,11 @@ export default defineComponent({
   box-shadow: none !important;
   margin-left: 8px;
 }
+
 .header-left .tags-close-box.close {
-  border-right: 1px solid #f0f1f2 !important;
+  border-right: var(--ts-border) !important;
 }
+
 .header-left .tags .el-tabs__header.is-top {
   display: inline-grid !important;
 }

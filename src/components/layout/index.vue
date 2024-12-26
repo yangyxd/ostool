@@ -67,7 +67,7 @@ export default defineComponent({
       store.commit('layout/updateCollapse', true)
     }
     const userInfo = computed(() => store.state['user'].userInfo)
-    store.dispatch('user/getUserInfo')
+    // store.dispatch('user/getUserInfo')
 
     const log = (e) => console.log(e)
     return {

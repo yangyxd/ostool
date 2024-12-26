@@ -28,7 +28,7 @@ td a {
 }
 
 .theme-black {
-    background-color: #444;
+    background-color: #1f1f1f;
     color           : #D6DBDF
 }
 
@@ -380,6 +380,13 @@ h6 {
     box-shadow      : 0 1px 1px rgba(0, 0, 0, .2);
     position        : relative;
     z-index         : 50
+}
+
+.theme-black .wmd-button-bar {
+    background-color: #181818;
+}
+.theme-black .preview-button-bar {
+    background-color: #181818;
 }
 
 .wmd-button-bar-full-shown {
@@ -846,6 +853,10 @@ ul.dropdown-menu li i[class*=icon] {
     padding-top     : 80px
 }
 
+.theme-black .reader-full-toolbar-shown {
+    background-color: #202020;
+}
+
 .reader-full-topInfo-hidden {
     position: absolute;
     top     : -1000px;
@@ -1136,7 +1147,7 @@ div.mermaid {
 
 .preview-link button {
     border          : solid 0 #0081c2;
-    background-color: #444;
+    background-color: #1f1f1f;
     color           : #5BA4E5;
     border-radius   : 4px;
     padding         : 2px 4px;

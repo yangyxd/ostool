@@ -36,8 +36,9 @@ export default {
    margin: -9px -10px -5px -10px;
 }
 </style>
+<style scoped lang="scss">
+@import '@/assets/styles/var.scss';
 
-<style>
 /** iframe样式 */
 .iframeContain {
   width: 100%;
