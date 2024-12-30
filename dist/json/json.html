@@ -7,6 +7,10 @@
 <meta name="keywords" content="JSON,在线JSON,JSON 校验,格式化,xml转json 工具,在线工具">
 <link rel="stylesheet" type="text/css" href="parse_new.css" />
 <style>
+html.dark {
+    background-color: #141414;
+}
+
 .button {
   font-family: Arial;
   color: #101010;
@@ -22,6 +26,22 @@
   background: #278bcd;
   text-decoration: none;
 }
+
+.dark ::-webkit-scrollbar-track-piece {
+  background-color: #141414;
+}
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background-color: rgba(144, 147, 153, 0.3);
+  background-clip: padding-box;
+  border-radius: 2px;
+  min-height: 40px;
+  cursor: pointer;
+}
+
 </style>
 </head>
 <body>
@@ -180,14 +200,16 @@
     }
 
     //初始化上一次json数据
-    var lastJson = localStorage.getItem('lastJsonData_a');
-    if (lastJson) {
-        if (typeof lastJson == 'object') {
-            $("#eT").val(JSON.stringify(lastJson));
-        } else {
-            $("#eT").val(lastJson.toString());
+    setTimeout(() => {
+        var lastJson = localStorage.getItem('lastJsonData_a');
+        if (lastJson) {
+            if (typeof lastJson == 'object') {
+                $("#eT").val(JSON.stringify(lastJson));
+            } else {
+                $("#eT").val(lastJson.toString());
+            }
         }
-    }
+    }, 320);
 </script>
 </body>
 </html>

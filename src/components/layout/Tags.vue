@@ -106,7 +106,7 @@ export default defineComponent({
       const delItem = tagsList.value.splice(index, 1)[0]
       const count = tagsList.value.length
       if (count === 0) {
-        router.push('/home')
+        router.push('/')
       } else {
         const fullPath = router.currentRoute.value.fullPath
         if (delItem.path === fullPath) {
@@ -140,7 +140,7 @@ export default defineComponent({
           return item.fixed === true
         })
       )
-      router.push('/home')
+      router.push('/')
     }
 
     const activeTag = (index: number) => {

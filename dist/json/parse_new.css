@@ -14,7 +14,7 @@ html,
 body {
     margin  : 0;
     height  : 100%;
-    overflow: hidden
+    overflow: hidden;
 }
 
 a {
@@ -123,6 +123,11 @@ noscript {
     background-color: #fff;
 }
 
+.dark .J {
+    background-color: #1f1f1f;
+    color: #D6DBDF;
+}
+
 .H .J {
     margin-top: 20px
 }
@@ -139,6 +144,10 @@ noscript {
     overflow        : hidden;
     position        : absolute;
     z-index         : 1
+}
+
+.dark .K {
+    background-color: #1f1f1f;
 }
 
 .H .K {
@@ -394,6 +403,67 @@ noscript {
     color           : #fff
 }
 
+.dark .Q {
+    background-color: #202020;
+    color: #ccc;
+    border-bottom   : solid 1px #101010;
+}
+
+.dark .json-empty .Q {
+    background-color: #141414;
+    color: #D6DBDF;
+}
+
+.dark .P .object ul {
+    color: #ccc;
+}
+
+.dark .P .object ul .property{
+    color: #687aa0;
+}
+
+.dark .json-empty textarea:focus {
+    outline-color: #555; /* 设置选中时的边框颜色为红色 */
+    outline-style: solid; /* 设置边框样式为实线 */
+    outline-width: 1px; /* 设置边框宽度为2px */
+}
+
+.dark .x {
+    border: solid 1px #333;
+}
+
+.dark .x:focus {
+    box-shadow: inset 5px 5px 10px -10px #000;
+}
+
+.dark .button {
+    background: #1f1f1f;
+    color: #999;
+    border: solid #333 1px;
+}
+
+.dark .j {
+    background: #1f1f1f;
+    border: solid #333 1px;
+}
+
+.dark .j .e {
+    background: #1f1f1f;
+    color: #ccc;
+}
+
+.dark .e:hover,
+.g .e.on:hover::before,
+.g .d:hover::before,
+.g .d.on:hover::before {
+    background: #1e90ff;
+    color     : #fff;
+}
+
+.dark .n:hover {
+    color: #1e90ff;
+}
+
 #eT {
     resize: none
 }
@@ -409,8 +479,7 @@ noscript {
 
 .P {
     font-family: dejavu sans mono, courier new, monospace;
-    font-size  : 68.8%;
-    font-size  : 11px;
+    font-size  : 13px;
     line-height: 17px;
     word-wrap  : break-word
 }
