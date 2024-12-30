@@ -68,11 +68,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/styles/var.scss';
 .subtitle {
   font-weight: bold;
   font-size: 14px;
-  color: #111;
+  color: var(--ts-text-hint-color);
 }
 .container {
   min-height: calc(100vh - 70px);
@@ -91,9 +92,9 @@ export default {
 .md5 .el-input__inner {
   font-size: 15px;
   font-family: 'Courier New', Courier, monospace;
-  color: #010203;
+  color: var(--ts-text-color);
 }
 .md5 .el-textarea__inner {
-  color: #010203;
+  color: var(--ts-text-color);
 }
 </style>

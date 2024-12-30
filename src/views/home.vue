@@ -65,7 +65,9 @@ export default class HomePage extends BaseVue {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/styles/var.scss';
+
 .w1 {
   width: 180px;
 }
@@ -86,7 +88,7 @@ export default class HomePage extends BaseVue {
 .icon span {
   padding: 12px;
   width: auto;
-  border: 1px solid #d9d9d9;
+  border: 1px solid var(--ts-border);
   border-radius: 5px;
   background-color: #999;
   font-size: 36px;
@@ -96,7 +98,13 @@ export default class HomePage extends BaseVue {
 .icon {
   padding: 16px;
   margin-bottom: 16px;
-  color: #fff;
+  color: var(--ts-header);
+}
+
+.icon {
+  padding: 16px;
+  margin-bottom: 16px;
+  color: var(--ts-header);
 }
 
 .title {
@@ -107,6 +115,7 @@ export default class HomePage extends BaseVue {
   text-overflow: ellipsis;
   overflow-x: hidden;
   text-indent: initial;
+  color: var(--ts-text-color);
 }
 
 .desc {
@@ -115,6 +124,7 @@ export default class HomePage extends BaseVue {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow-x: hidden;
+  color: var(--ts-text-hint-color);
 }
 
 h3 {

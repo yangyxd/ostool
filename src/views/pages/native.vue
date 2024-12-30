@@ -177,12 +177,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/styles/var.scss';
+
 .desc {
   font-size: 15px;
   margin-bottom: 8px;
   margin-left: 8px;
-  color: #888;
+  color: var(--ts-text-hint-color);
 }
 .container {
   min-height: calc(100vh - 70px);
@@ -205,7 +207,7 @@ export default {
 
 <style>
 .native .el-textarea__inner {
-  color: #010203;
+  color: var(--ts-text-color);
   font-size: 14px;
 }
 </style>

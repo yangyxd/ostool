@@ -167,6 +167,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/var.scss';
+
 .title {
   font-weight: bold;
   font-size: 24px;
@@ -206,20 +208,20 @@ export default {
 
 .titem {
     cursor: pointer;
-    color: #0058a8;
+    color: var(--ts-text-link-color);
     padding-top: 6px;
     padding-bottom: 6px;
     font-size: 16px;
 }
 
 .titem span:hover {
-    color: #409eff;
+    color: var(--ts-text-link-color);
 }
 
 .rightpl {
     margin-top: 16px;
     padding: 16px;
-    background: #f1f2f3;
+    background: var(--ts-bg-color);
 }
 
 .rightpl p {
@@ -227,7 +229,7 @@ export default {
     margin-bottom: 8px;
     font-size: 15px;
     text-indent: 30px;
-    color: #666;
+    color: var(--ts-text-hint-color);
 }
 </style>
 <style>

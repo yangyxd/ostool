@@ -201,7 +201,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/styles/var.scss';
+
 .title {
   font-weight: bold;
   font-size: 20px;
@@ -210,13 +212,13 @@ export default {
 .subtitle {
   font-weight: bold;
   font-size: 14px;
-  color: #111;
+  color: var(--ts-text-color);
 }
 .desc {
   font-size: 15px;
   margin-bottom: 8px;
   margin-left: 8px;
-  color: #888;
+  color: var(--ts-text-hint-color);
 }
 
 .container {
@@ -240,7 +242,7 @@ export default {
 .rightpl {
   margin-left: 12px;
   padding: 16px;
-  background: #f1f2f3;
+  background: var(--ts-bg-color);
 }
 </style>
 
@@ -248,7 +250,7 @@ export default {
 .regexp .el-input__inner {
   font-size: 14px;
   font-family: 'Courier New', Courier, monospace;
-  color: #010203;
+  color: var(--ts-text-color);
 }
 .regexp.container .el-checkbox {
   margin-right: 16px;

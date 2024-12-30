@@ -145,7 +145,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/styles/var.scss';
+
 .title {
   font-weight: bold;
   font-size: 20px;
@@ -155,12 +157,12 @@ export default {
   font-size: 15px;
   margin-bottom: 8px;
   margin-left: 8px;
-  color: #666;
+  color: var(--ts-text-hint-color);
   line-height: 38px;
 }
 .cname {
   font-size: 14.5px;
-  color: #111;
+  color: var(--ts-text-link-color);
   font-weight: bold;
 }
 .tt {
@@ -212,12 +214,12 @@ export default {
 .timestamp .el-input__inner {
   font-size: 15px;
   font-family: 'Courier New', Courier, monospace;
-  color: #010203;
+  color: var(--ts-text-color);
   height: 33px;
   padding: 15px 6px 15px 8px;
 }
 .timestamp .el-textarea__inner {
-  color: #010203;
+  color: var(--ts-text-color);
   box-shadow: none;
   resize: none;
 }

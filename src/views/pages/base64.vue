@@ -143,11 +143,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/styles/var.scss';
+
 .icon span {
   padding: 12px;
   width: auto;
-  border: 1px solid #d9d9d9;
+  border: 1px solid var(--ts-border);
   border-radius: 5px;
   background-color: #999;
   font-size: 36px;
@@ -156,7 +158,7 @@ export default {
 .icon {
   padding: 16px;
   margin-bottom: 16px;
-  color: #fff;
+  color: var(--ts-header);
 }
 .title {
   font-weight: bold;
@@ -166,13 +168,13 @@ export default {
 .subtitle {
   font-weight: bold;
   font-size: 14px;
-  color: #111;
+  color: var(--ts-text-color);
 }
 .desc {
   font-size: 15px;
   margin-bottom: 8px;
   margin-left: 8px;
-  color: #888;
+  color: var(--ts-text-hint-color);
 }
 h3 {
   display: block;
@@ -209,14 +211,14 @@ h3 {
 .rightpl {
   margin-top: 16px;
   padding: 16px;
-  background: #f1f2f3;
+  background: var(--ts-bg-color);
 }
 .rightpl p {
   margin-top: 8px;
   margin-bottom: 8px;
   font-size: 15px;
   text-indent: 30px;
-  color: #666;
+  color: var(--ts-text-hint-color);
 }
 </style>
 
@@ -227,6 +229,6 @@ h3 {
   height: 100%;
 }
 .base64 .el-textarea__inner {
-  color: #010203;
+  color: var(--ts-text-color);
 }
 </style>

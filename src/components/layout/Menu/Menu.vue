@@ -53,7 +53,8 @@ export default defineComponent({
       return { id: key, name: item.name, children }
     }
 
-    const getMenuData = (menus: Record<string, MenuItemData>, customMenus: Array<CustomMenuItem>) => {
+    const getMenuData = (menus: Record<string, MenuItemData>, customMenus: Array<CustomMenuItem>) => {     
+      // console.log('menus', menus) 
       Object.keys(menus).forEach((v) => {
         const item = getMenuItem(v, menus[v])
         customMenus.push(item)
@@ -64,14 +65,14 @@ export default defineComponent({
     const getMenuList = () => {
       const customMenus = new Array<CustomMenuItem>()
       getMenuData(menus, customMenus)
-      // console.log(customMenus)
+      // console.log('customMenus', customMenus)
       getMenus(customMenus).then((v: CustomMenuItem[]) => { 
-        for (let i = v.length; i--; i >= 0) {
-          const m = v[i]
-          if (m.children && Utils.empty(m.children)) {
-            v.splice(i, 1)
-          }
-        }
+        // for (let i = v.length; i--; i >= 0) {
+        //   const m = v[i]
+        //   if (m.children && Utils.empty(m.children)) {
+        //     v.splice(i, 1)
+        //   }
+        // }
         if (v.length === 0) {
           // 为空时，将主页加入菜单中
           v.push(getMenuItem('home', menus.home))

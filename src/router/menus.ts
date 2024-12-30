@@ -30,19 +30,13 @@ const menus: Record<string, MenuItem> = {
     icon: 'icon-home',
     path: '/',
   },
-  json_tools: {
-    name: 'JSON工具',
-    icon: 'icon-file-text',
-    children: {
-      json: {
-        name: 'JSON在线解析',
-        icon: 'icon-settings_ethernet',
-        path: '/json-tools/json',
-        multiple: false,
-        data: {  icon: 'Json', txt: '#ff0', bg: '#009688', desc: 'JSON 在线解析工具' },
-        component: () => import('@/views/pages/json/json.vue'),
-      },
-    }
+  json: {
+    name: 'JSON在线解析',
+    icon: 'icon-settings_ethernet',
+    path: '/json-tools',
+    multiple: false,
+    data: {  icon: 'Json', txt: '#ff0', bg: '#009688', desc: 'JSON 在线解析工具' },
+    component: () => import('@/views/pages/json/json.vue'),
   },
   markdown: {
     name: 'Markdown 编辑器',
