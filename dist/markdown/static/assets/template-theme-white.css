@@ -207,8 +207,7 @@ textarea {
   }
 
   ol.linenums {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 4px 0 4px 4px;
     color: rgba(0, 0, 0, 0.65) !important;
   }
 
@@ -219,10 +218,11 @@ textarea {
 
   li.todo-list-item {
     list-style: none;
+    line-height: 1.75em;
   }
 
   li.todo-list-item i {
-    margin: 0 6px 0 -20px;
+    margin: 0 0.55em 0 -1.35em;
     vertical-align: middle;
   }
 }
@@ -9595,7 +9595,7 @@ ul.dropdown-menu li i[class*=icon] {
 .wmd-preview {
   width: 100%;
   font-size: 16px;
-  line-height: 27px;
+  line-height: 1.65em;
   overflow: auto;
   border: 1px dashed #BBB;
   border-top-width: 0;
@@ -9605,7 +9605,12 @@ ul.dropdown-menu li i[class*=icon] {
 }
 
 .wmd-preview li {
-  line-height: 27px
+  line-height: 1.65em
+}
+
+.wmd-preview li p {
+  line-height: 1.65em;
+  margin: 0;
 }
 
 .wmd-preview ol.linenums>li {

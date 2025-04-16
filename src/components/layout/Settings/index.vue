@@ -28,12 +28,12 @@
   
             <div class="drawer-item">
               <span>主题颜色</span>
-              <theme-picker style="float: right;height: 26px;margin: -3px 8px 0 0;" :color="themeColor" @change="(v) => (themeColorChange(v), saveSetting())" />
+              <theme-picker style="float: right;height: 26px;margin: -3px 8px 0 0;" :visible="visible" :color="themeColor" @change="(v) => (themeColorChange(v), saveSetting())" />
             </div>
   
             <div class="drawer-item">
               <span>菜单高亮颜色</span>
-              <theme-picker style="float: right;height: 26px;margin: -3px 8px 0 0;" :color="themeMenuColor" @change="(v) => (themeMenuColorChange(v), saveSetting())" />
+              <theme-picker style="float: right;height: 26px;margin: -3px 8px 0 0;" :visible="visible" :color="themeMenuColor" @change="(v) => (themeMenuColorChange(v), saveSetting())" />
             </div>
           </div>
   

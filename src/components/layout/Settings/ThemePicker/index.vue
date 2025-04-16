@@ -1,5 +1,5 @@
 <template>
-    <div class="theme-picker">
+    <div class="theme-picker" :style="visible ? '' : 'display: none;'">
       <el-color-picker v-model="colorValue"
         :predefine="['#409EFF', '#1890ff', '#304156', '#212121', '#11a983', '#13c2c2', '#6959CD', '#f5222d',]"
         popper-class="theme-picker-dropdown" @change="doChange" />
@@ -21,6 +21,10 @@
         type: String,
         default: '',
       },
+      visible: {
+        type: Boolean,
+        default: false
+      }
     },
     watch: {
       themeColor(val, oldVal) {
@@ -43,6 +47,7 @@
   export default class ThemePicker extends BaseVue {
     color?: string
     colorValue = ''
+    visible?: boolean
   
     theme: ComputedRef<string> = computed(() => this.store.state.settings.theme || '')
     themeColor: ComputedRef<string> = computed(() => this.store.state.settings.themeColor || '')
