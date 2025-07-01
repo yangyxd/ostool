@@ -2882,6 +2882,8 @@ table th[class*=span],
     display                : none;
     float                  : left;
     min-width              : 160px;
+    max-height             : calc(100vh - 90px);
+    overflow-y: auto;
     padding                : 5px 0;
     margin                 : 2px 0 0;
     list-style             : none;
