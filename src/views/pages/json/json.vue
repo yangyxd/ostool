@@ -1,6 +1,6 @@
 <template>
   <div class="container json_tool">
-    <iframe :src="url" scrolling="no" ref="jsonToolFrame" frameborder="0" :class="'iframeContain ' + theme" name="jsonToolFrame" @load="addIframeClass"></iframe>
+     <div ref="placeholder" class="iframe-placeholder"></div>
   </div>
 </template>
 
@@ -8,6 +8,7 @@
 import { Options } from 'vue-class-component'
 import { computed, ComputedRef, ref, WatchOptions, WatchStopHandle } from 'vue'
 import BaseVue from '../../base/BaseVue'
+import { iframeManager } from '@/utils/IframeManager'
 
 @Options({
   name: 'JsonViewPage',
@@ -21,6 +22,7 @@ import BaseVue from '../../base/BaseVue'
 })
 /** 主页 */
 export default class JsonViewPage extends BaseVue {  
+  iframeKey = 'json-tool'
   url = location.origin + location.pathname.replace('/index.html', '/') + 'json/json.html'
   theme: ComputedRef<string> = computed(() => this.store.state.settings.theme || '')
   themeValue = this.store.state.settings.theme || ''
@@ -37,23 +39,24 @@ export default class JsonViewPage extends BaseVue {
     }, 300)
   }
 
-  addIframeClass() {
-    const htmlClassList = document.getElementsByTagName('html')[0].classList
-    const isDark = htmlClassList.contains('dark')
-    let jsonTool = this.$refs.jsonToolFrame as any
-    const iframeDocument = jsonTool.contentDocument || jsonTool.contentWindow.document;
-    const iframeRoot = iframeDocument.documentElement;
-    if (isDark) {
-      iframeRoot.classList.add('dark')
-    } else {
-      iframeRoot.classList.remove('dark')
-    }
+  activated() {
+    let isDark = this.themeValue === 'var-drak'
+    iframeManager.activate(this.iframeKey, this.url, { theme: isDark ? 'dark' : 'light' });
+  }
+
+  deactivated() {
+    iframeManager.deactivate(this.iframeKey);
+  }
+
+  beforeUnmount() {
+    iframeManager.destroy(this.iframeKey);
   }
 
   doUpdateTheme() {
     this.$nextTick(() => setTimeout(() => {
-      this.addIframeClass()
-    }, 300))
+      let isDark = this.themeValue === 'var-drak'
+      iframeManager.applyTheme(this.iframeKey, isDark ? 'dark' : 'light')
+    }, 50))
   }
 }
 </script>
