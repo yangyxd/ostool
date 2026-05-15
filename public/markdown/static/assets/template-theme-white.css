@@ -8996,8 +8996,8 @@ h5,h6 {
 }
 
 .wmd-button-bar,.preview-button-bar {
-  background-color: #444;
-  box-shadow: 0 1px 1px rgba(0,0,0,.2);
+  background-color: #fafafa;
+  box-shadow: 0 1px 1px rgba(0,0,0,.1);
   position: relative;
   z-index: 50
 }
@@ -9688,7 +9688,7 @@ ul.dropdown-menu li i[class*=icon] {
 }
 
 .wmd-button {
-  margin-left: 10px
+  margin-left: 10px;
 }
 
 .preview-link,.preview-button {
@@ -9702,7 +9702,7 @@ ul.dropdown-menu li i[class*=icon] {
 .wmd-button>span,.preview-button>span,.in-page-button>span {
   width: 20px;
   height: 20px;
-  display: inline-block
+  display: inline-block;
 }
 
 .preview-link button {
