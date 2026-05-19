@@ -10,15 +10,76 @@
 
     <title>Markdown 编辑阅读器</title>
     <link href="./static/assets/1bc053c8.base.lib.min.css" rel="stylesheet" media="screen">
-    <link id="prettify-style" href="./static/editor/libs/google-code-prettify/prettify-cmd.css" type="text/css" rel="stylesheet">
     <link href="./static/assets/mdeditor/45c7d56d.layout.min.css" rel="stylesheet" media="screen">
     <link href="./static/editor/libs/mindmap/mrdoc.css" rel="stylesheet" media="screen">
-
+    <!-- google code prettify -->
+    <link id="prettify-style" href="./static/editor/libs/google-code-prettify/prettify-cmd.css" type="text/css" rel="stylesheet">
+  
+    <!-- 添加 highlight.js -->
+    <link id="highlight-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/php.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/swift.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/kotlin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cmake.min.js"></script>
 
 
     <link href="./static/assets/2e85637e.mdeditor.lib.min.css" rel="stylesheet" media="screen">
     <style type="text/css" id="customized-font-css"></style>
     <style type="text/css" id="customized-style-css"></style>
+
+    <style>
+        /* 代码块容器 */
+        pre.hljs {
+            display: flex;
+            position: relative;
+            width: 100%;
+            background-color: rgba(197, 207, 218, 0.05);
+        }
+        
+        /* 行号区域 */
+        pre.hljs .linenums {
+            width: 1px;
+            padding: 1em 0 1em 0;
+        }
+
+        pre.hljs code {
+            width: 100%;
+            white-space: pre;
+            overflow-x: auto;
+            scroll-behavior: smooth;            
+        }   
+        
+        pre.hljs.code-black {
+            background-color: #333;
+        }
+
+        pre.hljs code::-webkit-scrollbar {
+            height: 10px;
+        }
+
+        pre.hljs code::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0);
+            border-radius: 5px;
+        }
+
+        pre.hljs code::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0);
+            border-radius: 5px;
+            transition: background 0.2s ease-in-out;
+        }
+
+        pre.hljs code::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.4);;
+        }
+    </style>
 
 
     <script>
