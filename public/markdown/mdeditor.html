@@ -39,25 +39,33 @@
         /* 代码块容器 */
         pre.hljs {
             display: flex;
-            position: relative;
             width: 100%;
-            background-color: rgba(197, 207, 218, 0.05);
+            background-color: #f6f6f6;
+            border-radius: 4px;
         }
         
         /* 行号区域 */
         pre.hljs .linenums {
-            width: 1px;
-            padding: 1em 0 1em 0;
+            width: 0;
+            padding: 0.5em 0 0.5em 3.65em;
+            margin-left: 0;
         }
 
         pre.hljs code {
             width: 100%;
             white-space: pre;
             overflow-x: auto;
-            scroll-behavior: smooth;            
+            scroll-behavior: smooth;       
+            padding: 0.5em;
+            background-color: #f7f9fa;
+            border-radius: 0;
         }   
         
         pre.hljs.code-black {
+            background-color: #222;
+        }
+
+        pre.hljs.code-black code {
             background-color: #333;
         }
 
