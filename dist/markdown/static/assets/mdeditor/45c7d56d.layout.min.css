@@ -1055,6 +1055,49 @@ div.mermaid {
 .wmd-preview ol.linenums>li {
     line-height: 20px
 }
+        
+/* 代码块头部样式 */
+.wmd-preview .code-header {
+    width: 100%;
+    height: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    background: rgba(102, 128, 153, 0.05);
+    border-bottom: 1px solid rgba(102, 128, 153, 0.1);
+    font-size: 12px;
+    border-top-left-radius: 5px;
+}
+.wmd-preview .code-lang {
+    font-weight: 600;
+    color: #aaa;
+    text-transform: uppercase;
+}
+.wmd-preview .code-copy-btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 3px;
+    color: #999;
+    padding: 2px 5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 12px;
+}
+.wmd-preview .code-copy-btn:hover {
+    background-color: rgba(91, 164, 229, 0.3);
+    color: #111;
+}
+.wmd-preview .code-copy-btn:active {
+    background-color: rgba(91, 164, 229, 0.4);
+}
+.wmd-preview .code-black .code-lang {
+    color: #666;
+}
+.wmd-preview .code-black .code-copy-btn {
+    color: #666;
+}
 
 .wmd-preview-full-reader {
     height        : auto;

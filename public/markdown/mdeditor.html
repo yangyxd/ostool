@@ -39,6 +39,7 @@
         /* 代码块容器 */
         pre.hljs {
             display: flex;
+            flex-wrap: wrap;
             width: 100%;
             background-color: #f6f6f6;
             border-radius: 4px;
@@ -59,7 +60,7 @@
         }
 
         pre.hljs code {
-            width: 100%;
+            width: calc(100% - 66px);
             white-space: pre;
             overflow-x: auto;
             scroll-behavior: smooth;       
