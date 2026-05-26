@@ -43,6 +43,7 @@
             width: 100%;
             background-color: #f6f6f6;
             border-radius: 4px;
+            margin: 0.5em 0 1.2em 0;
         }
 
         pre code.hljs {
@@ -55,18 +56,19 @@
         /* 行号区域 */
         pre.hljs .linenums {
             width: 0;
-            padding: 0.5em 0 0.5em 3.65em;
-            margin-left: 0;
+            padding: 0.5em 0 0.5em 54px;
+            margin: 0;
         }
 
         pre.hljs code {
-            width: calc(100% - 66px);
+            width: calc(100% - 54px - 1em);
             white-space: pre;
             overflow-x: auto;
             scroll-behavior: smooth;       
             padding: 0.5em;
             background-color: #f7f9fa;
             border-radius: 0;
+            border-bottom-right-radius: 4px;
         }
         
         pre.hljs.code-black {
