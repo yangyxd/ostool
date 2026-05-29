@@ -1110,6 +1110,11 @@ div.mermaid {
     position      : relative
 }
 
+.wmd-preview-expand {
+  max-width: none !important;
+  padding: 0 0 0 12px;
+}
+
 .wmd-button-row,
 .preview-button-row {
     margin : 10px 5px 5px;
